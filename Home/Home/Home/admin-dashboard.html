@@ -1,0 +1,3972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | VIVEKANAND COLLEGE PLACEMENT CELL</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f6fa;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 70px;
+            background: #0b1f3a;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 35px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffb703;
+        }
+
+        .admin-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-name {
+            font-size: 14px;
+            color: #dbe5f2;
+        }
+
+        .logout-btn {
+            border: none;
+
+            background: #ffb703;
+
+            color: #111;
+
+            padding: 10px 20px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: white;
+            color: #0b1f3a;
+        }
+
+
+        /* ================= LAYOUT ================= */
+
+        .dashboard {
+            display: flex;
+
+            min-height:
+                calc(100vh - 70px);
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 250px;
+
+            background: #102b4c;
+
+            color: white;
+
+            padding: 25px 15px;
+
+            flex-shrink: 0;
+        }
+
+        .admin-profile {
+            text-align: center;
+
+            padding-bottom: 25px;
+
+            margin-bottom: 20px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.15);
+        }
+
+        .admin-avatar {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 12px;
+
+            border-radius: 50%;
+
+            background: #ffb703;
+
+            color: #0b1f3a;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+
+            font-weight: bold;
+        }
+
+        .admin-profile h3 {
+            font-size: 17px;
+
+            margin-bottom: 5px;
+        }
+
+        .admin-profile p {
+            color: #b9c8d9;
+
+            font-size: 12px;
+        }
+
+
+        /* ================= MENU ================= */
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 7px;
+        }
+
+        .menu button {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #dbe5f2;
+
+            text-align: left;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .menu button:hover,
+        .menu button.active {
+            background: #ffb703;
+
+            color: #111;
+
+            font-weight: bold;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .main-content {
+            flex: 1;
+
+            padding: 30px 35px;
+
+            overflow: hidden;
+        }
+
+
+        /* ================= SECTIONS ================= */
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            color: #0b1f3a;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* ================= WELCOME ================= */
+
+        .welcome {
+            background:
+                linear-gradient(
+                    135deg,
+                    #1455a0,
+                    #0b1f3a
+                );
+
+            color: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.12);
+        }
+
+        .welcome h1 {
+            font-size: 29px;
+
+            margin-bottom: 8px;
+        }
+
+        .welcome h1 span {
+            color: #ffb703;
+        }
+
+        .welcome p {
+            color: #dbe5f2;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================= STAT CARDS ================= */
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0,0,0,0.07);
+
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform:
+                translateY(-4px);
+        }
+
+        .stat-icon {
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .stat-card h2 {
+            color: #0b1f3a;
+
+            font-size: 27px;
+
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: #777;
+
+            font-size: 13px;
+        }
+
+
+        /* ================= PANEL ================= */
+
+        .panel {
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0,0,0,0.07);
+        }
+
+        .panel-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .panel-header h3 {
+            color: #0b1f3a;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .primary-btn {
+            border: none;
+
+            background: #ffb703;
+
+            color: #111;
+
+            padding: 11px 18px;
+
+            border-radius: 22px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .primary-btn:hover {
+            background: #0b1f3a;
+
+            color: white;
+        }
+
+        .danger-btn {
+            border: none;
+
+            background: #dc3545;
+
+            color: white;
+
+            padding: 7px 12px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            border: none;
+
+            background: #1455a0;
+
+            color: white;
+
+            padding: 7px 12px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            margin-right: 5px;
+        }
+
+
+        /* ================= SEARCH ================= */
+
+        .search-filter {
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .search-filter input,
+        .search-filter select {
+            padding: 11px;
+
+            border: 1px solid #d5dce5;
+
+            border-radius: 8px;
+
+            outline: none;
+        }
+
+
+        /* ================= TABLE ================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 850px;
+        }
+
+        th {
+            background: #0b1f3a;
+
+            color: white;
+
+            padding: 13px;
+
+            text-align: left;
+
+            font-size: 13px;
+        }
+
+        td {
+            padding: 12px;
+
+            border-bottom:
+                1px solid #eee;
+
+            font-size: 13px;
+        }
+
+        tr:hover td {
+            background: #f7f9fc;
+        }
+
+
+        /* ================= STATUS ================= */
+
+        .status {
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .placed {
+            background: #d4edda;
+
+            color: #155724;
+        }
+
+        .not-placed {
+            background: #fff3cd;
+
+            color: #856404;
+        }
+
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .quick-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+        .quick-card {
+            border: none;
+
+            background: #f7f9fc;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .quick-card:hover {
+            background: #ffb703;
+
+            transform:
+                translateY(-3px);
+        }
+
+        .quick-card div {
+            font-size: 30px;
+
+            margin-bottom: 8px;
+        }
+
+        .quick-card strong {
+            color: #0b1f3a;
+        }
+
+
+        /* ================= INFO GRID ================= */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .info-box {
+            background: #f7f9fc;
+
+            padding: 18px;
+
+            border-radius: 10px;
+        }
+
+        .info-box label {
+            display: block;
+
+            color: #777;
+
+            font-size: 12px;
+
+            margin-bottom: 6px;
+        }
+
+        .info-box strong {
+            color: #0b1f3a;
+        }
+
+
+        /* ================= COMPANY CARDS ================= */
+
+        .company-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .company-card {
+            background: white;
+
+            padding: 22px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0,0,0,0.07);
+        }
+
+        .company-logo {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 12px;
+
+            background: #eaf0f8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+            margin-bottom: 15px;
+        }
+
+        .company-card h3 {
+            color: #0b1f3a;
+
+            margin-bottom: 8px;
+        }
+
+        .company-card p {
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* ================= REPORT CARDS ================= */
+
+        .report-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .report-card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0,0,0,0.07);
+        }
+
+        .report-card h3 {
+            color: #0b1f3a;
+
+            margin-bottom: 15px;
+        }
+
+        .report-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 10px 0;
+
+            border-bottom:
+                1px solid #eee;
+
+            font-size: 13px;
+        }
+
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,0.55);
+
+            z-index: 2000;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
+
+            width: 100%;
+
+            max-width: 700px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            border-radius: 18px;
+
+            padding: 30px;
+        }
+
+        .modal-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: #0b1f3a;
+        }
+
+        .close-btn {
+            border: none;
+
+            background: #eee;
+
+            width: 35px;
+
+            height: 35px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 18px;
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #26374d;
+
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #d5dce5;
+
+            border-radius: 8px;
+
+            outline: none;
+        }
+
+        .modal-actions {
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .cancel-btn {
+            border: none;
+
+            background: #ddd;
+
+            padding: 11px 18px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+        }
+
+
+        /* ================= EMPTY ================= */
+
+        .empty {
+            text-align: center;
+
+            padding: 35px;
+
+            color: #777;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:1100px) {
+
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .quick-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .company-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+        }
+
+
+        @media(max-width:850px) {
+
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .menu {
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3,1fr);
+
+                gap: 7px;
+            }
+
+            .menu li {
+                margin: 0;
+            }
+
+            .search-filter {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 13px;
+            }
+
+            .admin-name {
+                display: none;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .stats-grid,
+            .quick-grid,
+            .company-grid,
+            .info-grid,
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-filter {
+                grid-template-columns: 1fr;
+            }
+
+            .menu {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .welcome h1 {
+                font-size: 23px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================================= -->
+<!-- NAVBAR -->
+<!-- ========================================================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        VIVEKANAND
+        <span>COLLEGE PLACEMENT CELL</span>
+
+    </div>
+
+
+    <div class="admin-top">
+
+        <span
+            class="admin-name"
+            id="topAdminName">
+
+            Administrator
+
+        </span>
+
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- ========================================================= -->
+<!-- DASHBOARD -->
+<!-- ========================================================= -->
+
+<div class="dashboard">
+
+
+    <!-- ===================================================== -->
+    <!-- SIDEBAR -->
+    <!-- ===================================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="admin-profile">
+
+            <div
+                class="admin-avatar"
+                id="adminAvatar">
+
+                A
+
+            </div>
+
+            <h3 id="sideAdminName">
+                Administrator
+            </h3>
+
+            <p>
+                Placement Administrator
+            </p>
+
+        </div>
+
+
+        <ul class="menu">
+
+
+            <li>
+
+                <button
+                    class="active"
+                    onclick="showSection('dashboard',this)">
+
+                    🏠 Dashboard
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('students',this)">
+
+                    👨‍🎓 Students
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('companies',this)">
+
+                    🏢 Companies
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('placements',this)">
+
+                    💼 Placements
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('reports',this)">
+
+                    📊 Reports
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('profile',this)">
+
+                    👤 Admin Profile
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('settings',this)">
+
+                    ⚙️ Settings
+
+                </button>
+
+            </li>
+
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- ===================================================== -->
+    <!-- MAIN CONTENT -->
+    <!-- ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ================================================= -->
+        <!-- DASHBOARD SECTION -->
+        <!-- ================================================= -->
+
+        <section
+            id="dashboard"
+            class="content-section active">
+
+
+            <div class="welcome">
+
+                <h1>
+
+                    Welcome,
+                    <span id="welcomeAdminName">
+                        Administrator
+                    </span>
+                    👋
+
+                </h1>
+
+                <p>
+
+                    Manage students, companies,
+                    placements and placement reports
+                    from your administration dashboard.
+
+                </p>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👨‍🎓
+                    </div>
+
+                    <h2 id="totalStudents">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Students
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🏢
+                    </div>
+
+                    <h2 id="totalCompanies">
+                        0
+                    </h2>
+
+                    <p>
+                        Companies
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💼
+                    </div>
+
+                    <h2 id="placedStudents">
+                        0
+                    </h2>
+
+                    <p>
+                        Students Placed
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📈
+                    </div>
+
+                    <h2 id="placementRate">
+                        0%
+                    </h2>
+
+                    <p>
+                        Placement Rate
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Quick Actions
+                    </h3>
+
+                </div>
+
+
+                <div class="quick-grid">
+
+
+                    <button
+                        class="quick-card"
+                        onclick="openAddStudent()">
+
+                        <div>➕</div>
+
+                        <strong>
+                            Add Student
+                        </strong>
+
+                    </button>
+
+
+                    <button
+                        class="quick-card"
+                        onclick="showSectionById('students')">
+
+                        <div>👨‍🎓</div>
+
+                        <strong>
+                            Manage Students
+                        </strong>
+
+                    </button>
+
+
+                    <button
+                        class="quick-card"
+                        onclick="showSectionById('companies')">
+
+                        <div>🏢</div>
+
+                        <strong>
+                            Manage Companies
+                        </strong>
+
+                    </button>
+
+
+                    <button
+                        class="quick-card"
+                        onclick="showSectionById('reports')">
+
+                        <div>📊</div>
+
+                        <strong>
+                            View Reports
+                        </strong>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT STUDENTS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Recently Registered Students
+                    </h3>
+
+                    <button
+                        class="primary-btn"
+                        onclick="showSectionById('students')">
+
+                        View All
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Student ID
+                                </th>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="recentStudentsTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- STUDENTS -->
+        <!-- ================================================= -->
+
+        <section
+            id="students"
+            class="content-section">
+
+
+            <div class="panel-header">
+
+                <h2 class="section-title">
+                    Student Management
+                </h2>
+
+                <button
+                    class="primary-btn"
+                    onclick="openAddStudent()">
+
+                    + Add Student
+
+                </button>
+
+            </div>
+
+
+            <div class="panel">
+
+
+                <div class="search-filter">
+
+
+                    <input
+                        type="text"
+                        id="studentSearch"
+                        placeholder="Search student name, email, username..."
+                        oninput="filterStudents()">
+
+
+                    <select
+                        id="departmentFilter"
+                        onchange="filterStudents()">
+
+                        <option value="">
+                            All Departments
+                        </option>
+
+                        <option>
+                            Computer Science & Engineering
+                        </option>
+
+                        <option>
+                            Information Technology
+                        </option>
+
+                        <option>
+                            Electronics & Telecommunication
+                        </option>
+
+                        <option>
+                            Mechanical Engineering
+                        </option>
+
+                        <option>
+                            Civil Engineering
+                        </option>
+
+                    </select>
+
+
+                    <select
+                        id="statusFilter"
+                        onchange="filterStudents()">
+
+                        <option value="">
+                            All Status
+                        </option>
+
+                        <option value="Placed">
+                            Placed
+                        </option>
+
+                        <option value="Not Placed">
+                            Not Placed
+                        </option>
+
+                    </select>
+
+
+                    <select
+                        id="courseFilter"
+                        onchange="filterStudents()">
+
+                        <option value="">
+                            All Courses
+                        </option>
+
+                        <option>
+                            B.E.
+                        </option>
+
+                        <option>
+                            B.Tech
+                        </option>
+
+                        <option>
+                            B.Sc.
+                        </option>
+
+                        <option>
+                            BCA
+                        </option>
+
+                        <option>
+                            MCA
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    Student ID
+                                </th>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Mobile
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    CGPA
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="studentsTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- COMPANIES -->
+        <!-- ================================================= -->
+
+        <section
+            id="companies"
+            class="content-section">
+
+
+            <div class="panel-header">
+
+                <h2 class="section-title">
+                    Company Management
+                </h2>
+
+                <button
+                    class="primary-btn"
+                    onclick="showComingSoon('Company Management')">
+
+                    + Add Company
+
+                </button>
+
+            </div>
+
+
+            <div class="company-grid">
+
+
+                <div class="company-card">
+
+                    <div class="company-logo">
+                        🏢
+                    </div>
+
+                    <h3>
+                        Company Management
+                    </h3>
+
+                    <p>
+
+                        Add and manage companies
+                        participating in campus
+                        placement drives.
+
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="showComingSoon('Company Management')">
+
+                        Manage Companies
+
+                    </button>
+
+                </div>
+
+
+                <div class="company-card">
+
+                    <div class="company-logo">
+                        📅
+                    </div>
+
+                    <h3>
+                        Placement Drives
+                    </h3>
+
+                    <p>
+
+                        Schedule upcoming recruitment
+                        drives, interviews and campus
+                        recruitment events.
+
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="showComingSoon('Placement Drives')">
+
+                        Manage Drives
+
+                    </button>
+
+                </div>
+
+
+                <div class="company-card">
+
+                    <div class="company-logo">
+                        📋
+                    </div>
+
+                    <h3>
+                        Job Opportunities
+                    </h3>
+
+                    <p>
+
+                        Publish job roles, eligibility
+                        criteria, packages and application
+                        deadlines.
+
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="showComingSoon('Job Opportunities')">
+
+                        Manage Jobs
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- PLACEMENTS -->
+        <!-- ================================================= -->
+
+        <section
+            id="placements"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                Placement Management
+            </h2>
+
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🎓
+                    </div>
+
+                    <h2 id="placementTotal">
+                        0
+                    </h2>
+
+                    <p>
+                        Placed Students
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏳
+                    </div>
+
+                    <h2 id="notPlacedTotal">
+                        0
+                    </h2>
+
+                    <p>
+                        Not Placed
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💰
+                    </div>
+
+                    <h2 id="highestPackage">
+                        -
+                    </h2>
+
+                    <p>
+                        Highest Package
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📊
+                    </div>
+
+                    <h2 id="averagePackage">
+                        -
+                    </h2>
+
+                    <p>
+                        Average Package
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3 style="margin-bottom:20px;color:#0b1f3a;">
+
+                    Placement Student List
+
+                </h3>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Student ID
+                                </th>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Company
+                                </th>
+
+                                <th>
+                                    Package
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="placementTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- REPORTS -->
+        <!-- ================================================= -->
+
+        <section
+            id="reports"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                Placement Reports & Analytics
+            </h2>
+
+
+            <div class="report-grid">
+
+
+                <div class="report-card">
+
+                    <h3>
+                        Student Statistics
+                    </h3>
+
+                    <div class="report-row">
+
+                        <span>
+                            Total Students
+                        </span>
+
+                        <strong id="reportTotalStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="report-row">
+
+                        <span>
+                            Placed Students
+                        </span>
+
+                        <strong id="reportPlacedStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="report-row">
+
+                        <span>
+                            Not Placed
+                        </span>
+
+                        <strong id="reportNotPlaced">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="report-row">
+
+                        <span>
+                            Placement Rate
+                        </span>
+
+                        <strong id="reportPlacementRate">
+                            0%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <h3>
+                        Department-wise Students
+                    </h3>
+
+                    <div
+                        id="departmentReport">
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <h3>
+                        Gender-wise Students
+                    </h3>
+
+                    <div
+                        id="genderReport">
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <h3>
+                        Company-wise Placements
+                    </h3>
+
+                    <div
+                        id="companyReport">
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- ADMIN PROFILE -->
+        <!-- ================================================= -->
+
+        <section
+            id="profile"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                Admin Profile
+            </h2>
+
+
+            <div class="panel">
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-box">
+
+                        <label>
+                            Name
+                        </label>
+
+                        <strong
+                            id="profileAdminName">
+
+                            Administrator
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>
+                            Username
+                        </label>
+
+                        <strong
+                            id="profileAdminUsername">
+
+                            admin
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <strong
+                            id="profileAdminEmail">
+
+                            admin@vivekanandcollege.edu
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>
+                            Role
+                        </label>
+
+                        <strong>
+                            Placement Administrator
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- SETTINGS -->
+        <!-- ================================================= -->
+
+        <section
+            id="settings"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                Settings
+            </h2>
+
+
+            <div class="panel">
+
+
+                <div class="info-box">
+
+                    <label>
+                        Backend API
+                    </label>
+
+                    <strong>
+                        http://localhost:5000/api
+                    </strong>
+
+                </div>
+
+
+                <br>
+
+
+                <div class="info-box">
+
+                    <label>
+                        Database
+                    </label>
+
+                    <strong>
+                        MySQL - college_placement
+                    </strong>
+
+                </div>
+
+
+                <br>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="testBackend()">
+
+                    Test Backend Connection
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- ========================================================= -->
+<!-- ADD / EDIT STUDENT MODAL -->
+<!-- ========================================================= -->
+
+<div
+    class="modal"
+    id="studentModal">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Student
+            </h2>
+
+            <button
+                class="close-btn"
+                onclick="closeStudentModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form
+            id="studentForm"
+            onsubmit="saveStudent(event)">
+
+
+            <input
+                type="hidden"
+                id="editStudentId">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input
+                        id="formFullName"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="formEmail"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <input
+                        id="formUsername"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Mobile
+                    </label>
+
+                    <input
+                        id="formMobile">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Department
+                    </label>
+
+                    <input
+                        id="formDepartment">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Course
+                    </label>
+
+                    <input
+                        id="formCourse">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Academic Year
+                    </label>
+
+                    <input
+                        id="formAcademicYear">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        CGPA
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        max="10"
+                        id="formCgpa">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Placement Status
+                    </label>
+
+                    <select
+                        id="formPlacementStatus">
+
+                        <option value="Not Placed">
+                            Not Placed
+                        </option>
+
+                        <option value="Placed">
+                            Placed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Placed Company
+                    </label>
+
+                    <input
+                        id="formPlacedCompany">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Package Offered
+                    </label>
+
+                    <input
+                        id="formPackage">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeStudentModal()">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    Save Student
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* ========================================================= */
+/* API */
+/* ========================================================= */
+
+const API_URL =
+    "http://localhost:5000/api";
+
+
+let allStudents = [];
+
+let editingStudentId = null;
+
+
+
+/* ========================================================= */
+/* ADMIN LOGIN CHECK */
+/* ========================================================= */
+
+function checkAdminLogin() {
+
+    /*
+       Future admin login will store:
+       adminUser
+
+       For now dashboard can open directly.
+    */
+
+    const adminUser =
+        localStorage.getItem("adminUser");
+
+    if (adminUser) {
+
+        try {
+
+            const admin =
+                JSON.parse(adminUser);
+
+            const name =
+                admin.fullName ||
+                admin.name ||
+                "Administrator";
+
+            setAdminName(name);
+
+        } catch(error) {
+
+            console.log(
+                "Invalid adminUser"
+            );
+
+        }
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* ADMIN NAME */
+/* ========================================================= */
+
+function setAdminName(name) {
+
+    document.getElementById(
+        "topAdminName"
+    ).textContent = name;
+
+    document.getElementById(
+        "sideAdminName"
+    ).textContent = name;
+
+    document.getElementById(
+        "welcomeAdminName"
+    ).textContent = name;
+
+    document.getElementById(
+        "profileAdminName"
+    ).textContent = name;
+
+    document.getElementById(
+        "adminAvatar"
+    ).textContent =
+        name.charAt(0).toUpperCase();
+
+}
+
+
+
+/* ========================================================= */
+/* LOAD STUDENTS */
+/* ========================================================= */
+
+async function loadStudents() {
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/students"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load students"
+            );
+
+        }
+
+
+        allStudents =
+            await response.json();
+
+
+        renderStudents(
+            allStudents
+        );
+
+
+        updateDashboardStats();
+
+
+        renderRecentStudents();
+
+
+        renderPlacements();
+
+
+        renderReports();
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "studentsTable"
+        ).innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="9"
+                    class="empty">
+
+                    Unable to load students.
+                    Make sure backend is running.
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* RENDER STUDENTS */
+/* ========================================================= */
+
+function renderStudents(students) {
+
+    const table =
+        document.getElementById(
+            "studentsTable"
+        );
+
+
+    if (!students.length) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="9"
+                    class="empty">
+
+                    No students found.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    table.innerHTML =
+        students.map(student => `
+
+            <tr>
+
+                <td>
+                    ${student.id || "-"}
+                </td>
+
+                <td>
+                    ${student.studentId || "-"}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.fullName || "-")}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.email || "-")}
+                </td>
+
+                <td>
+                    ${student.mobile || "-"}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.department || "-")}
+                </td>
+
+                <td>
+                    ${student.cgpa || "-"}
+                </td>
+
+                <td>
+
+                    ${
+                        student.placementStatus === "Placed"
+
+                        ?
+
+                        `<span class="status placed">
+                            Placed
+                        </span>`
+
+                        :
+
+                        `<span class="status not-placed">
+                            Not Placed
+                        </span>`
+                    }
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="edit-btn"
+                        onclick="editStudent(${student.id})">
+
+                        Edit
+
+                    </button>
+
+                    <button
+                        class="danger-btn"
+                        onclick="deleteStudent(${student.id})">
+
+                        Delete
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+
+/* ========================================================= */
+/* SEARCH / FILTER */
+/* ========================================================= */
+
+function filterStudents() {
+
+    const search =
+        document.getElementById(
+            "studentSearch"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    const department =
+        document.getElementById(
+            "departmentFilter"
+        ).value;
+
+
+    const status =
+        document.getElementById(
+            "statusFilter"
+        ).value;
+
+
+    const course =
+        document.getElementById(
+            "courseFilter"
+        ).value;
+
+
+    const filtered =
+        allStudents.filter(student => {
+
+
+            const text =
+                `
+
+                    ${student.fullName || ""}
+                    ${student.email || ""}
+                    ${student.username || ""}
+                    ${student.studentId || ""}
+                    ${student.mobile || ""}
+
+                `
+                .toLowerCase();
+
+
+            const matchesSearch =
+                !search ||
+                text.includes(search);
+
+
+            const matchesDepartment =
+                !department ||
+                student.department ===
+                department;
+
+
+            const matchesStatus =
+                !status ||
+                student.placementStatus ===
+                status;
+
+
+            const matchesCourse =
+                !course ||
+                student.course === course;
+
+
+            return (
+                matchesSearch &&
+                matchesDepartment &&
+                matchesStatus &&
+                matchesCourse
+            );
+
+        });
+
+
+    renderStudents(filtered);
+
+}
+
+
+
+/* ========================================================= */
+/* DASHBOARD STATISTICS */
+/* ========================================================= */
+
+function updateDashboardStats() {
+
+    const total =
+        allStudents.length;
+
+
+    const placed =
+        allStudents.filter(
+            student =>
+                student.placementStatus ===
+                "Placed"
+        ).length;
+
+
+    const notPlaced =
+        total - placed;
+
+
+    const rate =
+        total
+            ? Math.round(
+                (placed / total) * 100
+              )
+            : 0;
+
+
+    document.getElementById(
+        "totalStudents"
+    ).textContent = total;
+
+
+    document.getElementById(
+        "placedStudents"
+    ).textContent = placed;
+
+
+    document.getElementById(
+        "placementRate"
+    ).textContent =
+        rate + "%";
+
+
+    document.getElementById(
+        "placementTotal"
+    ).textContent = placed;
+
+
+    document.getElementById(
+        "notPlacedTotal"
+    ).textContent =
+        notPlaced;
+
+
+    document.getElementById(
+        "reportTotalStudents"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "reportPlacedStudents"
+    ).textContent =
+        placed;
+
+
+    document.getElementById(
+        "reportNotPlaced"
+    ).textContent =
+        notPlaced;
+
+
+    document.getElementById(
+        "reportPlacementRate"
+    ).textContent =
+        rate + "%";
+
+
+    const packages =
+        allStudents
+            .map(student =>
+                parseFloat(
+                    student.packageOffered
+                )
+            )
+            .filter(
+                value =>
+                    !isNaN(value) &&
+                    value > 0
+            );
+
+
+    if (packages.length) {
+
+        const highest =
+            Math.max(...packages);
+
+
+        const average =
+            packages.reduce(
+                (a,b) => a + b,
+                0
+            ) / packages.length;
+
+
+        document.getElementById(
+            "highestPackage"
+        ).textContent =
+            highest;
+
+
+        document.getElementById(
+            "averagePackage"
+        ).textContent =
+            average.toFixed(2);
+
+    } else {
+
+        document.getElementById(
+            "highestPackage"
+        ).textContent =
+            "-";
+
+
+        document.getElementById(
+            "averagePackage"
+        ).textContent =
+            "-";
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* RECENT STUDENTS */
+/* ========================================================= */
+
+function renderRecentStudents() {
+
+    const table =
+        document.getElementById(
+            "recentStudentsTable"
+        );
+
+
+    const recent =
+        [...allStudents]
+            .slice(0,5);
+
+
+    if (!recent.length) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="5"
+                    class="empty">
+
+                    No students registered yet.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    table.innerHTML =
+        recent.map(student => `
+
+            <tr>
+
+                <td>
+                    ${student.studentId || "-"}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.fullName || "-")}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.email || "-")}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.department || "-")}
+                </td>
+
+                <td>
+
+                    ${
+                        student.placementStatus === "Placed"
+
+                        ?
+
+                        `<span class="status placed">
+                            Placed
+                        </span>`
+
+                        :
+
+                        `<span class="status not-placed">
+                            Not Placed
+                        </span>`
+                    }
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+
+/* ========================================================= */
+/* PLACEMENTS */
+/* ========================================================= */
+
+function renderPlacements() {
+
+    const table =
+        document.getElementById(
+            "placementTable"
+        );
+
+
+    const placed =
+        allStudents.filter(
+            student =>
+                student.placementStatus ===
+                "Placed"
+        );
+
+
+    if (!placed.length) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="empty">
+
+                    No placed students yet.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    table.innerHTML =
+        placed.map(student => `
+
+            <tr>
+
+                <td>
+                    ${student.studentId || "-"}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.fullName || "-")}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.department || "-")}
+                </td>
+
+                <td>
+                    ${escapeHtml(student.placedCompany || "-")}
+                </td>
+
+                <td>
+                    ${student.packageOffered || "-"}
+                </td>
+
+                <td>
+
+                    <span class="status placed">
+                        Placed
+                    </span>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+
+/* ========================================================= */
+/* REPORTS */
+/* ========================================================= */
+
+function renderReports() {
+
+    renderDepartmentReport();
+
+    renderGenderReport();
+
+    renderCompanyReport();
+
+}
+
+
+
+/* ========================================================= */
+/* DEPARTMENT REPORT */
+/* ========================================================= */
+
+function renderDepartmentReport() {
+
+    const container =
+        document.getElementById(
+            "departmentReport"
+        );
+
+
+    const departments = {};
+
+
+    allStudents.forEach(student => {
+
+        const department =
+            student.department ||
+            "Not Specified";
+
+
+        departments[department] =
+            (departments[department] || 0)
+            + 1;
+
+    });
+
+
+    const entries =
+        Object.entries(
+            departments
+        );
+
+
+    if (!entries.length) {
+
+        container.innerHTML =
+            `<div class="empty">
+                No data available.
+            </div>`;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        entries.map(
+            ([department,count]) => `
+
+                <div class="report-row">
+
+                    <span>
+                        ${escapeHtml(department)}
+                    </span>
+
+                    <strong>
+                        ${count}
+                    </strong>
+
+                </div>
+
+            `
+        ).join("");
+
+}
+
+
+
+/* ========================================================= */
+/* GENDER REPORT */
+/* ========================================================= */
+
+function renderGenderReport() {
+
+    const container =
+        document.getElementById(
+            "genderReport"
+        );
+
+
+    const genders = {};
+
+
+    allStudents.forEach(student => {
+
+        const gender =
+            student.gender ||
+            "Not Specified";
+
+
+        genders[gender] =
+            (genders[gender] || 0)
+            + 1;
+
+    });
+
+
+    container.innerHTML =
+        Object.entries(genders)
+        .map(
+            ([gender,count]) => `
+
+                <div class="report-row">
+
+                    <span>
+                        ${escapeHtml(gender)}
+                    </span>
+
+                    <strong>
+                        ${count}
+                    </strong>
+
+                </div>
+
+            `
+        ).join("") ||
+
+        `<div class="empty">
+            No data available.
+        </div>`;
+
+}
+
+
+
+/* ========================================================= */
+/* COMPANY REPORT */
+/* ========================================================= */
+
+function renderCompanyReport() {
+
+    const container =
+        document.getElementById(
+            "companyReport"
+        );
+
+
+    const companies = {};
+
+
+    allStudents
+        .filter(
+            student =>
+                student.placementStatus ===
+                "Placed"
+        )
+        .forEach(student => {
+
+            const company =
+                student.placedCompany ||
+                "Unknown";
+
+
+            companies[company] =
+                (companies[company] || 0)
+                + 1;
+
+        });
+
+
+    container.innerHTML =
+        Object.entries(companies)
+        .map(
+            ([company,count]) => `
+
+                <div class="report-row">
+
+                    <span>
+                        ${escapeHtml(company)}
+                    </span>
+
+                    <strong>
+                        ${count}
+                    </strong>
+
+                </div>
+
+            `
+        ).join("") ||
+
+        `<div class="empty">
+            No placement data available.
+        </div>`;
+
+}
+
+
+
+/* ========================================================= */
+/* OPEN ADD STUDENT */
+/* ========================================================= */
+
+function openAddStudent() {
+
+    editingStudentId = null;
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Add Student";
+
+
+    document.getElementById(
+        "studentForm"
+    ).reset();
+
+
+    document.getElementById(
+        "editStudentId"
+    ).value = "";
+
+
+    document.getElementById(
+        "studentModal"
+    ).classList.add("active");
+
+}
+
+
+
+/* ========================================================= */
+/* EDIT STUDENT */
+/* ========================================================= */
+
+function editStudent(id) {
+
+    const student =
+        allStudents.find(
+            s => Number(s.id) === Number(id)
+        );
+
+
+    if (!student) {
+
+        alert(
+            "Student not found."
+        );
+
+        return;
+
+    }
+
+
+    editingStudentId = id;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Edit Student";
+
+
+    document.getElementById(
+        "editStudentId"
+    ).value =
+        id;
+
+
+    document.getElementById(
+        "formFullName"
+    ).value =
+        student.fullName || "";
+
+
+    document.getElementById(
+        "formEmail"
+    ).value =
+        student.email || "";
+
+
+    document.getElementById(
+        "formUsername"
+    ).value =
+        student.username || "";
+
+
+    document.getElementById(
+        "formMobile"
+    ).value =
+        student.mobile || "";
+
+
+    document.getElementById(
+        "formDepartment"
+    ).value =
+        student.department || "";
+
+
+    document.getElementById(
+        "formCourse"
+    ).value =
+        student.course || "";
+
+
+    document.getElementById(
+        "formAcademicYear"
+    ).value =
+        student.academicYear || "";
+
+
+    document.getElementById(
+        "formCgpa"
+    ).value =
+        student.cgpa || "";
+
+
+    document.getElementById(
+        "formPlacementStatus"
+    ).value =
+        student.placementStatus ||
+        "Not Placed";
+
+
+    document.getElementById(
+        "formPlacedCompany"
+    ).value =
+        student.placedCompany || "";
+
+
+    document.getElementById(
+        "formPackage"
+    ).value =
+        student.packageOffered || "";
+
+
+    document.getElementById(
+        "studentModal"
+    ).classList.add("active");
+
+}
+
+
+
+/* ========================================================= */
+/* SAVE STUDENT */
+/* ========================================================= */
+
+async function saveStudent(event) {
+
+    event.preventDefault();
+
+
+    const id =
+        document.getElementById(
+            "editStudentId"
+        ).value;
+
+
+    const data = {
+
+        fullName:
+            document.getElementById(
+                "formFullName"
+            ).value.trim(),
+
+        email:
+            document.getElementById(
+                "formEmail"
+            ).value.trim(),
+
+        username:
+            document.getElementById(
+                "formUsername"
+            ).value.trim(),
+
+        mobile:
+            document.getElementById(
+                "formMobile"
+            ).value.trim(),
+
+        department:
+            document.getElementById(
+                "formDepartment"
+            ).value.trim(),
+
+        course:
+            document.getElementById(
+                "formCourse"
+            ).value.trim(),
+
+        academicYear:
+            document.getElementById(
+                "formAcademicYear"
+            ).value.trim(),
+
+        cgpa:
+            document.getElementById(
+                "formCgpa"
+            ).value || null,
+
+        placementStatus:
+            document.getElementById(
+                "formPlacementStatus"
+            ).value,
+
+        placedCompany:
+            document.getElementById(
+                "formPlacedCompany"
+            ).value.trim(),
+
+        packageOffered:
+            document.getElementById(
+                "formPackage"
+            ).value.trim()
+
+    };
+
+
+    try {
+
+
+        if (!id) {
+
+            /*
+              Existing registration API requires
+              password.
+
+              For admin-created students,
+              we currently use a temporary password.
+            */
+
+            data.password =
+                "Student@123";
+
+
+            const response =
+                await fetch(
+                    API_URL +
+                    "/auth/student-register",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(data)
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    result.message ||
+                    "Unable to create student."
+                );
+
+            }
+
+
+            alert(
+                "Student added successfully.\nTemporary password: Student@123"
+            );
+
+        } else {
+
+
+            const existing =
+                allStudents.find(
+                    s =>
+                        Number(s.id) ===
+                        Number(id)
+                );
+
+
+            if (existing) {
+
+                data.studentId =
+                    existing.studentId;
+
+                data.gender =
+                    existing.gender;
+
+                data.dob =
+                    existing.dob;
+
+                data.address =
+                    existing.address;
+
+                data.city =
+                    existing.city;
+
+                data.state =
+                    existing.state;
+
+                data.admissionYear =
+                    existing.admissionYear;
+
+                data.graduationYear =
+                    existing.graduationYear;
+
+                data.tenthPercentage =
+                    existing.tenthPercentage;
+
+                data.twelfthPercentage =
+                    existing.twelfthPercentage;
+
+                data.skills =
+                    existing.skills;
+
+                data.resumeUrl =
+                    existing.resumeUrl;
+
+                data.profilePhoto =
+                    existing.profilePhoto;
+
+            }
+
+
+            const response =
+                await fetch(
+                    API_URL +
+                    "/students/" +
+                    id,
+                    {
+                        method: "PUT",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(data)
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    result.message ||
+                    "Unable to update student."
+                );
+
+            }
+
+
+            alert(
+                "Student updated successfully."
+            );
+
+        }
+
+
+        closeStudentModal();
+
+        await loadStudents();
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        alert(
+            error.message
+        );
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* DELETE STUDENT */
+/* ========================================================= */
+
+async function deleteStudent(id) {
+
+    const student =
+        allStudents.find(
+            s =>
+                Number(s.id) ===
+                Number(id)
+        );
+
+
+    if (!student) {
+        return;
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete " +
+            student.fullName +
+            "?"
+        );
+
+
+    if (!confirmDelete) {
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "/students/" +
+                id,
+                {
+                    method: "DELETE"
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                result.message ||
+                "Unable to delete student."
+            );
+
+        }
+
+
+        alert(
+            "Student deleted successfully."
+        );
+
+
+        await loadStudents();
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        alert(
+            error.message
+        );
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* CLOSE MODAL */
+/* ========================================================= */
+
+function closeStudentModal() {
+
+    document.getElementById(
+        "studentModal"
+    ).classList.remove("active");
+
+}
+
+
+
+/* ========================================================= */
+/* NAVIGATION */
+/* ========================================================= */
+
+function showSection(
+    sectionId,
+    button
+) {
+
+    document
+        .querySelectorAll(
+            ".content-section"
+        )
+        .forEach(section => {
+
+            section.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const section =
+        document.getElementById(
+            sectionId
+        );
+
+
+    if (section) {
+
+        section.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".menu button"
+        )
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if (button) {
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* NAVIGATE BY SECTION ID */
+/* ========================================================= */
+
+function showSectionById(
+    sectionId
+) {
+
+    const buttons =
+        document.querySelectorAll(
+            ".menu button"
+        );
+
+
+    let selectedButton = null;
+
+
+    buttons.forEach(button => {
+
+        const text =
+            button.textContent
+            .toLowerCase();
+
+
+        if (
+            sectionId === "students" &&
+            text.includes("students")
+        ) {
+
+            selectedButton =
+                button;
+
+        }
+
+
+        if (
+            sectionId === "companies" &&
+            text.includes("companies")
+        ) {
+
+            selectedButton =
+                button;
+
+        }
+
+
+        if (
+            sectionId === "reports" &&
+            text.includes("reports")
+        ) {
+
+            selectedButton =
+                button;
+
+        }
+
+    });
+
+
+    showSection(
+        sectionId,
+        selectedButton
+    );
+
+}
+
+
+
+/* ========================================================= */
+/* BACKEND TEST */
+/* ========================================================= */
+
+async function testBackend() {
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "/health"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (response.ok) {
+
+            alert(
+                "Backend connected successfully!\n\n" +
+                data.message +
+                "\nDatabase: " +
+                data.database
+            );
+
+        } else {
+
+            throw new Error(
+                "Backend error"
+            );
+
+        }
+
+    } catch(error) {
+
+        alert(
+            "Backend connection failed.\n\n" +
+            "Make sure Node.js server is running on port 5000."
+        );
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* COMING SOON */
+/* ========================================================= */
+
+function showComingSoon(feature) {
+
+    alert(
+        feature +
+        " module frontend is ready.\n\n" +
+        "Next step: We will connect it to MySQL backend APIs."
+    );
+
+}
+
+
+
+/* ========================================================= */
+/* LOGOUT */
+/* ========================================================= */
+
+function logout() {
+
+    localStorage.removeItem(
+        "adminUser"
+    );
+
+    localStorage.removeItem(
+        "user"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* ========================================================= */
+/* ESCAPE HTML */
+/* ========================================================= */
+
+function escapeHtml(value) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* ========================================================= */
+/* START */
+/* ========================================================= */
+
+checkAdminLogin();
+
+loadStudents();
+
+
+</script>
+
+
+</body>
+
+</html>

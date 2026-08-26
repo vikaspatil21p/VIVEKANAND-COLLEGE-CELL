@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Company Registration | VIVEKANAND PLACEMENT CELL
+    </title>
+
+
+    <style>
+
+        /* ================= RESET ================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* ================= BODY ================= */
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(7, 25, 48, 0.94),
+                    rgba(13, 55, 95, 0.94)
+                ),
+                url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px 15px;
+        }
+
+
+        /* ================= MAIN CARD ================= */
+
+        .registration-card {
+
+            width: 100%;
+
+            max-width: 950px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .header {
+
+            background: #0b1f3a;
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: white;
+        }
+
+
+        .header h1 {
+
+            font-size: 28px;
+
+            color: #ffb703;
+
+            margin-bottom: 8px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .header p {
+
+            color: #dbe5f2;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= FORM CONTAINER ================= */
+
+        .form-container {
+
+            padding: 40px;
+        }
+
+
+        /* ================= FORM TITLE ================= */
+
+        .form-title {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .form-title h2 {
+
+            color: #0b1f3a;
+
+            font-size: 26px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .form-title p {
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+
+            display: none;
+
+            margin-bottom: 20px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+
+        .error {
+
+            background: #ffe8e8;
+
+            color: #c62828;
+
+            border: 1px solid #f5b5b5;
+        }
+
+
+        .success {
+
+            background: #e8f7ed;
+
+            color: #16723b;
+
+            border: 1px solid #a9dfbc;
+        }
+
+
+        /* ================= FORM GRID ================= */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 22px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .form-group.full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        /* ================= LABEL ================= */
+
+        label {
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #26374d;
+
+            margin-bottom: 8px;
+        }
+
+
+        label span {
+
+            color: red;
+        }
+
+
+        /* ================= INPUT ================= */
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #d5dce5;
+
+            border-radius: 8px;
+
+            background: #f9fafc;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #1455a0;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 3px rgba(20, 85, 160, 0.10);
+        }
+
+
+        textarea {
+
+            min-height: 100px;
+
+            resize: vertical;
+        }
+
+
+        /* ================= PASSWORD ================= */
+
+        .password-box {
+
+            position: relative;
+        }
+
+
+        .password-box input {
+
+            padding-right: 70px;
+        }
+
+
+        .show-password {
+
+            position: absolute;
+
+            right: 12px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color: #1455a0;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* ================= SUBMIT ================= */
+
+        .submit-area {
+
+            text-align: center;
+
+            margin-top: 32px;
+        }
+
+
+        .submit-btn {
+
+            width: 100%;
+
+            max-width: 380px;
+
+            padding: 14px 30px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background: #ffb703;
+
+            color: #111;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .submit-btn:hover {
+
+            background: #0b1f3a;
+
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= LOGIN ================= */
+
+        .login-text {
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        .login-text a {
+
+            color: #1455a0;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+
+        .login-text a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* ================= HOME LINK ================= */
+
+        .home-link {
+
+            text-align: center;
+
+            margin-top: 12px;
+        }
+
+
+        .home-link a {
+
+            color: #777;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+
+        .home-link a:hover {
+
+            color: #1455a0;
+
+            text-decoration: underline;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 650px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+
+            .header h1 {
+
+                font-size: 22px;
+            }
+
+
+            .form-container {
+
+                padding: 25px 20px;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-group.full {
+
+                grid-column: auto;
+            }
+
+
+            .submit-btn {
+
+                max-width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= MAIN CARD ================= -->
+
+    <div class="registration-card">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="header">
+
+            <h1>
+                VIVEKANAND PLACEMENT CELL
+            </h1>
+
+            <p>
+                Company Registration Portal
+            </p>
+
+        </div>
+
+
+        <!-- ================= FORM CONTAINER ================= -->
+
+        <div class="form-container">
+
+
+            <!-- ================= TITLE ================= -->
+
+            <div class="form-title">
+
+                <h2>
+                    Company Registration
+                </h2>
+
+                <p>
+                    Register your company to connect with talented students.
+                </p>
+
+            </div>
+
+
+            <!-- ================= ERROR MESSAGE ================= -->
+
+            <div
+                id="errorMessage"
+                class="message error">
+            </div>
+
+
+            <!-- ================= SUCCESS MESSAGE ================= -->
+
+            <div
+                id="successMessage"
+                class="message success">
+            </div>
+
+
+            <!-- ================= FORM ================= -->
+
+            <form
+                id="companyRegistrationForm"
+                onsubmit="registerCompany(event)">
+
+
+                <div class="form-grid">
+
+
+                    <!-- ================= COMPANY NAME ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Company Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="companyName"
+                            name="companyName"
+                            placeholder="Enter company name"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= COMPANY EMAIL ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Company Email <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="companyEmail"
+                            name="companyEmail"
+                            placeholder="company@example.com"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= MOBILE ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            placeholder="10 digit mobile number"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            inputmode="numeric"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= HR NAME ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            HR / Recruiter Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="hrName"
+                            name="hrName"
+                            placeholder="Enter HR / Recruiter name"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= COMPANY TYPE ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Company Type <span>*</span>
+                        </label>
+
+                        <select
+                            id="companyType"
+                            name="companyType"
+                            required>
+
+                            <option value="">
+                                Select Company Type
+                            </option>
+
+                            <option value="Private">
+                                Private
+                            </option>
+
+                            <option value="Public">
+                                Public
+                            </option>
+
+                            <option value="Startup">
+                                Startup
+                            </option>
+
+                            <option value="Government">
+                                Government
+                            </option>
+
+                            <option value="MNC">
+                                MNC
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ================= INDUSTRY ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Industry <span>*</span>
+                        </label>
+
+                        <select
+                            id="industry"
+                            name="industry"
+                            required>
+
+                            <option value="">
+                                Select Industry
+                            </option>
+
+                            <option value="Information Technology">
+                                Information Technology
+                            </option>
+
+                            <option value="Software">
+                                Software
+                            </option>
+
+                            <option value="Banking & Finance">
+                                Banking & Finance
+                            </option>
+
+                            <option value="Manufacturing">
+                                Manufacturing
+                            </option>
+
+                            <option value="Automobile">
+                                Automobile
+                            </option>
+
+                            <option value="Consulting">
+                                Consulting
+                            </option>
+
+                            <option value="Healthcare">
+                                Healthcare
+                            </option>
+
+                            <option value="Education">
+                                Education
+                            </option>
+
+                            <option value="Telecommunication">
+                                Telecommunication
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ================= WEBSITE ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Company Website
+                        </label>
+
+                        <input
+                            type="url"
+                            id="website"
+                            name="website"
+                            placeholder="https://www.example.com">
+
+                    </div>
+
+
+                    <!-- ================= CITY ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            City <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Enter city"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= STATE ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            State <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="state"
+                            name="state"
+                            placeholder="Enter state"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= ADDRESS ================= -->
+
+                    <div class="form-group full">
+
+                        <label>
+                            Company Address <span>*</span>
+                        </label>
+
+                        <textarea
+                            id="address"
+                            name="address"
+                            placeholder="Enter complete company address"
+                            required></textarea>
+
+                    </div>
+
+
+                    <!-- ================= USERNAME ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Username <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Create username"
+                            minlength="4"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= PASSWORD ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Password <span>*</span>
+                        </label>
+
+                        <div class="password-box">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create password"
+                                minlength="6"
+                                required>
+
+                            <button
+                                type="button"
+                                class="show-password"
+                                onclick="togglePassword(
+                                    'password',
+                                    this
+                                )">
+
+                                Show
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= CONFIRM PASSWORD ================= -->
+
+                    <div class="form-group full">
+
+                        <label>
+                            Confirm Password <span>*</span>
+                        </label>
+
+                        <div class="password-box">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Re-enter your password"
+                                minlength="6"
+                                required>
+
+                            <button
+                                type="button"
+                                class="show-password"
+                                onclick="togglePassword(
+                                    'confirmPassword',
+                                    this
+                                )">
+
+                                Show
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ================= SUBMIT ================= -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        Create Company Account
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+            <!-- ================= LOGIN ================= -->
+
+            <div class="login-text">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login Here
+                </a>
+
+            </div>
+
+
+            <!-- ================= HOME ================= -->
+
+            <div class="home-link">
+
+                <a href="index.html">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* ================= SHOW / HIDE PASSWORD ================= */
+
+        function togglePassword(id, button) {
+
+            const input =
+                document.getElementById(id);
+
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                button.innerText = "Hide";
+
+            }
+
+            else {
+
+                input.type = "password";
+
+                button.innerText = "Show";
+
+            }
+
+        }
+
+
+        /* ================= COMPANY REGISTRATION ================= */
+
+        function registerCompany(event) {
+
+            event.preventDefault();
+
+
+            const form =
+                document.getElementById(
+                    "companyRegistrationForm"
+                );
+
+
+            const companyName =
+                document.getElementById(
+                    "companyName"
+                ).value.trim();
+
+
+            const companyEmail =
+                document.getElementById(
+                    "companyEmail"
+                ).value.trim();
+
+
+            const mobile =
+                document.getElementById(
+                    "mobile"
+                ).value.trim();
+
+
+            const hrName =
+                document.getElementById(
+                    "hrName"
+                ).value.trim();
+
+
+            const companyType =
+                document.getElementById(
+                    "companyType"
+                ).value;
+
+
+            const industry =
+                document.getElementById(
+                    "industry"
+                ).value;
+
+
+            const website =
+                document.getElementById(
+                    "website"
+                ).value.trim();
+
+
+            const address =
+                document.getElementById(
+                    "address"
+                ).value.trim();
+
+
+            const city =
+                document.getElementById(
+                    "city"
+                ).value.trim();
+
+
+            const state =
+                document.getElementById(
+                    "state"
+                ).value.trim();
+
+
+            const username =
+                document.getElementById(
+                    "username"
+                ).value.trim();
+
+
+            const password =
+                document.getElementById(
+                    "password"
+                ).value;
+
+
+            const confirmPassword =
+                document.getElementById(
+                    "confirmPassword"
+                ).value;
+
+
+            const errorMessage =
+                document.getElementById(
+                    "errorMessage"
+                );
+
+
+            const successMessage =
+                document.getElementById(
+                    "successMessage"
+                );
+
+
+            /* ================= HIDE OLD MESSAGES ================= */
+
+            errorMessage.style.display = "none";
+
+            successMessage.style.display = "none";
+
+
+            /* ================= PASSWORD VALIDATION ================= */
+
+            if (password.length < 6) {
+
+                errorMessage.innerText =
+                    "Password must contain at least 6 characters.";
+
+                errorMessage.style.display = "block";
+
+                return;
+            }
+
+
+            /* ================= CONFIRM PASSWORD ================= */
+
+            if (password !== confirmPassword) {
+
+                errorMessage.innerText =
+                    "Password and Confirm Password do not match.";
+
+                errorMessage.style.display = "block";
+
+                return;
+            }
+
+
+            /* ================= MOBILE VALIDATION ================= */
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+
+                errorMessage.innerText =
+                    "Please enter a valid 10-digit mobile number.";
+
+                errorMessage.style.display = "block";
+
+                return;
+            }
+
+
+            /* ================= USERNAME VALIDATION ================= */
+
+            if (username.length < 4) {
+
+                errorMessage.innerText =
+                    "Username must contain at least 4 characters.";
+
+                errorMessage.style.display = "block";
+
+                return;
+            }
+
+
+            /* ================= COMPANY NAME ================= */
+
+            if (companyName.length < 2) {
+
+                errorMessage.innerText =
+                    "Please enter a valid company name.";
+
+                errorMessage.style.display = "block";
+
+                return;
+            }
+
+
+            /* ================= COMPANY DATA ================= */
+
+            const companyData = {
+
+                companyName: companyName,
+
+                companyEmail: companyEmail,
+
+                mobile: mobile,
+
+                hrName: hrName,
+
+                companyType: companyType,
+
+                industry: industry,
+
+                website: website,
+
+                address: address,
+
+                city: city,
+
+                state: state,
+
+                username: username,
+
+                password: password
+
+            };
+
+
+            console.log(
+                "Company Registration Data:",
+                companyData
+            );
+
+
+            /* ================= DEMO SUCCESS ================= */
+
+            successMessage.innerText =
+                "Company registration successful!";
+
+            successMessage.style.display = "block";
+
+
+            /*
+                BACKEND CONNECTION WILL BE ADDED HERE.
+
+                Later this form can be connected to:
+
+                POST
+                http://localhost:5000/api/auth/company-register
+
+                Example:
+
+                fetch(
+                    "http://localhost:5000/api/auth/company-register",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify(companyData)
+                    }
+                );
+            */
+
+
+            form.reset();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

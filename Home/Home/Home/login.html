@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | VIVEKANAND COLLEGE PLACEMENT CELL</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(7, 25, 48, 0.94),
+                    rgba(13, 55, 95, 0.94)
+                ),
+                url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 15px;
+        }
+
+
+        /* ================= MAIN CARD ================= */
+
+        .login-card {
+
+            width: 100%;
+            max-width: 500px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .header {
+
+            background: #0b1f3a;
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: white;
+        }
+
+        .header h1 {
+
+            color: #ffb703;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+
+            letter-spacing: 1px;
+        }
+
+        .header p {
+
+            color: #dbe5f2;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .form-container {
+
+            padding: 40px;
+        }
+
+
+        .form-title {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .form-title h2 {
+
+            color: #0b1f3a;
+
+            font-size: 26px;
+
+            margin-bottom: 8px;
+        }
+
+        .form-title p {
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+
+            display: none;
+
+            margin-bottom: 20px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+        .error {
+
+            background: #ffe8e8;
+
+            color: #c62828;
+
+            border: 1px solid #f5b5b5;
+        }
+
+        .success {
+
+            background: #e8f7ed;
+
+            color: #16723b;
+
+            border: 1px solid #a9dfbc;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+        label {
+
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #26374d;
+
+            margin-bottom: 8px;
+        }
+
+        label span {
+
+            color: red;
+        }
+
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #d5dce5;
+
+            border-radius: 8px;
+
+            background: #f9fafc;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+
+            border-color: #1455a0;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 3px rgba(20, 85, 160, 0.10);
+        }
+
+
+        /* ================= PASSWORD ================= */
+
+        .password-box {
+
+            position: relative;
+        }
+
+        .password-box input {
+
+            padding-right: 70px;
+        }
+
+        .show-password {
+
+            position: absolute;
+
+            right: 12px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color: #1455a0;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* ================= LOGIN BUTTON ================= */
+
+        .submit-btn {
+
+            width: 100%;
+
+            padding: 14px 30px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background: #ffb703;
+
+            color: #111;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            margin-top: 5px;
+        }
+
+        .submit-btn:hover {
+
+            background: #0b1f3a;
+
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= FORGOT PASSWORD ================= */
+
+        .forgot-container {
+
+            text-align: right;
+
+            margin-top: -8px;
+
+            margin-bottom: 20px;
+        }
+
+        .forgot-btn {
+
+            border: none;
+
+            background: none;
+
+            color: #1455a0;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .forgot-btn:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* ================= BACK ================= */
+
+        .back-home {
+
+            text-align: center;
+
+            margin-top: 25px;
+        }
+
+        .back-home a {
+
+            color: #1455a0;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        .back-home a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* ================= REGISTER ================= */
+
+        .register-text {
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+        .register-text a {
+
+            color: #1455a0;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+
+        /* ================= FORGOT PASSWORD SCREEN ================= */
+
+        #forgotSection {
+
+            display: none;
+        }
+
+
+        .step {
+
+            display: none;
+        }
+
+        .step.active {
+
+            display: block;
+        }
+
+
+        .back-login {
+
+            text-align: center;
+
+            margin-top: 20px;
+        }
+
+        .back-login button {
+
+            border: none;
+
+            background: transparent;
+
+            color: #1455a0;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* ================= LOADING ================= */
+
+        .loading {
+
+            opacity: 0.7;
+
+            pointer-events: none;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+            .header h1 {
+
+                font-size: 22px;
+            }
+
+            .form-container {
+
+                padding: 25px 20px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-card">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="header">
+
+        <h1>
+            VIVEKANAND PLACEMENT CELL
+        </h1>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- LOGIN SECTION -->
+    <!-- ================================================= -->
+
+    <div
+        class="form-container"
+        id="loginSection">
+
+
+        <div class="form-title">
+
+            <h2>
+                 Login
+            </h2>
+
+            <p>
+                Login to access your placement account.
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN MESSAGE -->
+
+        <div
+            id="loginMessage"
+            class="message">
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+        <form
+            id="loginForm"
+            onsubmit="studentLogin(event)">
+
+
+            <!-- USERNAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Username or Email <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="loginUsername"
+                    placeholder="Enter username or email"
+                    autocomplete="username"
+                    required>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label>
+                    Password <span>*</span>
+                </label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required>
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        onclick="togglePassword('loginPassword', this)">
+
+                        Show
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORGOT PASSWORD -->
+
+            <div class="forgot-container">
+
+                <button
+                    type="button"
+                    class="forgot-btn"
+                    onclick="showForgotPassword()">
+
+                    Forgot Password?
+
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+        <!-- REGISTER -->
+
+        <div class="register-text">
+
+            Don't have an account?
+
+            <a href="registration.html">
+                Register Here
+            </a>
+
+        </div>
+
+
+        <!-- HOME -->
+
+        <div class="back-home">
+
+            <a href="index.html">
+                ← Back to Home
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- FORGOT PASSWORD SECTION -->
+    <!-- ================================================= -->
+
+    <div
+        class="form-container"
+        id="forgotSection">
+
+
+        <!-- ================================================= -->
+        <!-- STEP 1 : EMAIL -->
+        <!-- ================================================= -->
+
+        <div
+            class="step active"
+            id="stepEmail">
+
+
+            <div class="form-title">
+
+                <h2>
+                    Forgot Password?
+                </h2>
+
+                <p>
+                    Enter your registered student email.
+                </p>
+
+            </div>
+
+
+            <div
+                id="forgotMessage"
+                class="message">
+            </div>
+
+
+            <form
+                onsubmit="sendOTP(event)">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Registered Email <span>*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="forgotEmail"
+                        placeholder="Enter your registered email"
+                        autocomplete="email"
+                        required>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="sendOtpButton">
+
+                    Send OTP
+
+                </button>
+
+
+            </form>
+
+
+            <div class="back-login">
+
+                <button
+                    type="button"
+                    onclick="showLogin()">
+
+                    ← Back to Login
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- STEP 2 : OTP -->
+        <!-- ================================================= -->
+
+        <div
+            class="step"
+            id="stepOTP">
+
+
+            <div class="form-title">
+
+                <h2>
+                    Verify OTP
+                </h2>
+
+                <p>
+                    Enter the OTP sent to your registered email.
+                </p>
+
+            </div>
+
+
+            <div
+                id="otpMessage"
+                class="message">
+            </div>
+
+
+            <form
+                onsubmit="verifyOTP(event)">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Enter OTP <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="otp"
+                        placeholder="Enter 6-digit OTP"
+                        maxlength="6"
+                        inputmode="numeric"
+                        required>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    Verify OTP
+
+                </button>
+
+
+            </form>
+
+
+            <div class="back-login">
+
+                <button
+                    type="button"
+                    onclick="showEmailStep()">
+
+                    ← Change Email
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- STEP 3 : NEW PASSWORD -->
+        <!-- ================================================= -->
+
+        <div
+            class="step"
+            id="stepPassword">
+
+
+            <div class="form-title">
+
+                <h2>
+                    Create New Password
+                </h2>
+
+                <p>
+                    Enter your new password below.
+                </p>
+
+            </div>
+
+
+            <div
+                id="resetMessage"
+                class="message">
+            </div>
+
+
+            <form
+                onsubmit="resetPassword(event)">
+
+
+                <!-- NEW PASSWORD -->
+
+                <div class="form-group">
+
+                    <label>
+                        New Password <span>*</span>
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            placeholder="Enter new password"
+                            minlength="6"
+                            required>
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword('newPassword', this)">
+
+                            Show
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label>
+                        Confirm Password <span>*</span>
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="confirmNewPassword"
+                            placeholder="Confirm new password"
+                            minlength="6"
+                            required>
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword('confirmNewPassword', this)">
+
+                            Show
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    Update Password
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* ========================================================= */
+/* API URL */
+/* ========================================================= */
+
+const API_URL = "http://localhost:5000/api";
+
+
+
+/* ========================================================= */
+/* SHOW / HIDE PASSWORD */
+/* ========================================================= */
+
+function togglePassword(id, button) {
+
+    const input = document.getElementById(id);
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        button.innerText = "Hide";
+
+    } else {
+
+        input.type = "password";
+
+        button.innerText = "Show";
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* SHOW LOGIN */
+/* ========================================================= */
+
+function showLogin() {
+
+    document.getElementById("loginSection").style.display = "block";
+
+    document.getElementById("forgotSection").style.display = "none";
+
+}
+
+
+
+/* ========================================================= */
+/* SHOW FORGOT PASSWORD */
+/* ========================================================= */
+
+function showForgotPassword() {
+
+    document.getElementById("loginSection").style.display = "none";
+
+    document.getElementById("forgotSection").style.display = "block";
+
+    showEmailStep();
+
+}
+
+
+
+/* ========================================================= */
+/* SHOW EMAIL STEP */
+/* ========================================================= */
+
+function showEmailStep() {
+
+    document.querySelectorAll(".step").forEach(function(step) {
+
+        step.classList.remove("active");
+
+    });
+
+    document
+        .getElementById("stepEmail")
+        .classList.add("active");
+
+}
+
+
+
+/* ========================================================= */
+/* SHOW OTP STEP */
+/* ========================================================= */
+
+function showOTPStep() {
+
+    document.querySelectorAll(".step").forEach(function(step) {
+
+        step.classList.remove("active");
+
+    });
+
+    document
+        .getElementById("stepOTP")
+        .classList.add("active");
+
+}
+
+
+
+/* ========================================================= */
+/* SHOW PASSWORD STEP */
+/* ========================================================= */
+
+function showPasswordStep() {
+
+    document.querySelectorAll(".step").forEach(function(step) {
+
+        step.classList.remove("active");
+
+    });
+
+    document
+        .getElementById("stepPassword")
+        .classList.add("active");
+
+}
+
+
+
+/* ========================================================= */
+/* STUDENT LOGIN */
+/* ========================================================= */
+
+async function studentLogin(event) {
+
+    event.preventDefault();
+
+    const username =
+        document
+            .getElementById("loginUsername")
+            .value
+            .trim();
+
+    const password =
+        document
+            .getElementById("loginPassword")
+            .value;
+
+    const message =
+        document.getElementById("loginMessage");
+
+
+    message.style.display = "none";
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/auth/login",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        username: username,
+
+                        password: password,
+
+                        role: "student"
+
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Invalid username or password."
+            );
+
+        }
+
+
+        message.className =
+            "message success";
+
+        message.innerText =
+            "Login successful!";
+
+        message.style.display =
+            "block";
+
+
+        /*
+         * Store logged-in student information.
+         */
+
+        if (data.user) {
+
+    // All logged-in student information save
+    localStorage.setItem(
+        "studentUser",
+        JSON.stringify(data.user)
+    );
+
+    // Student ID save
+    localStorage.setItem(
+        "studentId",
+        data.user.id
+    );
+
+    // User information save
+    localStorage.setItem(
+        "user",
+        JSON.stringify(data.user)
+    );
+
+}
+
+
+        /*
+         * Change this page if your
+         * student dashboard has another name.
+         */
+
+        setTimeout(function() {
+
+    window.location.href = "./student-dashboard.html";
+
+}, 500);
+
+
+    } catch (error) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            error.message;
+
+        message.style.display =
+            "block";
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* STEP 1 - SEND OTP */
+/* ========================================================= */
+
+async function sendOTP(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document
+            .getElementById("forgotEmail")
+            .value
+            .trim();
+
+
+    const message =
+        document.getElementById("forgotMessage");
+
+    const button =
+        document.getElementById("sendOtpButton");
+
+
+    message.style.display = "none";
+
+
+    if (!email) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            "Please enter your registered email.";
+
+        message.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    try {
+
+        button.disabled = true;
+
+        button.innerText =
+            "Sending OTP...";
+
+
+        const response =
+            await fetch(
+                API_URL + "/auth/forgot-password",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        email: email,
+
+                        role: "student"
+
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Email not found."
+            );
+
+        }
+
+
+        /*
+         * Save email for the reset step.
+         */
+
+        sessionStorage.setItem(
+            "resetEmail",
+            email
+        );
+
+
+        message.className =
+            "message success";
+
+        message.innerText =
+            data.message ||
+            "OTP has been sent to your registered email.";
+
+        message.style.display =
+            "block";
+
+
+        /*
+         * Move to OTP screen.
+         */
+
+        setTimeout(function() {
+
+            showOTPStep();
+
+        }, 1000);
+
+
+    } catch (error) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            error.message;
+
+        message.style.display =
+            "block";
+
+
+    } finally {
+
+        button.disabled = false;
+
+        button.innerText =
+            "Send OTP";
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* STEP 2 - VERIFY OTP */
+/* ========================================================= */
+
+async function verifyOTP(event) {
+
+    event.preventDefault();
+
+
+    const otp =
+        document
+            .getElementById("otp")
+            .value
+            .trim();
+
+
+    const email =
+        sessionStorage.getItem(
+            "resetEmail"
+        );
+
+
+    const message =
+        document.getElementById("otpMessage");
+
+
+    message.style.display =
+        "none";
+
+
+    if (!email) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            "Session expired. Please enter your email again.";
+
+        message.style.display =
+            "block";
+
+        showEmailStep();
+
+        return;
+
+    }
+
+
+    if (!/^[0-9]{6}$/.test(otp)) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            "Please enter a valid 6-digit OTP.";
+
+        message.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    /*
+     * We save the OTP temporarily.
+     *
+     * The backend reset-password endpoint
+     * will verify it when the password is changed.
+     */
+
+    sessionStorage.setItem(
+        "resetOTP",
+        otp
+    );
+
+
+    message.className =
+        "message success";
+
+    message.innerText =
+        "OTP verified. Create your new password.";
+
+    message.style.display =
+        "block";
+
+
+    setTimeout(function() {
+
+        showPasswordStep();
+
+    }, 800);
+
+}
+
+
+
+/* ========================================================= */
+/* STEP 3 - RESET PASSWORD */
+/* ========================================================= */
+
+async function resetPassword(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        sessionStorage.getItem(
+            "resetEmail"
+        );
+
+
+    const otp =
+        sessionStorage.getItem(
+            "resetOTP"
+        );
+
+
+    const newPassword =
+        document
+            .getElementById("newPassword")
+            .value;
+
+
+    const confirmPassword =
+        document
+            .getElementById("confirmNewPassword")
+            .value;
+
+
+    const message =
+        document.getElementById(
+            "resetMessage"
+        );
+
+
+    message.style.display =
+        "none";
+
+
+    /* ================= VALIDATION ================= */
+
+    if (!email || !otp) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            "Reset session expired. Please start again.";
+
+        message.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    if (newPassword.length < 6) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            "Password must contain at least 6 characters.";
+
+        message.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    if (newPassword !== confirmPassword) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            "Passwords do not match.";
+
+        message.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                API_URL + "/auth/reset-password",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        email: email,
+
+                        otp: otp,
+
+                        code: otp,
+
+                        newPassword: newPassword,
+
+                        password: newPassword,
+
+                        role: "student"
+
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Unable to reset password."
+            );
+
+        }
+
+
+        message.className =
+            "message success";
+
+        message.innerText =
+            data.message ||
+            "Password updated successfully!";
+
+        message.style.display =
+            "block";
+
+
+        /*
+         * Clear reset information.
+         */
+
+        sessionStorage.removeItem(
+            "resetEmail"
+        );
+
+        sessionStorage.removeItem(
+            "resetOTP"
+        );
+
+
+        /*
+         * Return to login.
+         */
+
+        setTimeout(function() {
+
+            showLogin();
+
+            document
+                .getElementById("loginMessage")
+                .className =
+                "message success";
+
+            document
+                .getElementById("loginMessage")
+                .innerText =
+                "Password changed successfully. You can now login.";
+
+            document
+                .getElementById("loginMessage")
+                .style.display =
+                "block";
+
+        }, 1500);
+
+
+    } catch (error) {
+
+        message.className =
+            "message error";
+
+        message.innerText =
+            error.message;
+
+        message.style.display =
+            "block";
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

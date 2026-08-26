@@ -1,0 +1,4180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Student Dashboard | VIVEKANAND COLLEGE PLACEMENT CELL
+    </title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            min-height: 70px;
+            background: #0b1f3a;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 12px 5%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow:
+                0 3px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffb703;
+        }
+
+        .logout-btn {
+            border: none;
+            background: #ffb703;
+            color: #111;
+
+            padding: 10px 22px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: white;
+            color: #0b1f3a;
+        }
+
+
+        /* =====================================================
+           DASHBOARD LAYOUT
+        ===================================================== */
+
+        .dashboard {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+            width: 250px;
+
+            background: #102b4c;
+
+            color: white;
+
+            padding: 30px 15px;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =====================================================
+           MINI PROFILE
+        ===================================================== */
+
+        .student-mini-profile {
+            text-align: center;
+
+            padding-bottom: 25px;
+
+            margin-bottom: 20px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.15);
+        }
+
+
+        .profile-circle {
+            width: 85px;
+            height: 85px;
+
+            margin: 0 auto 12px;
+
+            border-radius: 50%;
+
+            background: #ffb703;
+
+            color: #0b1f3a;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            overflow: hidden;
+
+            border: 3px solid white;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: none;
+        }
+
+        .student-mini-profile h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .student-mini-profile p {
+            color: #b9c8d9;
+            font-size: 13px;
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           SIDEBAR MENU
+        ===================================================== */
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 8px;
+        }
+
+        .menu button {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #dbe5f2;
+
+            text-align: left;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .menu button:hover,
+        .menu button.active {
+            background: #ffb703;
+            color: #111;
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           MAIN CONTENT
+        ===================================================== */
+
+        .main-content {
+            flex: 1;
+
+            padding: 35px 5%;
+
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           CONTENT SECTIONS
+        ===================================================== */
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            color: #0b1f3a;
+
+            margin-bottom: 20px;
+
+            font-size: 25px;
+        }
+
+
+        /* =====================================================
+           WELCOME
+        ===================================================== */
+
+        .welcome {
+            background:
+                linear-gradient(
+                    135deg,
+                    #1455a0,
+                    #0b1f3a
+                );
+
+            color: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .welcome h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .welcome h1 span {
+            color: #ffb703;
+        }
+
+        .welcome p {
+            color: #dbe5f2;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           DASHBOARD CARDS
+        ===================================================== */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 5px 25px rgba(0,0,0,0.07);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #0b1f3a;
+
+            font-size: 25px;
+
+            margin-bottom: 5px;
+
+            word-break: break-word;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           GENERAL CARD
+        ===================================================== */
+
+        .status-card,
+        .profile-card,
+        .edit-card,
+        .company-card,
+        .application-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 25px rgba(0,0,0,0.07);
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status {
+            display: inline-block;
+
+            padding: 10px 20px;
+
+            border-radius: 25px;
+
+            background: #fff3cd;
+
+            color: #856404;
+
+            font-weight: bold;
+        }
+
+        .status.placed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+
+        /* =====================================================
+           PROFILE TOP
+        ===================================================== */
+
+        .profile-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            margin-bottom: 30px;
+
+            padding-bottom: 25px;
+
+            border-bottom:
+                1px solid #e5e9ef;
+        }
+
+        .large-profile-picture {
+            width: 120px;
+            height: 120px;
+
+            border-radius: 50%;
+
+            background: #ffb703;
+
+            color: #0b1f3a;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 45px;
+
+            font-weight: bold;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+
+            border: 4px solid #0b1f3a;
+        }
+
+        .large-profile-picture img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: none;
+        }
+
+        .profile-header-info h2 {
+            color: #0b1f3a;
+            margin-bottom: 7px;
+        }
+
+        .profile-header-info p {
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+
+        /* =====================================================
+           PROFILE GRID
+        ===================================================== */
+
+        .profile-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .profile-item {
+            padding: 15px;
+
+            background: #f7f9fc;
+
+            border-radius: 8px;
+        }
+
+        .profile-item label {
+            display: block;
+
+            font-size: 12px;
+
+            color: #777;
+
+            margin-bottom: 6px;
+        }
+
+        .profile-item strong {
+            color: #0b1f3a;
+
+            font-size: 14px;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           EDIT PROFILE
+        ===================================================== */
+
+        .edit-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #26374d;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border:
+                1px solid #d5dce5;
+
+            border-radius: 8px;
+
+            background: #f9fafc;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #1455a0;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(20,85,160,0.10);
+        }
+
+        .save-btn {
+            margin-top: 25px;
+
+            border: none;
+
+            padding: 13px 28px;
+
+            border-radius: 25px;
+
+            background: #ffb703;
+
+            color: #111;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .save-btn:hover {
+            background: #0b1f3a;
+            color: white;
+        }
+
+        .cancel-btn {
+            margin-top: 25px;
+
+            margin-left: 10px;
+
+            border: none;
+
+            padding: 13px 28px;
+
+            border-radius: 25px;
+
+            background: #e5e9ef;
+
+            color: #333;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           PROFILE PHOTO PREVIEW
+        ===================================================== */
+
+        .photo-preview {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+
+            padding: 20px;
+
+            background: #f7f9fc;
+
+            border-radius: 12px;
+        }
+
+        .photo-preview-circle {
+            width: 80px;
+            height: 80px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            background: #ffb703;
+
+            color: #0b1f3a;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            flex-shrink: 0;
+        }
+
+        .photo-preview-circle img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: none;
+        }
+
+        .photo-preview-info {
+            flex: 1;
+        }
+
+        .photo-preview-info h4 {
+            color: #0b1f3a;
+            margin-bottom: 5px;
+        }
+
+        .photo-preview-info p {
+            color: #777;
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           COMPANIES
+        ===================================================== */
+
+        .company-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .company-card h3 {
+            color: #0b1f3a;
+
+            margin-bottom: 10px;
+        }
+
+        .company-card p {
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        .apply-btn {
+            margin-top: 15px;
+
+            padding: 10px 18px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            background: #ffb703;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           APPLICATIONS
+        ===================================================== */
+
+        .application-list {
+            display: grid;
+
+            gap: 15px;
+        }
+
+        .application-row {
+            background: #f7f9fc;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .application-row h3 {
+            color: #0b1f3a;
+
+            margin-bottom: 5px;
+        }
+
+        .application-row p {
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        .application-status {
+            background: #fff3cd;
+
+            color: #856404;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           ALERT MESSAGE
+        ===================================================== */
+
+        .dashboard-message {
+            display: none;
+
+            padding: 13px 15px;
+
+            margin-bottom: 20px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            text-align: center;
+        }
+
+        .dashboard-message.success {
+            display: block;
+
+            background: #e8f7ed;
+
+            color: #16723b;
+
+            border:
+                1px solid #a9dfbc;
+        }
+
+        .dashboard-message.error {
+            display: block;
+
+            background: #ffe8e8;
+
+            color: #c62828;
+
+            border:
+                1px solid #f5b5b5;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .cards {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .company-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .menu {
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+                gap: 8px;
+            }
+
+            .menu li {
+                margin: 0;
+            }
+
+            .profile-grid,
+            .edit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 12px 4%;
+            }
+
+            .logo {
+                font-size: 12px;
+            }
+
+            .logout-btn {
+                padding: 9px 15px;
+            }
+
+            .main-content {
+                padding: 20px 4%;
+            }
+
+            .cards,
+            .company-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .welcome {
+                padding: 22px;
+            }
+
+            .welcome h1 {
+                font-size: 23px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .photo-preview {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .application-row {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        VIVEKANAND
+        <span>COLLEGE PLACEMENT CELL</span>
+
+    </div>
+
+    <button
+        class="logout-btn"
+        onclick="logout()">
+
+        Logout
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<div class="dashboard">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="student-mini-profile">
+
+
+            <div
+                class="profile-circle"
+                id="profileInitial">
+
+                <span id="profileInitialText">
+                    S
+                </span>
+
+                <img
+                    id="sidebarProfileImage"
+                    alt="Student Profile">
+
+            </div>
+
+
+            <h3 id="sideStudentName">
+                Student
+            </h3>
+
+
+            <p id="sideStudentEmail">
+                student@email.com
+            </p>
+
+
+        </div>
+
+
+
+        <ul class="menu">
+
+
+            <li>
+
+                <button
+                    class="active"
+                    onclick="showSection('dashboard', this)">
+
+                    🏠 Dashboard
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('profile', this)">
+
+                    👤 My Profile
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('editProfile', this)">
+
+                    ✏️ Edit Profile
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('companies', this)">
+
+                    🏢 Companies
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('placements', this)">
+
+                    💼 Placement Status
+
+                </button>
+
+            </li>
+
+
+            <li>
+
+                <button
+                    onclick="showSection('applications', this)">
+
+                    📋 My Applications
+
+                </button>
+
+            </li>
+
+
+        </ul>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <div
+            id="dashboardMessage"
+            class="dashboard-message">
+        </div>
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section
+            id="dashboard"
+            class="content-section active">
+
+
+            <div class="welcome">
+
+                <h1>
+
+                    Welcome,
+                    <span id="studentName">
+                        Student
+                    </span>
+                    👋
+
+                </h1>
+
+                <p>
+
+                    Welcome to your student placement dashboard.
+                    Manage your profile, explore companies and
+                    track your placement opportunities.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        👤
+                    </div>
+
+                    <h3 id="profileCompletion">
+                        0%
+                    </h3>
+
+                    <p>
+                        Profile Completion
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🏢
+                    </div>
+
+                    <h3 id="companyCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Available Companies
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        📋
+                    </div>
+
+                    <h3 id="applicationCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Applications
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        💼
+                    </div>
+
+                    <h3 id="dashboardStatus">
+                        Not Placed
+                    </h3>
+
+                    <p>
+                        Placement Status
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="status-card">
+
+
+                <h2 class="section-title">
+                    Placement Status
+                </h2>
+
+
+                <span
+                    class="status"
+                    id="statusText">
+
+                    Not Placed
+
+                </span>
+
+
+                <p
+                    id="companyText"
+                    style="
+                        margin-top:15px;
+                        color:#666;
+                    ">
+
+                    You have not been placed yet.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROFILE
+        ================================================== -->
+
+        <section
+            id="profile"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                My Profile
+            </h2>
+
+
+            <div class="profile-card">
+
+
+                <div class="profile-header">
+
+
+                    <div
+                        class="large-profile-picture"
+                        id="largeProfilePicture">
+
+
+                        <span id="largeProfileInitial">
+                            S
+                        </span>
+
+
+                        <img
+                            id="profilePageImage"
+                            alt="Student Profile Picture">
+
+
+                    </div>
+
+
+
+                    <div class="profile-header-info">
+
+
+                        <h2 id="profileHeaderName">
+                            Student
+                        </h2>
+
+
+                        <p id="profileHeaderEmail">
+                            student@email.com
+                        </p>
+
+
+                        <p id="profileHeaderStudentId">
+                            Student ID: -
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="profile-grid">
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Student ID
+                        </label>
+
+                        <strong id="profileStudentId">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <strong id="profileName">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <strong id="profileEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Username
+                        </label>
+
+                        <strong id="profileUsername">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Mobile
+                        </label>
+
+                        <strong id="profileMobile">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Gender
+                        </label>
+
+                        <strong id="profileGender">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Date of Birth
+                        </label>
+
+                        <strong id="profileDob">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Department
+                        </label>
+
+                        <strong id="profileDepartment">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Course
+                        </label>
+
+                        <strong id="profileCourse">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Academic Year
+                        </label>
+
+                        <strong id="profileAcademicYear">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Admission Year
+                        </label>
+
+                        <strong id="profileAdmissionYear">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Graduation Year
+                        </label>
+
+                        <strong id="profileGraduationYear">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            10th Percentage
+                        </label>
+
+                        <strong id="profileTenth">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            12th Percentage
+                        </label>
+
+                        <strong id="profileTwelfth">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            CGPA
+                        </label>
+
+                        <strong id="profileCgpa">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Skills
+                        </label>
+
+                        <strong id="profileSkills">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Address
+                        </label>
+
+                        <strong id="profileAddress">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            City
+                        </label>
+
+                        <strong id="profileCity">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            State
+                        </label>
+
+                        <strong id="profileState">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Placement Status
+                        </label>
+
+                        <strong id="profilePlacementStatus">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Placed Company
+                        </label>
+
+                        <strong id="profileCompany">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Package Offered
+                        </label>
+
+                        <strong id="profilePackage">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-item">
+
+                        <label>
+                            Resume
+                        </label>
+
+                        <strong id="profileResume">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             EDIT PROFILE
+        ================================================== -->
+
+        <section
+            id="editProfile"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                Edit Profile
+            </h2>
+
+
+            <div class="edit-card">
+
+
+                <!-- PHOTO PREVIEW -->
+
+                <div class="photo-preview">
+
+
+                    <div
+                        class="photo-preview-circle"
+                        id="editPhotoCircle">
+
+
+                        <span id="editPhotoInitial">
+                            S
+                        </span>
+
+
+                        <img
+                            id="editProfileImage"
+                            alt="Profile Preview">
+
+
+                    </div>
+
+
+
+                    <div class="photo-preview-info">
+
+
+                        <h4>
+                            Profile Picture
+                        </h4>
+
+
+                        <p>
+                            Enter an image URL below to update
+                            your profile picture.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <form
+                    id="editProfileForm"
+                    onsubmit="saveProfile(event)">
+
+
+                    <div class="edit-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editFullName"
+                                required>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="editEmail"
+                                required>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Username
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editUsername"
+                                required>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Mobile
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editMobile"
+                                maxlength="10">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Gender
+                            </label>
+
+                            <select id="editGender">
+
+                                <option value="">
+                                    Select Gender
+                                </option>
+
+                                <option value="Male">
+                                    Male
+                                </option>
+
+                                <option value="Female">
+                                    Female
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Date of Birth
+                            </label>
+
+                            <input
+                                type="date"
+                                id="editDob">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Department
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editDepartment">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Course
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editCourse">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Academic Year
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editAcademicYear">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Admission Year
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editAdmissionYear">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Graduation Year
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editGraduationYear">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                10th Percentage
+                            </label>
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="editTenth">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                12th Percentage
+                            </label>
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="editTwelfth">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                CGPA
+                            </label>
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                min="0"
+                                max="10"
+                                id="editCgpa">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Profile Photo URL
+                            </label>
+
+                            <input
+                                type="url"
+                                id="editProfilePhoto"
+                                placeholder="https://example.com/photo.jpg"
+                                oninput="previewProfilePhoto()">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Resume URL
+                            </label>
+
+                            <input
+                                type="url"
+                                id="editResumeUrl">
+
+                        </div>
+
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Skills
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editSkills"
+                                placeholder="Java, Python, SQL, HTML">
+
+                        </div>
+
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Address
+                            </label>
+
+                            <textarea
+                                id="editAddress">
+                            </textarea>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editCity">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                State
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editState">
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+
+                        💾 Save Changes
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="loadEditForm()">
+
+                        Cancel
+
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             COMPANIES
+        ================================================== -->
+
+        <section
+            id="companies"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                Companies
+            </h2>
+
+
+            <div class="company-grid">
+
+
+                <div class="company-card">
+
+                    <h3>
+                        Company Opportunities
+                    </h3>
+
+                    <p>
+                        Company opportunities will appear here
+                        when companies are added by the placement
+                        administrator.
+                    </p>
+
+                    <button
+                        class="apply-btn"
+                        onclick="showMessage('Company opportunities will be available soon.', 'success')">
+
+                        View Opportunities
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="company-card">
+
+                    <h3>
+                        Placement Drives
+                    </h3>
+
+                    <p>
+                        Upcoming campus placement drives and
+                        recruitment information will be displayed
+                        here.
+                    </p>
+
+                    <button
+                        class="apply-btn"
+                        onclick="showMessage('Placement drives will be available soon.', 'success')">
+
+                        View Drives
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="company-card">
+
+                    <h3>
+                        Career Opportunities
+                    </h3>
+
+                    <p>
+                        Explore available career opportunities
+                        based on your course and department.
+                    </p>
+
+                    <button
+                        class="apply-btn"
+                        onclick="showMessage('Career opportunities will be available soon.', 'success')">
+
+                        Explore
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PLACEMENT STATUS
+        ================================================== -->
+
+        <section
+            id="placements"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                Placement Status
+            </h2>
+
+
+            <div class="status-card">
+
+
+                <h3
+                    id="placementStatusLarge"
+                    style="
+                        color:#0b1f3a;
+                        margin-bottom:15px;
+                    ">
+
+                    Not Placed
+
+                </h3>
+
+
+                <span
+                    class="status"
+                    id="placementStatusBadge">
+
+                    Not Placed
+
+                </span>
+
+
+                <p
+                    id="placementDetails"
+                    style="
+                        margin-top:20px;
+                        color:#666;
+                        line-height:1.7;
+                    ">
+
+                    Your placement information will appear here
+                    after a successful placement.
+
+                </p>
+
+
+                <div
+                    id="packageDetails"
+                    style="
+                        margin-top:15px;
+                        color:#0b1f3a;
+                        font-weight:bold;
+                    ">
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             APPLICATIONS
+        ================================================== -->
+
+        <section
+            id="applications"
+            class="content-section">
+
+
+            <h2 class="section-title">
+                My Applications
+            </h2>
+
+
+            <div class="application-card">
+
+
+                <div class="application-list">
+
+
+                    <div class="application-row">
+
+
+                        <div>
+
+                            <h3>
+                                Placement Applications
+                            </h3>
+
+                            <p>
+                                Your company applications will
+                                appear here when you apply for
+                                placement opportunities.
+                            </p>
+
+                        </div>
+
+
+                        <span
+                            class="application-status">
+
+                            No Applications
+
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<script>
+
+/* ============================================================
+   API CONFIGURATION
+============================================================ */
+
+const API_URL = "http://localhost:5000/api";
+
+
+/* ============================================================
+   GLOBAL STUDENT DATA
+============================================================ */
+
+let currentStudent = null;
+
+
+/* ============================================================
+   SHOW MESSAGE
+============================================================ */
+
+function showMessage(message, type = "success") {
+
+    const box =
+        document.getElementById("dashboardMessage");
+
+    box.className =
+        "dashboard-message " + type;
+
+    box.textContent = message;
+
+    box.style.display = "block";
+
+
+    setTimeout(function() {
+
+        box.style.display = "none";
+
+    }, 3500);
+
+}
+
+
+/* ============================================================
+   GET LOGGED-IN STUDENT ID
+============================================================ */
+
+function getStudentId() {
+
+    let studentId =
+        localStorage.getItem("studentId");
+
+
+    /*
+       If studentId is missing, try studentUser.
+    */
+
+    if (!studentId) {
+
+        const studentUser =
+            localStorage.getItem("studentUser");
+
+
+        if (studentUser) {
+
+            try {
+
+                const user =
+                    JSON.parse(studentUser);
+
+
+                if (user && user.id) {
+
+                    studentId =
+                        user.id;
+
+                    /*
+                       Save it so next time
+                       it is directly available.
+                    */
+
+                    localStorage.setItem(
+                        "studentId",
+                        user.id
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Invalid studentUser:",
+                    error
+                );
+
+            }
+
+        }
+
+    }
+
+
+    return studentId;
+
+}
+
+
+/* ============================================================
+   LOAD STUDENT FROM BACKEND
+============================================================ */
+
+async function loadStudent() {
+
+    try {
+
+        const studentId =
+            getStudentId();
+
+
+        /*
+           No login information
+        */
+
+        if (!studentId) {
+
+            alert(
+                "Please login as a student first."
+            );
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        /*
+           Get student from backend
+        */
+
+        const response =
+            await fetch(
+                API_URL +
+                "/students/" +
+                encodeURIComponent(studentId)
+            );
+
+
+        if (!response.ok) {
+
+            const errorData =
+                await response.json()
+                .catch(() => ({}));
+
+
+            throw new Error(
+                errorData.message ||
+                "Unable to load student data."
+            );
+
+        }
+
+
+        const student =
+            await response.json();
+
+
+        currentStudent =
+            student;
+
+
+        /*
+           Display data
+        */
+
+        displayStudent(student);
+
+
+        /*
+           Fill edit form
+        */
+
+        loadEditForm();
+
+
+    } catch (error) {
+
+        console.error(
+            "Student loading error:",
+            error
+        );
+
+
+        showMessage(
+            error.message ||
+            "Unable to load student information.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   DISPLAY STUDENT DATA
+============================================================ */
+
+function displayStudent(student) {
+
+
+    const name =
+        student.fullName ||
+        "Student";
+
+
+    const email =
+        student.email ||
+        "";
+
+
+    const initial =
+        name
+            .charAt(0)
+            .toUpperCase() ||
+        "S";
+
+
+    /*
+       Sidebar
+    */
+
+    document.getElementById(
+        "sideStudentName"
+    ).textContent =
+        name;
+
+
+    document.getElementById(
+        "sideStudentEmail"
+    ).textContent =
+        email;
+
+
+    /*
+       Welcome
+    */
+
+    document.getElementById(
+        "studentName"
+    ).textContent =
+        name;
+
+
+    /*
+       Profile header
+    */
+
+    document.getElementById(
+        "profileHeaderName"
+    ).textContent =
+        name;
+
+
+    document.getElementById(
+        "profileHeaderEmail"
+    ).textContent =
+        email;
+
+
+    document.getElementById(
+        "profileHeaderStudentId"
+    ).textContent =
+        "Student ID: " +
+        (student.studentId || "-");
+
+
+    /*
+       Initials
+    */
+
+    document.getElementById(
+        "profileInitialText"
+    ).textContent =
+        initial;
+
+
+    document.getElementById(
+        "largeProfileInitial"
+    ).textContent =
+        initial;
+
+
+    document.getElementById(
+        "editPhotoInitial"
+    ).textContent =
+        initial;
+
+
+    /*
+       Profile fields
+    */
+
+    setText(
+        "profileStudentId",
+        student.studentId
+    );
+
+
+    setText(
+        "profileName",
+        student.fullName
+    );
+
+
+    setText(
+        "profileEmail",
+        student.email
+    );
+
+
+    setText(
+        "profileUsername",
+        student.username
+    );
+
+
+    setText(
+        "profileMobile",
+        student.mobile
+    );
+
+
+    setText(
+        "profileGender",
+        student.gender
+    );
+
+
+    setText(
+        "profileDob",
+        formatDate(student.dob)
+    );
+
+
+    setText(
+        "profileDepartment",
+        student.department
+    );
+
+
+    setText(
+        "profileCourse",
+        student.course
+    );
+
+
+    setText(
+        "profileAcademicYear",
+        student.academicYear
+    );
+
+
+    setText(
+        "profileAdmissionYear",
+        student.admissionYear
+    );
+
+
+    setText(
+        "profileGraduationYear",
+        student.graduationYear
+    );
+
+
+    setText(
+        "profileTenth",
+        student.tenthPercentage
+            ? student.tenthPercentage + "%"
+            : "-"
+    );
+
+
+    setText(
+        "profileTwelfth",
+        student.twelfthPercentage
+            ? student.twelfthPercentage + "%"
+            : "-"
+    );
+
+
+    setText(
+        "profileCgpa",
+        student.cgpa
+    );
+
+
+    setText(
+        "profileSkills",
+        formatSkills(student.skills)
+    );
+
+
+    setText(
+        "profileAddress",
+        student.address
+    );
+
+
+    setText(
+        "profileCity",
+        student.city
+    );
+
+
+    setText(
+        "profileState",
+        student.state
+    );
+
+
+    setText(
+        "profilePlacementStatus",
+        student.placementStatus ||
+        "Not Placed"
+    );
+
+
+    setText(
+        "profileCompany",
+        student.placedCompany ||
+        "Not Placed"
+    );
+
+
+    setText(
+        "profilePackage",
+        student.packageOffered ||
+        "-"
+    );
+
+
+    /*
+       Resume
+    */
+
+    const resumeElement =
+        document.getElementById(
+            "profileResume"
+        );
+
+
+    if (student.resumeUrl) {
+
+        resumeElement.innerHTML =
+            `<a
+                href="${escapeAttribute(student.resumeUrl)}"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color:#1455a0;font-weight:bold;text-decoration:none;">
+                View Resume
+            </a>`;
+
+    } else {
+
+        resumeElement.textContent =
+            "-";
+
+    }
+
+
+    /*
+       Profile photo
+    */
+
+    updateProfileImages(
+        student.profilePhoto,
+        initial
+    );
+
+
+    /*
+       Placement status
+    */
+
+    updatePlacementStatus(
+        student
+    );
+
+
+    /*
+       Profile completion
+    */
+
+    calculateProfileCompletion(
+        student
+    );
+
+}
+
+
+/* ============================================================
+   SET TEXT HELPER
+============================================================ */
+
+function setText(id, value) {
+
+    const element =
+        document.getElementById(id);
+
+
+    if (!element) {
+        return;
+    }
+
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+
+        element.textContent =
+            "-";
+
+    } else {
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+/* ============================================================
+   FORMAT DATE
+============================================================ */
+
+function formatDate(dateValue) {
+
+    if (!dateValue) {
+        return "-";
+    }
+
+
+    const date =
+        new Date(dateValue);
+
+
+    if (isNaN(date.getTime())) {
+        return dateValue;
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* ============================================================
+   FORMAT SKILLS
+============================================================ */
+
+function formatSkills(skills) {
+
+    if (!skills) {
+        return "-";
+    }
+
+
+    if (Array.isArray(skills)) {
+
+        return skills.join(", ");
+
+    }
+
+
+    /*
+       MySQL may return JSON string
+    */
+
+    if (
+        typeof skills === "string" &&
+        skills.trim().startsWith("[")
+    ) {
+
+        try {
+
+            const parsed =
+                JSON.parse(skills);
+
+
+            if (Array.isArray(parsed)) {
+
+                return parsed.join(", ");
+
+            }
+
+        } catch (error) {
+
+            console.warn(
+                "Unable to parse skills JSON"
+            );
+
+        }
+
+    }
+
+
+    return String(skills);
+
+}
+
+
+/* ============================================================
+   UPDATE PROFILE IMAGES
+============================================================ */
+
+function updateProfileImages(
+    profilePhoto,
+    initial
+) {
+
+
+    const sidebarImage =
+        document.getElementById(
+            "sidebarProfileImage"
+        );
+
+
+    const sidebarInitial =
+        document.getElementById(
+            "profileInitialText"
+        );
+
+
+    const profilePageImage =
+        document.getElementById(
+            "profilePageImage"
+        );
+
+
+    const profilePageInitial =
+        document.getElementById(
+            "largeProfileInitial"
+        );
+
+
+    const editImage =
+        document.getElementById(
+            "editProfileImage"
+        );
+
+
+    const editInitial =
+        document.getElementById(
+            "editPhotoInitial"
+        );
+
+
+    /*
+       No photo
+    */
+
+    if (!profilePhoto) {
+
+        sidebarImage.style.display =
+            "none";
+
+        sidebarInitial.style.display =
+            "block";
+
+
+        profilePageImage.style.display =
+            "none";
+
+        profilePageInitial.style.display =
+            "block";
+
+
+        editImage.style.display =
+            "none";
+
+        editInitial.style.display =
+            "block";
+
+
+        return;
+
+    }
+
+
+    /*
+       Sidebar image
+    */
+
+    sidebarImage.src =
+        profilePhoto;
+
+
+    sidebarImage.onload =
+        function() {
+
+            sidebarImage.style.display =
+                "block";
+
+            sidebarInitial.style.display =
+                "none";
+
+        };
+
+
+    sidebarImage.onerror =
+        function() {
+
+            sidebarImage.style.display =
+                "none";
+
+            sidebarInitial.style.display =
+                "block";
+
+        };
+
+
+    /*
+       Profile page image
+    */
+
+    profilePageImage.src =
+        profilePhoto;
+
+
+    profilePageImage.onload =
+        function() {
+
+            profilePageImage.style.display =
+                "block";
+
+            profilePageInitial.style.display =
+                "none";
+
+        };
+
+
+    profilePageImage.onerror =
+        function() {
+
+            profilePageImage.style.display =
+                "none";
+
+            profilePageInitial.style.display =
+                "block";
+
+        };
+
+
+    /*
+       Edit preview image
+    */
+
+    editImage.src =
+        profilePhoto;
+
+
+    editImage.onload =
+        function() {
+
+            editImage.style.display =
+                "block";
+
+            editInitial.style.display =
+                "none";
+
+        };
+
+
+    editImage.onerror =
+        function() {
+
+            editImage.style.display =
+                "none";
+
+            editInitial.style.display =
+                "block";
+
+        };
+
+}
+
+
+/* ============================================================
+   UPDATE PLACEMENT STATUS
+============================================================ */
+
+function updatePlacementStatus(student) {
+
+
+    const placementStatus =
+        student.placementStatus ||
+        "Not Placed";
+
+
+    document.getElementById(
+        "dashboardStatus"
+    ).textContent =
+        placementStatus;
+
+
+    document.getElementById(
+        "statusText"
+    ).textContent =
+        placementStatus;
+
+
+    document.getElementById(
+        "placementStatusLarge"
+    ).textContent =
+        placementStatus;
+
+
+    document.getElementById(
+        "placementStatusBadge"
+    ).textContent =
+        placementStatus;
+
+
+    const badge =
+        document.getElementById(
+            "placementStatusBadge"
+        );
+
+
+    if (
+        placementStatus.toLowerCase()
+        === "placed"
+    ) {
+
+        badge.classList.add(
+            "placed"
+        );
+
+    } else {
+
+        badge.classList.remove(
+            "placed"
+        );
+
+    }
+
+
+    /*
+       Company information
+    */
+
+    const companyText =
+        document.getElementById(
+            "companyText"
+        );
+
+
+    const placementDetails =
+        document.getElementById(
+            "placementDetails"
+        );
+
+
+    const packageDetails =
+        document.getElementById(
+            "packageDetails"
+        );
+
+
+    if (student.placedCompany) {
+
+        companyText.textContent =
+            "Placed at " +
+            student.placedCompany;
+
+
+        placementDetails.textContent =
+            "Congratulations! You have been placed at " +
+            student.placedCompany +
+            ".";
+
+
+        if (student.packageOffered) {
+
+            packageDetails.textContent =
+                "Package Offered: " +
+                student.packageOffered;
+
+        } else {
+
+            packageDetails.textContent =
+                "";
+
+        }
+
+    } else {
+
+        companyText.textContent =
+            "You have not been placed yet.";
+
+
+        placementDetails.textContent =
+            "Your placement information will appear here " +
+            "after a successful placement.";
+
+
+        packageDetails.textContent =
+            "";
+
+    }
+
+}
+
+
+/* ============================================================
+   PROFILE COMPLETION
+============================================================ */
+
+function calculateProfileCompletion(student) {
+
+
+    const fields = [
+
+        student.fullName,
+        student.email,
+        student.mobile,
+        student.gender,
+        student.dob,
+        student.address,
+        student.city,
+        student.state,
+        student.course,
+        student.academicYear,
+        student.admissionYear,
+        student.graduationYear,
+        student.tenthPercentage,
+        student.twelfthPercentage,
+        student.department,
+        student.cgpa,
+        student.skills,
+        student.resumeUrl,
+        student.profilePhoto
+
+    ];
+
+
+    const completed =
+        fields.filter(function(value) {
+
+            return (
+                value !== null &&
+                value !== undefined &&
+                value !== ""
+            );
+
+        }).length;
+
+
+    const percentage =
+        Math.round(
+            (completed / fields.length) *
+            100
+        );
+
+
+    document.getElementById(
+        "profileCompletion"
+    ).textContent =
+        percentage + "%";
+
+}
+
+
+/* ============================================================
+   LOAD EDIT FORM
+============================================================ */
+
+function loadEditForm() {
+
+    if (!currentStudent) {
+        return;
+    }
+
+
+    const student =
+        currentStudent;
+
+
+    setInput(
+        "editFullName",
+        student.fullName
+    );
+
+
+    setInput(
+        "editEmail",
+        student.email
+    );
+
+
+    setInput(
+        "editUsername",
+        student.username
+    );
+
+
+    setInput(
+        "editMobile",
+        student.mobile
+    );
+
+
+    setInput(
+        "editGender",
+        student.gender
+    );
+
+
+    setInput(
+        "editDob",
+        formatDateForInput(student.dob)
+    );
+
+
+    setInput(
+        "editDepartment",
+        student.department
+    );
+
+
+    setInput(
+        "editCourse",
+        student.course
+    );
+
+
+    setInput(
+        "editAcademicYear",
+        student.academicYear
+    );
+
+
+    setInput(
+        "editAdmissionYear",
+        student.admissionYear
+    );
+
+
+    setInput(
+        "editGraduationYear",
+        student.graduationYear
+    );
+
+
+    setInput(
+        "editTenth",
+        student.tenthPercentage
+    );
+
+
+    setInput(
+        "editTwelfth",
+        student.twelfthPercentage
+    );
+
+
+    setInput(
+        "editCgpa",
+        student.cgpa
+    );
+
+
+    setInput(
+        "editProfilePhoto",
+        student.profilePhoto
+    );
+
+
+    setInput(
+        "editResumeUrl",
+        student.resumeUrl
+    );
+
+
+    setInput(
+        "editSkills",
+        formatSkillsForInput(student.skills)
+    );
+
+
+    setInput(
+        "editAddress",
+        student.address
+    );
+
+
+    setInput(
+        "editCity",
+        student.city
+    );
+
+
+    setInput(
+        "editState",
+        student.state
+    );
+
+
+    /*
+       Update preview
+    */
+
+    previewProfilePhoto();
+
+}
+
+
+/* ============================================================
+   SET INPUT
+============================================================ */
+
+function setInput(id, value) {
+
+    const element =
+        document.getElementById(id);
+
+
+    if (!element) {
+        return;
+    }
+
+
+    element.value =
+        value === null ||
+        value === undefined
+            ? ""
+            : value;
+
+}
+
+
+/* ============================================================
+   FORMAT DATE FOR INPUT
+============================================================ */
+
+function formatDateForInput(dateValue) {
+
+    if (!dateValue) {
+        return "";
+    }
+
+
+    if (
+        typeof dateValue === "string" &&
+        /^\d{4}-\d{2}-\d{2}$/.test(dateValue)
+    ) {
+
+        return dateValue;
+
+    }
+
+
+    const date =
+        new Date(dateValue);
+
+
+    if (isNaN(date.getTime())) {
+        return "";
+    }
+
+
+    return date
+        .toISOString()
+        .split("T")[0];
+
+}
+
+
+/* ============================================================
+   FORMAT SKILLS FOR INPUT
+============================================================ */
+
+function formatSkillsForInput(skills) {
+
+    if (!skills) {
+        return "";
+    }
+
+
+    if (Array.isArray(skills)) {
+
+        return skills.join(", ");
+
+    }
+
+
+    if (
+        typeof skills === "string" &&
+        skills.trim().startsWith("[")
+    ) {
+
+        try {
+
+            const parsed =
+                JSON.parse(skills);
+
+
+            if (Array.isArray(parsed)) {
+
+                return parsed.join(", ");
+
+            }
+
+        } catch (error) {}
+
+    }
+
+
+    return String(skills);
+
+}
+
+
+/* ============================================================
+   PROFILE PHOTO PREVIEW
+============================================================ */
+
+function previewProfilePhoto() {
+
+    const url =
+        document.getElementById(
+            "editProfilePhoto"
+        ).value.trim();
+
+
+    const image =
+        document.getElementById(
+            "editProfileImage"
+        );
+
+
+    const initial =
+        document.getElementById(
+            "editPhotoInitial"
+        );
+
+
+    if (!url) {
+
+        image.style.display =
+            "none";
+
+        initial.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    image.src =
+        url;
+
+
+    image.onload =
+        function() {
+
+            image.style.display =
+                "block";
+
+            initial.style.display =
+                "none";
+
+        };
+
+
+    image.onerror =
+        function() {
+
+            image.style.display =
+                "none";
+
+            initial.style.display =
+                "block";
+
+        };
+
+}
+
+
+/* ============================================================
+   SAVE PROFILE
+============================================================ */
+
+async function saveProfile(event) {
+
+    event.preventDefault();
+
+
+    if (!currentStudent) {
+
+        showMessage(
+            "Student data is not loaded.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const studentId =
+        getStudentId();
+
+
+    if (!studentId) {
+
+        showMessage(
+            "Student ID not found. Please login again.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Get form values
+    */
+
+    const fullName =
+        document
+            .getElementById("editFullName")
+            .value
+            .trim();
+
+
+    const email =
+        document
+            .getElementById("editEmail")
+            .value
+            .trim();
+
+
+    const username =
+        document
+            .getElementById("editUsername")
+            .value
+            .trim();
+
+
+    const mobile =
+        document
+            .getElementById("editMobile")
+            .value
+            .trim();
+
+
+    const cgpaValue =
+        document
+            .getElementById("editCgpa")
+            .value
+            .trim();
+
+
+    /*
+       Validation
+    */
+
+    if (!fullName || !email || !username) {
+
+        showMessage(
+            "Full name, email and username are required.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        mobile &&
+        !/^[0-9]{10}$/.test(mobile)
+    ) {
+
+        showMessage(
+            "Please enter a valid 10-digit mobile number.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if (cgpaValue) {
+
+        const cgpa =
+            Number(cgpaValue);
+
+
+        if (
+            isNaN(cgpa) ||
+            cgpa < 0 ||
+            cgpa > 10
+        ) {
+
+            showMessage(
+                "CGPA must be between 0 and 10.",
+                "error"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /*
+       Skills
+    */
+
+    const skillsInput =
+        document
+            .getElementById("editSkills")
+            .value
+            .trim();
+
+
+    let skills = null;
+
+
+    if (skillsInput) {
+
+        skills =
+            skillsInput
+                .split(",")
+                .map(function(skill) {
+
+                    return skill.trim();
+
+                })
+                .filter(Boolean);
+
+    }
+
+
+    /*
+       Build request
+    */
+
+    const payload = {
+
+        studentId:
+            currentStudent.studentId,
+
+        fullName:
+            fullName,
+
+        email:
+            email,
+
+        username:
+            username,
+
+        mobile:
+            mobile || null,
+
+        gender:
+            document
+                .getElementById("editGender")
+                .value || null,
+
+        dob:
+            document
+                .getElementById("editDob")
+                .value || null,
+
+        address:
+            document
+                .getElementById("editAddress")
+                .value
+                .trim() || null,
+
+        city:
+            document
+                .getElementById("editCity")
+                .value
+                .trim() || null,
+
+        state:
+            document
+                .getElementById("editState")
+                .value
+                .trim() || null,
+
+        department:
+            document
+                .getElementById("editDepartment")
+                .value
+                .trim() || null,
+
+        course:
+            document
+                .getElementById("editCourse")
+                .value
+                .trim() || null,
+
+        academicYear:
+            document
+                .getElementById("editAcademicYear")
+                .value
+                .trim() || null,
+
+        admissionYear:
+            document
+                .getElementById("editAdmissionYear")
+                .value
+                .trim() || null,
+
+        graduationYear:
+            document
+                .getElementById("editGraduationYear")
+                .value
+                .trim() || null,
+
+        tenthPercentage:
+            document
+                .getElementById("editTenth")
+                .value || null,
+
+        twelfthPercentage:
+            document
+                .getElementById("editTwelfth")
+                .value || null,
+
+        cgpa:
+            cgpaValue || null,
+
+        skills:
+            skills,
+
+        resumeUrl:
+            document
+                .getElementById("editResumeUrl")
+                .value
+                .trim() || null,
+
+        profilePhoto:
+            document
+                .getElementById("editProfilePhoto")
+                .value
+                .trim() || null,
+
+        /*
+           Preserve placement data.
+        */
+
+        placementStatus:
+            currentStudent.placementStatus ||
+            "Not Placed",
+
+        placedCompany:
+            currentStudent.placedCompany ||
+            null,
+
+        packageOffered:
+            currentStudent.packageOffered ||
+            null
+
+    };
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "/students/" +
+                encodeURIComponent(studentId),
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(payload)
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Failed to update profile."
+            );
+
+        }
+
+
+        /*
+           Backend returns:
+           {
+              status: success,
+              student: updatedStudent
+           }
+        */
+
+        if (data.student) {
+
+            currentStudent =
+                data.student;
+
+        } else {
+
+            /*
+               Fallback: reload from API
+            */
+
+            await loadStudent();
+
+        }
+
+
+        /*
+           Update page
+        */
+
+        displayStudent(
+            currentStudent
+        );
+
+
+        /*
+           Update localStorage studentUser
+        */
+
+        updateStoredUser(
+            currentStudent
+        );
+
+
+        showMessage(
+            "Profile updated successfully!",
+            "success"
+        );
+
+
+        /*
+           Go to profile
+        */
+
+        setTimeout(function() {
+
+            const profileButton =
+                document.querySelector(
+                    ".menu button:nth-child(2)"
+                );
+
+
+            showSection(
+                "profile",
+                profileButton
+            );
+
+        }, 500);
+
+
+    } catch (error) {
+
+        console.error(
+            "Profile update error:",
+            error
+        );
+
+
+        showMessage(
+            error.message ||
+            "Unable to update profile.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   UPDATE LOCAL STORAGE USER
+============================================================ */
+
+function updateStoredUser(student) {
+
+    const storedUser =
+        localStorage.getItem(
+            "studentUser"
+        );
+
+
+    if (storedUser) {
+
+        try {
+
+            const user =
+                JSON.parse(
+                    storedUser
+                );
+
+
+            user.id =
+                student.id;
+
+            user.studentId =
+                student.studentId;
+
+            user.fullName =
+                student.fullName;
+
+            user.email =
+                student.email;
+
+            user.username =
+                student.username;
+
+            user.role =
+                "student";
+
+
+            localStorage.setItem(
+                "studentUser",
+                JSON.stringify(user)
+            );
+
+
+            localStorage.setItem(
+                "user",
+                JSON.stringify(user)
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Unable to update localStorage:",
+                error
+            );
+
+        }
+
+    }
+
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+function showSection(
+    sectionId,
+    button
+) {
+
+
+    document
+        .querySelectorAll(
+            ".content-section"
+        )
+        .forEach(function(section) {
+
+            section.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const target =
+        document.getElementById(
+            sectionId
+        );
+
+
+    if (target) {
+
+        target.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".menu button"
+        )
+        .forEach(function(btn) {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if (button) {
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    /*
+       If edit profile opened,
+       refresh its fields.
+    */
+
+    if (
+        sectionId === "editProfile"
+    ) {
+
+        loadEditForm();
+
+    }
+
+}
+
+
+/* ============================================================
+   LOGOUT
+============================================================ */
+
+function logout() {
+
+    localStorage.removeItem(
+        "studentId"
+    );
+
+
+    localStorage.removeItem(
+        "studentUser"
+    );
+
+
+    localStorage.removeItem(
+        "user"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* ============================================================
+   ESCAPE HTML ATTRIBUTE
+============================================================ */
+
+function escapeAttribute(value) {
+
+    if (!value) {
+        return "";
+    }
+
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+}
+
+
+/* ============================================================
+   START DASHBOARD
+============================================================ */
+
+loadStudent();
+
+</script>
+
+
+</body>
+
+</html>

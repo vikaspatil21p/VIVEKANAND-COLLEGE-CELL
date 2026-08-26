@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Registration | VIVEKANAND PLACEMENT CELL</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(7, 25, 48, 0.94),
+                    rgba(13, 55, 95, 0.94)
+                ),
+                url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px 15px;
+        }
+
+
+        .registration-container {
+
+            width: 100%;
+
+            max-width: 950px;
+
+            text-align: center;
+        }
+
+
+        .header {
+
+            color: white;
+
+            margin-bottom: 35px;
+        }
+
+
+        .header h1 {
+
+            color: #ffb703;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .header p {
+
+            color: #dbe5f2;
+
+            font-size: 16px;
+        }
+
+
+        .cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 40px 25px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0, 0, 0, 0.30);
+
+            transition: 0.3s;
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-10px);
+
+            box-shadow:
+                0 25px 60px
+                rgba(0, 0, 0, 0.40);
+        }
+
+
+        .icon {
+
+            font-size: 60px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .card h2 {
+
+            color: #0b1f3a;
+
+            margin-bottom: 12px;
+        }
+
+
+        .card p {
+
+            color: #666;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+
+            min-height: 70px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .register-btn {
+
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #ffb703;
+
+            color: #111;
+
+            padding: 13px 28px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .register-btn:hover {
+
+            background: #0b1f3a;
+
+            color: white;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .back-btn {
+
+            display: inline-block;
+
+            margin-top: 35px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            border: 2px solid white;
+
+            padding: 11px 25px;
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+        }
+
+
+        .back-btn:hover {
+
+            background: white;
+
+            color: #0b1f3a;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .cards {
+
+                grid-template-columns: 1fr;
+            }
+
+            .registration-container {
+
+                max-width: 500px;
+            }
+
+            .header h1 {
+
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="registration-container">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1>
+                VIVEKANAND PLACEMENT CELL
+            </h1>
+
+            <p>
+                Select your registration type
+            </p>
+
+        </div>
+
+
+        <!-- REGISTRATION CARDS -->
+
+        <div class="cards">
+
+
+            <!-- STUDENT -->
+
+            <div class="card">
+
+                <div class="icon">
+                    👨‍🎓
+                </div>
+
+                <h2>
+                    Student Registration
+                </h2>
+
+                <p>
+                    Register as a student and access
+                    placement opportunities,
+                    company drives and career services.
+                </p>
+
+                <a
+                    href="student-registration.html"
+                    class="register-btn">
+
+                    Register as Student
+
+                </a>
+
+            </div>
+
+
+            <!-- ADMIN -->
+
+            <div class="card">
+
+                <div class="icon">
+                    👨‍💼
+                </div>
+
+                <h2>
+                    Admin Registration
+                </h2>
+
+                <p>
+                    Create an administrator account
+                    to manage students, companies,
+                    placements and reports.
+                </p>
+
+                <a
+                    href="admin-registration.html"
+                    class="register-btn">
+
+                    Register as Admin
+
+                </a>
+
+            </div>
+
+
+            <!-- COMPANY -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🏢
+                </div>
+
+                <h2>
+                    Company Registration
+                </h2>
+
+                <p>
+                    Register your company and connect
+                    with talented students for
+                    placement opportunities.
+                </p>
+
+                <a
+                    href="company-registration.html"
+                    class="register-btn">
+
+                    Register as Company
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <a
+            href="index.html"
+            class="back-btn">
+
+            ← Back to Home
+
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>
