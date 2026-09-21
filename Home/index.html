@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,133 +26,91 @@
             color: #222;
         }
 
-
         /* ================= NAVBAR ================= */
 
         nav {
             width: 100%;
             height: 75px;
-
             background: #0b1f3a;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 0 7%;
-
             position: fixed;
             top: 0;
-
             z-index: 1000;
-
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
         }
 
-
         .logo {
             color: white;
-
             font-size: 15px;
             font-weight: bold;
-
             letter-spacing: 1px;
         }
-
 
         .logo span {
             color: #ffb703;
         }
 
-
         nav ul {
             list-style: none;
-
             display: flex;
-
             align-items: center;
-
             gap: 30px;
         }
 
-
         nav ul li a {
             color: white;
-
             text-decoration: none;
-
             font-size: 15px;
-
             font-weight: 500;
-
             transition: 0.3s;
         }
-
 
         nav ul li a:hover {
             color: #ffb703;
         }
 
-
         /* ================= REGISTRATION BUTTON ================= */
 
         .register-btn {
             background: #1455a0;
-
             color: white !important;
-
             padding: 10px 20px;
-
             border-radius: 25px;
-
             font-weight: bold !important;
         }
 
-
         .register-btn:hover {
             background: #ffb703;
-
             color: #111 !important;
         }
-
 
         /* ================= LOGIN BUTTON ================= */
 
         .login-btn {
             background: #ffb703;
-
             color: #111 !important;
-
             padding: 10px 20px;
-
             border-radius: 25px;
-
             font-weight: bold !important;
         }
 
-
         .login-btn:hover {
             background: white;
-
             color: #0b1f3a !important;
         }
-
 
         /* ================= HERO ================= */
 
         .hero {
             min-height: 100vh;
-
             padding: 150px 7% 80px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             gap: 50px;
-
             background:
                 linear-gradient(
                     135deg,
@@ -159,145 +118,99 @@
                     rgba(19, 67, 112, 0.92)
                 ),
                 url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80");
-
             background-size: cover;
-
             background-position: center;
-
             color: white;
         }
-
 
         .hero-content {
             max-width: 650px;
         }
 
-
         .hero-content h4 {
             color: #ffb703;
-
             font-size: 18px;
-
             margin-bottom: 15px;
-
             letter-spacing: 2px;
         }
 
-
         .hero-content h1 {
             font-size: 55px;
-
             line-height: 1.15;
-
             margin-bottom: 20px;
         }
-
 
         .hero-content h1 span {
             color: #ffb703;
         }
 
-
         .hero-content p {
             font-size: 18px;
-
             line-height: 1.7;
-
             color: #e3e9f2;
-
             margin-bottom: 35px;
         }
 
-
         .hero-buttons {
             display: flex;
-
             gap: 15px;
         }
 
-
         .btn {
             text-decoration: none;
-
             padding: 14px 28px;
-
             border-radius: 30px;
-
             font-weight: bold;
-
             transition: 0.3s;
-
             display: inline-block;
         }
 
-
         .primary-btn {
             background: #ffb703;
-
             color: #111;
         }
 
-
         .primary-btn:hover {
             background: white;
-
             transform: translateY(-3px);
         }
-
 
         .secondary-btn {
             border: 2px solid white;
-
             color: white;
         }
 
-
         .secondary-btn:hover {
             background: white;
-
             color: #0b1f3a;
-
             transform: translateY(-3px);
         }
-
 
         /* ================= HERO CARD ================= */
 
         .hero-card {
             width: 350px;
-
             background: rgba(255, 255, 255, 0.12);
-
             border: 1px solid rgba(255, 255, 255, 0.25);
-
             backdrop-filter: blur(10px);
-
             border-radius: 20px;
-
             padding: 35px;
-
             text-align: center;
         }
 
-
         .hero-card .icon {
             font-size: 65px;
-
             margin-bottom: 15px;
         }
-
 
         .hero-card h2 {
             margin-bottom: 10px;
         }
 
-
         .hero-card p {
             color: #dbe4f0;
-
             line-height: 1.6;
         }
-
 
         /* ================= SECTION ================= */
 
@@ -305,204 +218,140 @@
             padding: 90px 7%;
         }
 
-
         .section-title {
             text-align: center;
-
             margin-bottom: 50px;
         }
 
-
         .section-title h2 {
             font-size: 35px;
-
             color: #0b1f3a;
-
             margin-bottom: 10px;
         }
-
 
         .section-title p {
             color: #666;
         }
 
-
         /* ================= FEATURES ================= */
 
         .features {
             display: grid;
-
             grid-template-columns: repeat(4, 1fr);
-
             gap: 25px;
         }
 
-
         .feature-card {
             background: white;
-
             padding: 30px 25px;
-
             border-radius: 15px;
-
             text-align: center;
-
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
-
             transition: 0.3s;
         }
 
-
         .feature-card:hover {
             transform: translateY(-8px);
-
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
         }
 
-
         .feature-icon {
             width: 65px;
-
             height: 65px;
-
             margin: 0 auto 20px;
-
             background: #eaf2ff;
-
             color: #1455a0;
-
             border-radius: 50%;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             font-size: 30px;
         }
 
-
         .feature-card h3 {
             color: #0b1f3a;
-
             margin-bottom: 12px;
         }
 
-
         .feature-card p {
             color: #666;
-
             line-height: 1.6;
-
             font-size: 14px;
         }
-
 
         /* ================= STATS ================= */
 
         .stats-section {
             background: #0b1f3a;
-
             color: white;
         }
 
-
         .stats {
             display: grid;
-
             grid-template-columns: repeat(4, 1fr);
-
             gap: 25px;
-
             text-align: center;
         }
 
-
         .stat h2 {
             color: #ffb703;
-
             font-size: 42px;
-
             margin-bottom: 8px;
         }
-
 
         .stat p {
             color: #d9e2ef;
         }
 
-
         /* ================= ABOUT ================= */
 
         .about {
             display: flex;
-
             align-items: center;
-
             gap: 60px;
         }
-
 
         .about-image {
             flex: 1;
         }
 
-
         .about-image img {
             width: 100%;
-
             border-radius: 20px;
-
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
         }
-
 
         .about-content {
             flex: 1;
         }
 
-
         .about-content h2 {
             font-size: 35px;
-
             color: #0b1f3a;
-
             margin-bottom: 20px;
         }
-
 
         .about-content p {
             color: #666;
-
             line-height: 1.8;
-
             margin-bottom: 20px;
         }
-
 
         .about-list {
             list-style: none;
         }
 
-
         .about-list li {
             margin-bottom: 12px;
-
             color: #333;
         }
 
-
         .about-list li::before {
             content: "✓";
-
             color: #ff9800;
-
             font-weight: bold;
-
             margin-right: 10px;
         }
-
 
         /* ================= CTA ================= */
 
@@ -513,103 +362,262 @@
                     #1455a0,
                     #0b1f3a
                 );
-
             color: white;
-
             text-align: center;
-
             padding: 70px 7%;
         }
 
-
         .cta h2 {
             font-size: 36px;
-
             margin-bottom: 15px;
         }
 
-
         .cta p {
             color: #dbe5f2;
-
             margin-bottom: 25px;
         }
-
 
         /* ================= FOOTER ================= */
 
         footer {
             background: #071426;
-
             color: white;
-
             padding: 45px 7% 20px;
         }
 
-
         .footer-content {
             display: grid;
-
             grid-template-columns: 2fr 1fr 1fr 1fr;
-
             gap: 40px;
-
             margin-bottom: 35px;
         }
 
-
         .footer-col h3 {
             margin-bottom: 18px;
-
             color: #ffb703;
         }
 
-
         .footer-col p {
             color: #aeb9c8;
-
             line-height: 1.7;
-
             font-size: 14px;
         }
-
 
         .footer-col ul {
             list-style: none;
         }
 
-
         .footer-col ul li {
             margin-bottom: 10px;
         }
 
-
         .footer-col ul li a {
             color: #aeb9c8;
-
             text-decoration: none;
-
             transition: 0.3s;
         }
-
 
         .footer-col ul li a:hover {
             color: #ffb703;
         }
 
-
         .copyright {
             border-top: 1px solid #25344a;
-
             padding-top: 20px;
-
             text-align: center;
-
             color: #8d9aac;
-
             font-size: 13px;
         }
 
+        /* ================= INTERACTIVE SERVICE CARDS ================= */
+
+        .service-card {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+            color: inherit;
+            text-align: center;
+            background: white;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card:focus {
+            outline: 3px solid rgba(255, 183, 3, 0.45);
+            outline-offset: 3px;
+        }
+
+        .service-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(7, 20, 38, 0.72);
+            padding: 25px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-modal.show {
+            display: flex;
+        }
+
+        /* ================= LARGER SERVICE MODAL ================= */
+
+        .service-modal-content {
+            width: min(90vw, 850px);
+            min-height: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: serviceModalIn 0.25s ease;
+        }
+
+        @keyframes serviceModalIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .service-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #eef3f9;
+            color: #0b1f3a;
+            font-size: 25px;
+            line-height: 38px;
+            cursor: pointer;
+        }
+
+        .service-modal-close:hover {
+            background: #ffb703;
+            color: #111;
+        }
+
+        .service-modal-icon {
+            width: 75px;
+            height: 75px;
+            margin-bottom: 18px;
+            border-radius: 50%;
+            background: #eaf2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+        }
+
+        .service-modal-content h2 {
+            color: #0b1f3a;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .service-modal-description {
+            color: #555;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .service-info-list {
+            list-style: none;
+            margin: 0 0 25px;
+        }
+
+        .service-info-list li {
+            position: relative;
+            padding: 12px 0 12px 30px;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            border-bottom: 1px solid #edf0f5;
+        }
+
+        .service-info-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            color: #1455a0;
+            font-weight: bold;
+        }
+
+        .service-modal-action {
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            padding: 12px 24px;
+            border-radius: 25px;
+            background: #ffb703;
+            color: #111;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .service-modal-action:hover {
+            background: #0b1f3a;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ================= MOBILE SERVICE MODAL ================= */
+
+        @media (max-width: 700px) {
+
+            .service-modal {
+                padding: 15px;
+            }
+
+            .service-modal-content {
+                width: 92vw;
+                min-height: auto;
+                max-height: 90vh;
+                padding: 30px 24px;
+                border-radius: 20px;
+            }
+
+            .service-modal-content h2 {
+                font-size: 25px;
+                margin-bottom: 15px;
+            }
+
+            .service-modal-description {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .service-info-list li {
+                font-size: 15px;
+                line-height: 1.5;
+                padding: 10px 0 10px 28px;
+            }
+
+        }
 
         /* ================= RESPONSIVE ================= */
 
@@ -617,34 +625,26 @@
 
             .hero {
                 flex-direction: column;
-
                 text-align: center;
-
                 gap: 50px;
             }
-
 
             .hero-buttons {
                 justify-content: center;
             }
 
-
             .features {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-
             .stats {
                 grid-template-columns: repeat(2, 1fr);
-
                 gap: 40px;
             }
-
 
             .about {
                 flex-direction: column;
             }
-
 
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
@@ -652,55 +652,41 @@
 
         }
 
-
         @media (max-width: 700px) {
 
             nav {
                 height: auto;
-
                 padding: 18px 5%;
-
                 flex-direction: column;
-
                 gap: 15px;
             }
 
-
             nav ul {
                 gap: 12px;
-
                 flex-wrap: wrap;
-
                 justify-content: center;
             }
-
 
             nav ul li a {
                 font-size: 13px;
             }
 
-
             .hero {
                 padding-top: 180px;
             }
-
 
             .hero-content h1 {
                 font-size: 38px;
             }
 
-
             .hero-content p {
                 font-size: 15px;
             }
 
-
             .hero-card {
                 width: 100%;
-
                 max-width: 350px;
             }
-
 
             .features,
             .stats,
@@ -708,16 +694,13 @@
                 grid-template-columns: 1fr;
             }
 
-
             .section {
                 padding: 65px 5%;
             }
 
-
             .hero-buttons {
                 flex-direction: column;
             }
-
 
             .btn {
                 width: 100%;
@@ -729,18 +712,15 @@
 
 </head>
 
-
 <body>
-
 
     <!-- ================= NAVBAR ================= -->
 
     <nav>
 
         <div class="logo">
-        VIVEKANAND  COLLEGE <span>PLACEMENT CELL</span>
+            VIVEKANAND COLLEGE <span>PLACEMENT CELL</span>
         </div>
-
 
         <ul>
 
@@ -750,13 +730,11 @@
                 </a>
             </li>
 
-
             <li>
                 <a href="#about">
                     About
                 </a>
             </li>
-
 
             <li>
                 <a href="#services">
@@ -764,13 +742,11 @@
                 </a>
             </li>
 
-
             <li>
                 <a href="#placements">
                     Placements
                 </a>
             </li>
-
 
             <li>
                 <a href="#contact">
@@ -778,27 +754,15 @@
                 </a>
             </li>
 
-
-            <!-- ONLY ONE REGISTRATION OPTION -->
-
             <li>
-                <a
-                    href="registration.html"
-                    class="register-btn">
-
+                <a href="registration.html" class="register-btn">
                     Registration
-
                 </a>
             </li>
 
-
             <li>
-                <a
-                    href="login.html"
-                    class="login-btn">
-
+                <a href="login.html" class="login-btn">
                     Login
-
                 </a>
             </li>
 
@@ -806,13 +770,9 @@
 
     </nav>
 
-
     <!-- ================= HERO ================= -->
 
-    <section
-        class="hero"
-        id="home">
-
+    <section class="hero" id="home">
 
         <div class="hero-content">
 
@@ -820,52 +780,31 @@
                 WELCOME TO
             </h4>
 
-
             <h1>
-
                 VIVEKANAND COLLEGE
-
                 <span>
                     PLACEMENT CELL
                 </span>
-
             </h1>
 
-
             <p>
-
                 Connecting talented students with leading companies
                 and creating opportunities for a successful career.
-
             </p>
-
 
             <div class="hero-buttons">
 
-
-                <!-- ONE REGISTRATION OPTION -->
-
-                <a
-                    href="registration.html"
-                    class="btn primary-btn">
-
+                <a href="registration.html" class="btn primary-btn">
                     Registration
-
                 </a>
 
-
-                <a
-                    href="#placements"
-                    class="btn secondary-btn">
-
+                <a href="#placements" class="btn secondary-btn">
                     Explore Placements
-
                 </a>
 
             </div>
 
         </div>
-
 
         <div class="hero-card">
 
@@ -873,30 +812,22 @@
                 🎓
             </div>
 
-
             <h2>
                 Build Your Future
             </h2>
 
-
             <p>
-
                 Discover career opportunities, connect with recruiters
                 and take your first step toward a successful professional career.
-
             </p>
 
         </div>
 
     </section>
 
-
     <!-- ================= FEATURES ================= -->
 
-    <section
-        class="section"
-        id="services">
-
+    <section class="section" id="services">
 
         <div class="section-title">
 
@@ -904,115 +835,73 @@
                 Our Placement Services
             </h2>
 
-
             <p>
                 Everything students need to prepare for their career.
             </p>
 
         </div>
 
-
         <div class="features">
 
+            <button type="button" class="service-card" onclick="openService('student')" aria-label="Student Registration">
+                <div class="feature-icon">👨‍🎓</div>
+                <h3>Student Registration</h3>
+                <p>Register your profile and maintain your academic and professional information.</p>
+            </button>
 
-            <div class="feature-card">
+            <button type="button" class="service-card" onclick="openService('company')" aria-label="Company Opportunities">
+                <div class="feature-icon">🏢</div>
+                <h3>Company Opportunities</h3>
+                <p>Explore companies visiting the campus and discover exciting job opportunities.</p>
+            </button>
 
-                <div class="feature-icon">
-                    👨‍🎓
-                </div>
+            <button type="button" class="service-card" onclick="openService('reports')" aria-label="Placement Reports">
+                <div class="feature-icon">📊</div>
+                <h3>Placement Reports</h3>
+                <p>View placement statistics, company-wise selections and department-wise reports.</p>
+            </button>
 
-
-                <h3>
-                    Student Registration
-                </h3>
-
-
-                <p>
-
-                    Register your profile and maintain your academic
-                    and professional information.
-
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🏢
-                </div>
-
-
-                <h3>
-                    Company Opportunities
-                </h3>
-
-
-                <p>
-
-                    Explore companies visiting the campus and
-                    discover exciting job opportunities.
-
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📊
-                </div>
-
-
-                <h3>
-                    Placement Reports
-                </h3>
-
-
-                <p>
-
-                    View placement statistics, company-wise
-                    selections and department-wise reports.
-
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    💼
-                </div>
-
-
-                <h3>
-                    Career Opportunities
-                </h3>
-
-
-                <p>
-
-                    Connect students with recruiters and
-                    create opportunities for career growth.
-
-                </p>
-
-            </div>
+            <button type="button" class="service-card" onclick="openService('career')" aria-label="Career Opportunities">
+                <div class="feature-icon">💼</div>
+                <h3>Career Opportunities</h3>
+                <p>Connect students with recruiters and create opportunities for career growth.</p>
+            </button>
 
         </div>
 
     </section>
 
+    <!-- ================= SERVICE INFORMATION MODAL ================= -->
+
+    <div class="service-modal" id="serviceModal" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+
+        <div class="service-modal-content">
+
+            <button type="button" class="service-modal-close" onclick="closeService()" aria-label="Close">
+                &times;
+            </button>
+
+            <div class="service-modal-icon" id="serviceModalIcon">👨‍🎓</div>
+
+            <h2 id="serviceModalTitle">
+                Student Registration
+            </h2>
+
+            <p class="service-modal-description" id="serviceModalDescription"></p>
+
+            <ul class="service-info-list" id="serviceInfoList"></ul>
+
+            <a href="#" class="service-modal-action" id="serviceModalAction">
+                Continue
+            </a>
+
+        </div>
+
+    </div>
 
     <!-- ================= STATISTICS ================= -->
 
-    <section
-        class="section stats-section"
-        id="placements">
-
+    <section class="section stats-section" id="placements">
 
         <div class="section-title">
 
@@ -1020,16 +909,13 @@
                 Placement Highlights
             </h2>
 
-
             <p>
                 Our placement achievements
             </p>
 
         </div>
 
-
         <div class="stats">
-
 
             <div class="stat">
 
@@ -1043,11 +929,10 @@
 
             </div>
 
-
             <div class="stat">
 
                 <h2>
-                    50+
+                    60+
                 </h2>
 
                 <p>
@@ -1055,7 +940,6 @@
                 </p>
 
             </div>
-
 
             <div class="stat">
 
@@ -1068,7 +952,6 @@
                 </p>
 
             </div>
-
 
             <div class="stat">
 
@@ -1086,16 +969,11 @@
 
     </section>
 
-
     <!-- ================= ABOUT ================= -->
 
-    <section
-        class="section"
-        id="about">
-
+    <section class="section" id="about">
 
         <div class="about">
-
 
             <div class="about-image">
 
@@ -1105,54 +983,41 @@
 
             </div>
 
-
             <div class="about-content">
 
                 <h2>
                     About Vivekanand College Placement Cell
                 </h2>
 
-
                 <p>
-
                     The Vivekanand College Placement Cell is dedicated to
                     providing students with the right career opportunities
                     and connecting them with reputed organizations.
-
                 </p>
 
-
                 <p>
-
                     Our placement management system makes it easy to
                     manage student registrations, company information,
                     placement drives and placement reports.
-
                 </p>
 
-
                 <ul class="about-list">
-
 
                     <li>
                         Easy student registration
                     </li>
 
-
                     <li>
                         Company and recruiter management
                     </li>
-
 
                     <li>
                         Placement drive management
                     </li>
 
-
                     <li>
                         Student placement tracking
                     </li>
-
 
                     <li>
                         Detailed placement analytics
@@ -1166,7 +1031,6 @@
 
     </section>
 
-
     <!-- ================= CTA ================= -->
 
     <section class="cta">
@@ -1175,34 +1039,22 @@
             Ready to Start Your Career?
         </h2>
 
-
         <p>
-
             Register with Vivekanand College Placement Cell and explore
             new career opportunities.
-
         </p>
 
-
-        <a
-            href="registration.html"
-            class="btn primary-btn">
-
+        <a href="registration.html" class="btn primary-btn">
             Registration
-
         </a>
 
     </section>
 
-
     <!-- ================= FOOTER ================= -->
 
-    <footer
-        id="contact">
-
+    <footer id="contact">
 
         <div class="footer-content">
-
 
             <div class="footer-col">
 
@@ -1210,24 +1062,19 @@
                     VIVEKANAND COLLEGE PLACEMENT CELL
                 </h3>
 
-
                 <p>
-
                     Empowering students with career opportunities
                     and connecting talented graduates with leading
                     organizations.
-
                 </p>
 
             </div>
-
 
             <div class="footer-col">
 
                 <h3>
                     Quick Links
                 </h3>
-
 
                 <ul>
 
@@ -1237,20 +1084,17 @@
                         </a>
                     </li>
 
-
                     <li>
                         <a href="#about">
                             About Us
                         </a>
                     </li>
 
-
                     <li>
                         <a href="#services">
                             Services
                         </a>
                     </li>
-
 
                     <li>
                         <a href="#placements">
@@ -1262,17 +1106,13 @@
 
             </div>
 
-
             <div class="footer-col">
 
                 <h3>
                     Registration
                 </h3>
 
-
                 <ul>
-
-                    <!-- ONLY ONE REGISTRATION LINK -->
 
                     <li>
                         <a href="registration.html">
@@ -1280,20 +1120,17 @@
                         </a>
                     </li>
 
-
                     <li>
                         <a href="login.html">
                             Login
                         </a>
                     </li>
 
-
                     <li>
                         <a href="#">
                             Student Profile
                         </a>
                     </li>
-
 
                     <li>
                         <a href="#">
@@ -1305,16 +1142,13 @@
 
             </div>
 
-
             <div class="footer-col">
 
                 <h3>
                     Contact
                 </h3>
 
-
                 <p>
-
                     📍 College Placement cell
 
                     <br><br>
@@ -1324,24 +1158,156 @@
                     <br><br>
 
                     ☎ +91 8421917627
-
                 </p>
 
             </div>
 
         </div>
 
-
         <div class="copyright">
 
-            © 2026 VIVEKANAND COLLEGE  PLACEMENT CELL.
+            © 2026 VIVEKANAND COLLEGE PLACEMENT CELL.
             All Rights Reserved.
 
         </div>
 
     </footer>
 
+    <script>
+
+        const serviceData = {
+
+            student: {
+                icon: "👨‍🎓",
+                title: "Student Registration",
+                description: "Create your student profile and keep your academic and professional information ready for placement opportunities.",
+                points: [
+                    "Create your student account with your basic details.",
+                    "Maintain academic details such as department, course and CGPA.",
+                    "Add skills and other professional information.",
+                    "Keep your profile ready for upcoming placement drives.",
+                    "Access placement-related services through your student account."
+                ],
+                actionText: "Register as Student",
+                actionLink: "registration.html"
+            },
+
+            company: {
+                icon: "🏢",
+                title: "Company Opportunities",
+                description: "Explore recruiting companies and learn about placement opportunities available through the college placement cell.",
+                points: [
+                    "Discover companies participating in campus placements.",
+                    "Explore available job and career opportunities.",
+                    "Check placement information shared by recruiters.",
+                    "Connect with the placement process through your student account.",
+                    "Stay informed about upcoming company opportunities."
+                ],
+                actionText: "Login to Explore",
+                actionLink: "login.html"
+            },
+
+            reports: {
+                icon: "📊",
+                title: "Placement Reports",
+                description: "Get a clear view of placement performance through placement statistics and useful reports.",
+                points: [
+                    "View overall placement performance.",
+                    "Understand company-wise placement information.",
+                    "Review department-wise placement statistics.",
+                    "Track important placement achievements.",
+                    "Use reports to understand placement trends."
+                ],
+                actionText: "View Reports",
+                actionLink: "placement-reports.html"
+            },
+
+            career: {
+                icon: "💼",
+                title: "Career Opportunities",
+                description: "Build your career by connecting with recruiters and exploring opportunities available through the placement cell.",
+                points: [
+                    "Explore career opportunities from recruiting organizations.",
+                    "Prepare your profile for suitable placement drives.",
+                    "Connect with recruiters through the placement process.",
+                    "Track your participation in placement opportunities.",
+                    "Take the next step toward your professional career."
+                ],
+                actionText: "Login to Continue",
+                actionLink: "login.html"
+            }
+
+        };
+
+        function openService(serviceKey) {
+
+            const service = serviceData[serviceKey];
+
+            if (!service) return;
+
+            document.getElementById("serviceModalIcon").textContent = service.icon;
+
+            document.getElementById("serviceModalTitle").textContent = service.title;
+
+            document.getElementById("serviceModalDescription").textContent = service.description;
+
+            const list = document.getElementById("serviceInfoList");
+
+            list.innerHTML = "";
+
+            service.points.forEach(function (point) {
+
+                const li = document.createElement("li");
+
+                li.textContent = point;
+
+                list.appendChild(li);
+
+            });
+
+            const action = document.getElementById("serviceModalAction");
+
+            action.textContent = service.actionText;
+
+            action.href = service.actionLink;
+
+            document.getElementById("serviceModal").classList.add("show");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+        function closeService() {
+
+            document.getElementById("serviceModal").classList.remove("show");
+
+            document.body.style.overflow = "";
+
+        }
+
+        document.getElementById("serviceModal").addEventListener("click", function (event) {
+
+            if (event.target === this) {
+
+                closeService();
+
+            }
+
+        });
+
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape") {
+
+                closeService();
+
+            }
+
+        });
+
+    </script>
 
 </body>
 
 </html>
+

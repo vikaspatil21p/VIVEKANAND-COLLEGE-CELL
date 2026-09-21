@@ -59,6 +59,58 @@
             color: #ffb703;
         }
 
+        /* NOTIFICATION BELL */
+        .navbar-actions { display:flex; align-items:center; gap:12px; position:relative; }
+        .notification-wrapper { position:relative; }
+        .notification-btn { width:44px; height:44px; border:0; border-radius:50%; background:rgba(255,255,255,.12); color:white; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; position:relative; }
+        .notification-btn:hover { background:#ffb703; color:#111; }
+        .notification-badge { position:absolute; top:-4px; right:-4px; min-width:20px; height:20px; padding:0 5px; border-radius:12px; background:#e53935; color:white; font-size:11px; font-weight:bold; display:none; align-items:center; justify-content:center; border:2px solid #0b1f3a; }
+        .notification-panel { position:fixed; top:78px; right:5%; width:min(420px,calc(100vw - 30px)); max-height:70vh; background:white; border-radius:15px; box-shadow:0 10px 35px rgba(0,0,0,.20); z-index:2000; display:none; overflow:hidden; border:1px solid #e5e9ef; }
+        .notification-panel.open { display:block; }
+        .notification-header { padding:18px 20px; background:#0b1f3a; color:white; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+        .notification-header h3 { margin:0; font-size:18px; }
+        .notification-list { max-height:calc(70vh - 65px); overflow-y:auto; }
+        .notification-item { padding:16px 18px; border-bottom:1px solid #edf0f5; cursor:pointer; }
+        .notification-item:hover { background:#f7f9fc; }
+        .notification-item.unread { background:#eef5ff; border-left:4px solid #1455a0; }
+        .notification-item h4 { color:#0b1f3a; margin-bottom:6px; font-size:15px; }
+        .notification-item p { color:#555; font-size:13px; line-height:1.5; white-space:pre-wrap; word-break:break-word; }
+        .notification-date { display:block; margin-top:8px; color:#888; font-size:11px; }
+        .notification-empty { padding:30px 20px; text-align:center; color:#777; font-size:14px; }
+
+        /* =====================================================
+           JOB PORTAL HOME
+        ===================================================== */
+        .portal-home { max-width: 1180px; margin: 0 auto; }
+        .hero-search { background: linear-gradient(135deg,#0b1f3a,#1455a0); color:#fff; border-radius:18px; padding:34px; box-shadow:0 10px 28px rgba(11,31,58,.16); }
+        .hero-search h1 { font-size:32px; margin-bottom:8px; }
+        .hero-search p { color:#dce8f7; margin-bottom:24px; }
+        .search-box { display:grid; grid-template-columns:1.2fr 1fr auto; gap:10px; background:#fff; padding:10px; border-radius:12px; }
+        .search-box input { border:1px solid #e1e6ed; padding:14px; border-radius:8px; outline:none; font-size:14px; min-width:0; }
+        .search-box button { border:0; background:#ffb703; color:#111; padding:0 24px; border-radius:8px; font-weight:700; cursor:pointer; }
+        .portal-grid { display:grid; grid-template-columns:2fr 1fr; gap:20px; margin-top:22px; }
+        .portal-card { background:#fff; border:1px solid #e7ebf0; border-radius:16px; padding:24px; box-shadow:0 5px 18px rgba(0,0,0,.05); }
+        .portal-card h2 { color:#0b1f3a; font-size:20px; margin-bottom:8px; }
+        .portal-card > p { color:#6b7280; font-size:14px; margin-bottom:18px; }
+        .quick-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .quick-link { border:1px solid #e4e9ef; border-radius:12px; padding:16px; background:#fafbfd; cursor:pointer; text-align:left; }
+        .quick-link:hover { border-color:#1455a0; background:#f2f7ff; }
+        .quick-link strong { display:block; color:#0b1f3a; margin-bottom:5px; }
+        .quick-link span { color:#777; font-size:12px; }
+        .profile-summary { display:flex; align-items:center; gap:15px; margin-bottom:18px; }
+        .profile-summary-avatar { width:58px; height:58px; border-radius:50%; background:#ffb703; color:#0b1f3a; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:22px; overflow:hidden; flex-shrink:0; }
+        .profile-summary-avatar img { width:100%; height:100%; object-fit:cover; display:none; }
+        .profile-summary h3 { color:#0b1f3a; margin-bottom:4px; }
+        .profile-summary p { color:#777; font-size:13px; }
+        .portal-btn { border:0; border-radius:8px; padding:11px 16px; background:#1455a0; color:#fff; font-weight:700; cursor:pointer; }
+        .portal-btn.secondary { background:#eef4fb; color:#1455a0; }
+        .opportunity-list { display:grid; gap:12px; }
+        .opportunity-item { padding:15px; border:1px solid #e7ebf0; border-radius:12px; }
+        .opportunity-item strong { color:#0b1f3a; }
+        .opportunity-item p { color:#777; font-size:13px; margin-top:5px; }
+        @media (max-width:900px) { .portal-grid{grid-template-columns:1fr;} }
+        @media (max-width:650px) { .search-box{grid-template-columns:1fr;} .search-box button{padding:13px;} .hero-search{padding:24px;} .hero-search h1{font-size:25px;} .quick-grid{grid-template-columns:1fr;} }
+
         .logout-btn {
             border: none;
             background: #ffb703;
@@ -562,6 +614,30 @@
                 rgba(20,85,160,0.10);
         }
 
+        .file-help {
+            display: block;
+
+            margin-top: 7px;
+
+            color: #777;
+
+            font-size: 12px;
+        }
+
+        .selected-file {
+            display: block;
+
+            margin-top: 8px;
+
+            color: #1455a0;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            word-break: break-word;
+        }
+
         .save-btn {
             margin-top: 25px;
 
@@ -678,6 +754,7 @@
         .photo-preview-info p {
             color: #777;
             font-size: 13px;
+            line-height: 1.5;
         }
 
 
@@ -706,6 +783,75 @@
             font-size: 14px;
 
             line-height: 1.6;
+        }
+
+        .drives-panel {
+            margin-top: 24px;
+        }
+
+        .drive-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .drive-item {
+            background: #f9fafc;
+            border: 1px solid #e0e6ef;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .drive-item h3 {
+            color: #0b1f3a;
+            margin-bottom: 8px;
+        }
+
+        .drive-item p {
+            margin: 5px 0;
+        }
+
+        .drive-status {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 5px 10px;
+            border-radius: 14px;
+            background: #e8f7ed;
+            color: #16723b;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .drive-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 16px;
+        }
+
+        .drive-meta span {
+            padding: 7px 12px;
+            border-radius: 18px;
+            background: #eef4fc;
+            color: #1455a0;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .drive-apply-btn {
+            margin-top: 12px;
+            padding: 9px 18px;
+            border: none;
+            border-radius: 20px;
+            background: #ffb703;
+            color: #111;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .drive-apply-btn:hover {
+            background: #0b1f3a;
+            color: white;
         }
 
         .apply-btn {
@@ -898,6 +1044,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .drive-list {
+                grid-template-columns: 1fr;
+            }
+
             .menu {
                 grid-template-columns:
                     1fr 1fr;
@@ -930,7 +1080,9 @@
 
         }
 
-    </style>
+    /* Hide the old dashboard summary from the student landing screen */
+#dashboard { display: none !important; }
+</style>
 
 </head>
 
@@ -951,17 +1103,24 @@
 
     </div>
 
-    <button
-        class="logout-btn"
-        onclick="logout()">
-
-        Logout
-
-    </button>
+    <div class="navbar-actions">
+        <div class="notification-wrapper">
+            <button type="button" class="notification-btn" id="notificationBell" onclick="toggleNotifications()" aria-label="Notifications" title="Notifications">🔔<span class="notification-badge" id="notificationBadge">0</span></button>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
 
 </header>
 
 
+
+<!-- NOTIFICATION PANEL -->
+<div class="notification-panel" id="notificationPanel">
+    <div class="notification-header">
+        <h3>🔔 Notifications</h3>
+    </div>
+    <div class="notification-list" id="notificationList"><div class="notification-empty">Loading notifications...</div></div>
+</div>
 
 <!-- =====================================================
      DASHBOARD
@@ -1016,18 +1175,6 @@
 
                 <button
                     class="active"
-                    onclick="showSection('dashboard', this)">
-
-                    🏠 Dashboard
-
-                </button>
-
-            </li>
-
-
-            <li>
-
-                <button
                     onclick="showSection('profile', this)">
 
                     👤 My Profile
@@ -1113,152 +1260,94 @@
             id="dashboard"
             class="content-section active">
 
+            <div class="portal-home">
 
-            <div class="welcome">
+                <div class="hero-search">
+                    <h1>Find your next placement opportunity</h1>
+                    <p>Search jobs, placement drives and companies available through the college placement cell.</p>
 
-                <h1>
+                    <div class="search-box">
+                        <input id="homeJobSearch" type="text" placeholder="Job title, skills or company">
+                        <input id="homeLocationSearch" type="text" placeholder="Location">
+                        <button type="button" onclick="searchHomeOpportunities()">🔍 Search</button>
+                    </div>
+                </div>
 
-                    Welcome,
-                    <span id="studentName">
-                        Student
-                    </span>
-                    👋
+                <div class="portal-grid">
+                    <div>
+                        <div class="portal-card">
+                            <h2>Recommended Opportunities</h2>
+                            <p>Explore placement drives and opportunities available for students.</p>
+                            <div class="opportunity-list">
+                                <div class="opportunity-item">
+                                    <strong>Placement Drives</strong>
+                                    <p>View current openings, eligibility, package and application deadlines.</p>
+                                    <br>
+                                    <button class="portal-btn" type="button" onclick="showSection('companies', this); loadPlacementDrives()">View Opportunities</button>
+                                </div>
+                                <div class="opportunity-item">
+                                    <strong>Companies</strong>
+                                    <p>Explore companies participating in the college placement process.</p>
+                                    <br>
+                                    <button class="portal-btn secondary" type="button" onclick="showSection('companies', this)">Explore Companies</button>
+                                </div>
+                            </div>
+                        </div>
 
-                </h1>
+                        <div class="portal-card" style="margin-top:20px;">
+                            <h2>Quick Access</h2>
+                            <p>Manage your placement activities from one place.</p>
+                            <div class="quick-grid">
+                                <button class="quick-link" type="button" onclick="showSection('profile', this)">
+                                    <strong>👤 My Profile</strong>
+                                    <span>View your student information</span>
+                                </button>
+                                <button class="quick-link" type="button" onclick="showSection('editProfile', this)">
+                                    <strong>✏️ Edit Profile</strong>
+                                    <span>Update your details and documents</span>
+                                </button>
+                                <button class="quick-link" type="button" onclick="showSection('applications', this)">
+                                    <strong>📋 My Applications</strong>
+                                    <span>Track your submitted applications</span>
+                                </button>
+                                <button class="quick-link" type="button" onclick="toggleNotifications()">
+                                    <strong>🔔 Notifications</strong>
+                                    <span>Check placement cell updates</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-                <p>
+                    <div>
+                        <div class="portal-card">
+                            <div class="profile-summary">
+                                <div class="profile-summary-avatar" id="homeProfileAvatar">
+                                    <span id="homeProfileInitial">S</span>
+                                    <img id="homeProfileImage" alt="Profile Photo">
+                                </div>
+                                <div>
+                                    <h3 id="homeStudentName">Student</h3>
+                                    <p id="homeStudentEmail">student@email.com</p>
+                                </div>
+                            </div>
+                            <button class="portal-btn" type="button" onclick="showSection('profile', this)">View Profile</button>
+                        </div>
 
-                    Welcome to your student placement dashboard.
-                    Manage your profile, explore companies and
-                    track your placement opportunities.
-
-                </p>
+                        <div class="portal-card" style="margin-top:20px;">
+                            <h2>Placement Status</h2>
+                            <p id="homePlacementStatusText">Check your current placement status.</p>
+                            <button class="portal-btn secondary" type="button" onclick="showSection('placements', this)">View Status</button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-
-
-
-            <div class="cards">
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        👤
-                    </div>
-
-                    <h3 id="profileCompletion">
-                        0%
-                    </h3>
-
-                    <p>
-                        Profile Completion
-                    </p>
-
-                </div>
-
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        🏢
-                    </div>
-
-                    <h3 id="companyCount">
-                        0
-                    </h3>
-
-                    <p>
-                        Available Companies
-                    </p>
-
-                </div>
-
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        📋
-                    </div>
-
-                    <h3 id="applicationCount">
-                        0
-                    </h3>
-
-                    <p>
-                        Applications
-                    </p>
-
-                </div>
-
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        💼
-                    </div>
-
-                    <h3 id="dashboardStatus">
-                        Not Placed
-                    </h3>
-
-                    <p>
-                        Placement Status
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="status-card">
-
-
-                <h2 class="section-title">
-                    Placement Status
-                </h2>
-
-
-                <span
-                    class="status"
-                    id="statusText">
-
-                    Not Placed
-
-                </span>
-
-
-                <p
-                    id="companyText"
-                    style="
-                        margin-top:15px;
-                        color:#666;
-                    ">
-
-                    You have not been placed yet.
-
-                </p>
-
-
-            </div>
-
 
         </section>
 
-
-
-        <!-- =================================================
-             PROFILE
-        ================================================== -->
-
         <section
             id="profile"
-            class="content-section">
+            class="content-section active">
 
 
             <h2 class="section-title">
@@ -1678,8 +1767,8 @@
 
 
                         <p>
-                            Enter an image URL below to update
-                            your profile picture.
+                            Upload a PNG, JPG or JPEG image.
+                            Maximum file size is 10 MB.
                         </p>
 
 
@@ -1919,31 +2008,53 @@
 
 
 
+                        <!-- PROFILE PHOTO FILE -->
+
                         <div class="form-group">
 
-                            <label>
-                                Profile Photo URL
+                            <label for="editProfilePhoto">
+                                Profile Photo
                             </label>
 
                             <input
-                                type="url"
+                                type="file"
                                 id="editProfilePhoto"
-                                placeholder="https://example.com/photo.jpg"
-                                oninput="previewProfilePhoto()">
+                                accept=".png,.jpg,.jpeg,image/png,image/jpeg">
+
+                            <small class="file-help">
+                                Allowed formats: PNG, JPG, JPEG. Maximum size: 10 MB.
+                            </small>
+
+                            <span
+                                class="selected-file"
+                                id="selectedPhotoName">
+                            </span>
 
                         </div>
 
 
 
+                        <!-- RESUME FILE -->
+
                         <div class="form-group">
 
-                            <label>
-                                Resume URL
+                            <label for="editResume">
+                                Resume
                             </label>
 
                             <input
-                                type="url"
-                                id="editResumeUrl">
+                                type="file"
+                                id="editResume"
+                                accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+
+                            <small class="file-help">
+                                Allowed formats: PDF, DOC, DOCX. Maximum size: 10 MB.
+                            </small>
+
+                            <span
+                                class="selected-file"
+                                id="selectedResumeName">
+                            </span>
 
                         </div>
 
@@ -1971,8 +2082,7 @@
                             </label>
 
                             <textarea
-                                id="editAddress">
-                            </textarea>
+                                id="editAddress"></textarea>
 
                         </div>
 
@@ -2093,7 +2203,7 @@
 
                     <button
                         class="apply-btn"
-                        onclick="showMessage('Placement drives will be available soon.', 'success')">
+                        onclick="showSection('companies', this); loadPlacementDrives()">
 
                         View Drives
 
@@ -2125,6 +2235,13 @@
                 </div>
 
 
+            </div>
+
+            <div class="application-card drives-panel">
+                <h3>Available Placement Drives</h3>
+                <div id="studentDrivesList" class="drive-list">
+                    <p>Click View Drives to load available opportunities.</p>
+                </div>
             </div>
 
 
@@ -2272,7 +2389,11 @@
    API CONFIGURATION
 ============================================================ */
 
-const API_URL = "http://localhost:5000/api";
+const API_URL =
+    "http://localhost:5000/api";
+
+const BACKEND_URL =
+    "http://localhost:5000";
 
 
 /* ============================================================
@@ -2280,6 +2401,79 @@ const API_URL = "http://localhost:5000/api";
 ============================================================ */
 
 let currentStudent = null;
+let notifications = [];
+
+/* ============================================================
+   NOTIFICATIONS
+============================================================ */
+async function loadNotifications() {
+    const studentId = getStudentId();
+    if (!studentId) return;
+    try {
+        const response = await fetch(API_URL + "/notifications/student/" + encodeURIComponent(studentId));
+        const data = await response.json().catch(() => []);
+        if (!response.ok) throw new Error(data.message || "Unable to load notifications.");
+        notifications = Array.isArray(data) ? data : [];
+        renderNotifications();
+        updateNotificationBadge();
+    } catch (error) {
+        console.error("Notification loading error:", error);
+        const list = document.getElementById("notificationList");
+        if (list) list.innerHTML = '<div class="notification-empty">' + escapeHtml(error.message || "Unable to load notifications.") + '</div>';
+    }
+}
+
+function renderNotifications() {
+    const list = document.getElementById("notificationList");
+    if (!list) return;
+    if (!notifications.length) { list.innerHTML = '<div class="notification-empty">No notifications yet.</div>'; return; }
+    list.innerHTML = notifications.map(function(n) {
+        const unread = Number(n.isRead) === 0;
+        return `<div class="notification-item ${unread ? "unread" : ""}" onclick="openNotification(${Number(n.id)})"><h4>${escapeHtml(n.title || "Notification")}</h4><p>${escapeHtml(n.message || "")}</p><span class="notification-date">${escapeHtml(formatNotificationDate(n.createdAt))}</span></div>`;
+    }).join("");
+}
+
+function updateNotificationBadge() {
+    const badge = document.getElementById("notificationBadge");
+    if (!badge) return;
+    const count = notifications.filter(n => Number(n.isRead) === 0).length;
+    badge.textContent = count > 99 ? "99+" : count;
+    badge.style.display = count > 0 ? "flex" : "none";
+}
+
+function formatNotificationDate(value) {
+    if (!value) return "-";
+    const date = new Date(value);
+    if (isNaN(date.getTime())) return String(value);
+    return date.toLocaleString("en-IN", {day:"2-digit", month:"short", year:"numeric", hour:"2-digit", minute:"2-digit"});
+}
+
+function toggleNotifications() {
+    const panel = document.getElementById("notificationPanel");
+    if (!panel) return;
+    panel.classList.toggle("open");
+    if (panel.classList.contains("open")) loadNotifications();
+}
+
+async function openNotification(notificationId) {
+    const n = notifications.find(item => Number(item.id) === Number(notificationId));
+    if (!n || Number(n.isRead) !== 0) return;
+    try {
+        const response = await fetch(API_URL + "/notifications/" + encodeURIComponent(notificationId) + "/read", {method:"PUT"});
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.message || "Unable to mark notification as read.");
+        n.isRead = 1; renderNotifications(); updateNotificationBadge();
+    } catch (error) { console.error("Notification read error:", error); }
+}
+
+
+
+document.addEventListener("click", function(event) {
+    const panel = document.getElementById("notificationPanel");
+    const bell = document.getElementById("notificationBell");
+    if (panel && bell && panel.classList.contains("open") && !panel.contains(event.target) && !bell.contains(event.target)) panel.classList.remove("open");
+});
+
 
 
 /* ============================================================
@@ -2289,21 +2483,31 @@ let currentStudent = null;
 function showMessage(message, type = "success") {
 
     const box =
-        document.getElementById("dashboardMessage");
+        document.getElementById(
+            "dashboardMessage"
+        );
+
+    if (!box) {
+        console.log(message);
+        return;
+    }
 
     box.className =
         "dashboard-message " + type;
 
-    box.textContent = message;
+    box.textContent =
+        message;
 
-    box.style.display = "block";
+    box.style.display =
+        "block";
 
 
     setTimeout(function() {
 
-        box.style.display = "none";
+        box.style.display =
+            "none";
 
-    }, 3500);
+    }, 4000);
 
 }
 
@@ -2315,17 +2519,22 @@ function showMessage(message, type = "success") {
 function getStudentId() {
 
     let studentId =
-        localStorage.getItem("studentId");
+        localStorage.getItem(
+            "studentId"
+        );
 
 
     /*
-       If studentId is missing, try studentUser.
+       If studentId is missing,
+       try studentUser.
     */
 
     if (!studentId) {
 
         const studentUser =
-            localStorage.getItem("studentUser");
+            localStorage.getItem(
+                "studentUser"
+            );
 
 
         if (studentUser) {
@@ -2333,18 +2542,19 @@ function getStudentId() {
             try {
 
                 const user =
-                    JSON.parse(studentUser);
+                    JSON.parse(
+                        studentUser
+                    );
 
 
-                if (user && user.id) {
+                if (
+                    user &&
+                    user.id
+                ) {
 
                     studentId =
                         user.id;
 
-                    /*
-                       Save it so next time
-                       it is directly available.
-                    */
 
                     localStorage.setItem(
                         "studentId",
@@ -2373,6 +2583,53 @@ function getStudentId() {
 
 
 /* ============================================================
+   BUILD FILE URL
+============================================================ */
+
+function buildFileUrl(path) {
+
+    if (!path) {
+        return "";
+    }
+
+
+    const value =
+        String(path);
+
+
+    /*
+       If backend already returned
+       a complete URL, use it directly.
+    */
+
+    if (
+        value.startsWith("http://") ||
+        value.startsWith("https://")
+    ) {
+
+        return value;
+
+    }
+
+
+    /*
+       Backend stores paths such as:
+       /uploads/profile-photos/...
+    */
+
+    if (value.startsWith("/")) {
+
+        return BACKEND_URL + value;
+
+    }
+
+
+    return BACKEND_URL + "/" + value;
+
+}
+
+
+/* ============================================================
    LOAD STUDENT FROM BACKEND
 ============================================================ */
 
@@ -2384,33 +2641,29 @@ async function loadStudent() {
             getStudentId();
 
 
-        /*
-           No login information
-        */
-
         if (!studentId) {
 
             alert(
                 "Please login as a student first."
             );
 
+
             window.location.href =
                 "login.html";
+
 
             return;
 
         }
 
 
-        /*
-           Get student from backend
-        */
-
         const response =
             await fetch(
                 API_URL +
                 "/students/" +
-                encodeURIComponent(studentId)
+                encodeURIComponent(
+                    studentId
+                )
             );
 
 
@@ -2418,7 +2671,9 @@ async function loadStudent() {
 
             const errorData =
                 await response.json()
-                .catch(() => ({}));
+                .catch(
+                    () => ({})
+                );
 
 
             throw new Error(
@@ -2437,18 +2692,13 @@ async function loadStudent() {
             student;
 
 
-        /*
-           Display data
-        */
+        displayStudent(
+            student
+        );
 
-        displayStudent(student);
-
-
-        /*
-           Fill edit form
-        */
 
         loadEditForm();
+        loadNotifications();
 
 
     } catch (error) {
@@ -2470,12 +2720,39 @@ async function loadStudent() {
 }
 
 
+function setText(id, value) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.textContent = value == null ? "" : value;
+    }
+}
+
+
 /* ============================================================
    DISPLAY STUDENT DATA
 ============================================================ */
 
 function displayStudent(student) {
 
+    const homeName = document.getElementById("homeStudentName");
+    const homeEmail = document.getElementById("homeStudentEmail");
+    const homeInitial = document.getElementById("homeProfileInitial");
+    const homeImage = document.getElementById("homeProfileImage");
+    const homeStatus = document.getElementById("homePlacementStatusText");
+
+    if (homeName) homeName.textContent = student.fullName || "Student";
+    if (homeEmail) homeEmail.textContent = student.email || "student@email.com";
+    if (homeInitial) homeInitial.textContent = (student.fullName || "S").trim().charAt(0).toUpperCase();
+
+    if (homeImage && student.profilePhoto) {
+        homeImage.src = buildFileUrl(student.profilePhoto);
+        homeImage.style.display = "block";
+        if (homeInitial) homeInitial.style.display = "none";
+    }
+
+    if (homeStatus) {
+        homeStatus.textContent = student.placementStatus || "Not Placed";
+    }
 
     const name =
         student.fullName ||
@@ -2498,71 +2775,44 @@ function displayStudent(student) {
        Sidebar
     */
 
-    document.getElementById(
-        "sideStudentName"
-    ).textContent =
-        name;
+    setText("sideStudentName", name);
 
 
-    document.getElementById(
-        "sideStudentEmail"
-    ).textContent =
-        email;
+    setText("sideStudentEmail", email);
 
 
     /*
        Welcome
     */
 
-    document.getElementById(
-        "studentName"
-    ).textContent =
-        name;
+    setText("studentName", name);
 
 
     /*
        Profile header
     */
 
-    document.getElementById(
-        "profileHeaderName"
-    ).textContent =
-        name;
+    setText("profileHeaderName", name);
 
 
-    document.getElementById(
-        "profileHeaderEmail"
-    ).textContent =
-        email;
+    setText("profileHeaderEmail", email);
 
 
-    document.getElementById(
-        "profileHeaderStudentId"
-    ).textContent =
-        "Student ID: " +
-        (student.studentId || "-");
+    setText("profileHeaderStudentId", "Student ID: " +
+        (student.studentId || "-"));
 
 
     /*
        Initials
     */
 
-    document.getElementById(
-        "profileInitialText"
-    ).textContent =
-        initial;
+    setText("profileInitialText", initial);
 
 
-    document.getElementById(
-        "largeProfileInitial"
-    ).textContent =
-        initial;
+    setText("largeProfileInitial", initial);
 
 
-    document.getElementById(
-        "editPhotoInitial"
-    ).textContent =
-        initial;
+    setText("editPhotoInitial", initial);
 
 
     /*
@@ -2720,19 +2970,30 @@ function displayStudent(student) {
 
     if (student.resumeUrl) {
 
+        const resumeUrl =
+            buildFileUrl(
+                student.resumeUrl
+            );
+
+
         resumeElement.innerHTML =
             `<a
-                href="${escapeAttribute(student.resumeUrl)}"
+                href="${escapeAttribute(resumeUrl)}"
                 target="_blank"
                 rel="noopener noreferrer"
-                style="color:#1455a0;font-weight:bold;text-decoration:none;">
-                View Resume
+                style="
+                    color:#1455a0;
+                    font-weight:bold;
+                    text-decoration:none;
+                ">
+                📄 View Resume
             </a>`;
 
     } else {
 
-        resumeElement.textContent =
-            "-";
+        if (resumeElement) {
+            resumeElement.textContent = "-";
+        }
 
     }
 
@@ -2816,8 +3077,14 @@ function formatDate(dateValue) {
         new Date(dateValue);
 
 
-    if (isNaN(date.getTime())) {
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
         return dateValue;
+
     }
 
 
@@ -2850,10 +3117,6 @@ function formatSkills(skills) {
 
     }
 
-
-    /*
-       MySQL may return JSON string
-    */
 
     if (
         typeof skills === "string" &&
@@ -2897,7 +3160,6 @@ function updateProfileImages(
     initial
 ) {
 
-
     const sidebarImage =
         document.getElementById(
             "sidebarProfileImage"
@@ -2934,10 +3196,6 @@ function updateProfileImages(
         );
 
 
-    /*
-       No photo
-    */
-
     if (!profilePhoto) {
 
         sidebarImage.style.display =
@@ -2966,12 +3224,18 @@ function updateProfileImages(
     }
 
 
+    const imageUrl =
+        buildFileUrl(
+            profilePhoto
+        );
+
+
     /*
        Sidebar image
     */
 
     sidebarImage.src =
-        profilePhoto;
+        imageUrl;
 
 
     sidebarImage.onload =
@@ -3003,7 +3267,7 @@ function updateProfileImages(
     */
 
     profilePageImage.src =
-        profilePhoto;
+        imageUrl;
 
 
     profilePageImage.onload =
@@ -3035,7 +3299,7 @@ function updateProfileImages(
     */
 
     editImage.src =
-        profilePhoto;
+        imageUrl;
 
 
     editImage.onload =
@@ -3070,34 +3334,21 @@ function updateProfileImages(
 
 function updatePlacementStatus(student) {
 
-
     const placementStatus =
         student.placementStatus ||
         "Not Placed";
 
 
-    document.getElementById(
-        "dashboardStatus"
-    ).textContent =
-        placementStatus;
+    setText("dashboardStatus", placementStatus);
 
 
-    document.getElementById(
-        "statusText"
-    ).textContent =
-        placementStatus;
+    setText("statusText", placementStatus);
 
 
-    document.getElementById(
-        "placementStatusLarge"
-    ).textContent =
-        placementStatus;
+    setText("placementStatusLarge", placementStatus);
 
 
-    document.getElementById(
-        "placementStatusBadge"
-    ).textContent =
-        placementStatus;
+    setText("placementStatusBadge", placementStatus);
 
 
     const badge =
@@ -3105,28 +3356,18 @@ function updatePlacementStatus(student) {
             "placementStatusBadge"
         );
 
-
-    if (
-        placementStatus.toLowerCase()
-        === "placed"
-    ) {
-
-        badge.classList.add(
-            "placed"
-        );
-
-    } else {
-
-        badge.classList.remove(
-            "placed"
-        );
-
+    if (badge) {
+        if (
+            placementStatus
+                .toLowerCase()
+                === "placed"
+        ) {
+            badge.classList.add("placed");
+        } else {
+            badge.classList.remove("placed");
+        }
     }
 
-
-    /*
-       Company information
-    */
 
     const companyText =
         document.getElementById(
@@ -3148,39 +3389,50 @@ function updatePlacementStatus(student) {
 
     if (student.placedCompany) {
 
-        companyText.textContent =
-            "Placed at " +
-            student.placedCompany;
+        if (companyText) {
+            companyText.textContent =
+                "Placed at " +
+                student.placedCompany;
+        }
 
 
-        placementDetails.textContent =
-            "Congratulations! You have been placed at " +
-            student.placedCompany +
-            ".";
+        if (placementDetails) {
+            placementDetails.textContent =
+                "Congratulations! You have been placed at " +
+                student.placedCompany +
+                ".";
+        }
 
 
         if (student.packageOffered) {
 
-            packageDetails.textContent =
-                "Package Offered: " +
-                student.packageOffered;
+            if (packageDetails) {
+                packageDetails.textContent =
+                    "Package Offered: " +
+                    student.packageOffered;
+            }
 
         } else {
 
-            packageDetails.textContent =
-                "";
+            if (packageDetails) {
+                packageDetails.textContent = "";
+            }
 
         }
 
     } else {
 
-        companyText.textContent =
-            "You have not been placed yet.";
+        if (companyText) {
+            companyText.textContent =
+                "You have not been placed yet.";
+        }
 
 
-        placementDetails.textContent =
-            "Your placement information will appear here " +
-            "after a successful placement.";
+        if (placementDetails) {
+            placementDetails.textContent =
+                "Your placement information will appear here " +
+                "after a successful placement.";
+        }
 
 
         packageDetails.textContent =
@@ -3196,7 +3448,6 @@ function updatePlacementStatus(student) {
 ============================================================ */
 
 function calculateProfileCompletion(student) {
-
 
     const fields = [
 
@@ -3224,28 +3475,29 @@ function calculateProfileCompletion(student) {
 
 
     const completed =
-        fields.filter(function(value) {
+        fields.filter(
+            function(value) {
 
-            return (
-                value !== null &&
-                value !== undefined &&
-                value !== ""
-            );
+                return (
+                    value !== null &&
+                    value !== undefined &&
+                    value !== ""
+                );
 
-        }).length;
+            }
+        ).length;
 
 
     const percentage =
         Math.round(
-            (completed / fields.length) *
-            100
+            (
+                completed /
+                fields.length
+            ) * 100
         );
 
 
-    document.getElementById(
-        "profileCompletion"
-    ).textContent =
-        percentage + "%";
+    setText("profileCompletion", percentage + "%");
 
 }
 
@@ -3297,7 +3549,9 @@ function loadEditForm() {
 
     setInput(
         "editDob",
-        formatDateForInput(student.dob)
+        formatDateForInput(
+            student.dob
+        )
     );
 
 
@@ -3350,20 +3604,10 @@ function loadEditForm() {
 
 
     setInput(
-        "editProfilePhoto",
-        student.profilePhoto
-    );
-
-
-    setInput(
-        "editResumeUrl",
-        student.resumeUrl
-    );
-
-
-    setInput(
         "editSkills",
-        formatSkillsForInput(student.skills)
+        formatSkillsForInput(
+            student.skills
+        )
     );
 
 
@@ -3386,10 +3630,67 @@ function loadEditForm() {
 
 
     /*
-       Update preview
+       File inputs cannot be filled
+       automatically by JavaScript for security.
     */
 
-    previewProfilePhoto();
+    const photoInput =
+        document.getElementById(
+            "editProfilePhoto"
+        );
+
+
+    const resumeInput =
+        document.getElementById(
+            "editResume"
+        );
+
+
+    if (photoInput) {
+        photoInput.value = "";
+    }
+
+
+    if (resumeInput) {
+        resumeInput.value = "";
+    }
+
+
+    const selectedPhotoName =
+        document.getElementById(
+            "selectedPhotoName"
+        );
+
+
+    const selectedResumeName =
+        document.getElementById(
+            "selectedResumeName"
+        );
+
+
+    if (selectedPhotoName) {
+        selectedPhotoName.textContent = "";
+    }
+
+
+    if (selectedResumeName) {
+        selectedResumeName.textContent = "";
+    }
+
+
+    /*
+       Update current photo preview.
+    */
+
+    updateProfileImages(
+        student.profilePhoto,
+        (
+            student.fullName ||
+            "S"
+        )
+            .charAt(0)
+            .toUpperCase()
+    );
 
 }
 
@@ -3431,7 +3732,9 @@ function formatDateForInput(dateValue) {
 
     if (
         typeof dateValue === "string" &&
-        /^\d{4}-\d{2}-\d{2}$/.test(dateValue)
+        /^\d{4}-\d{2}-\d{2}$/.test(
+            dateValue
+        )
     ) {
 
         return dateValue;
@@ -3443,8 +3746,14 @@ function formatDateForInput(dateValue) {
         new Date(dateValue);
 
 
-    if (isNaN(date.getTime())) {
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
         return "";
+
     }
 
 
@@ -3501,15 +3810,15 @@ function formatSkillsForInput(skills) {
 
 
 /* ============================================================
-   PROFILE PHOTO PREVIEW
+   PROFILE PHOTO FILE PREVIEW
 ============================================================ */
 
-function previewProfilePhoto() {
+function previewProfilePhotoFile() {
 
-    const url =
+    const input =
         document.getElementById(
             "editProfilePhoto"
-        ).value.trim();
+        );
 
 
     const image =
@@ -3524,21 +3833,96 @@ function previewProfilePhoto() {
         );
 
 
-    if (!url) {
+    const selectedName =
+        document.getElementById(
+            "selectedPhotoName"
+        );
 
-        image.style.display =
-            "none";
 
-        initial.style.display =
-            "block";
+    if (
+        !input ||
+        !input.files ||
+        !input.files[0]
+    ) {
 
         return;
 
     }
 
 
+    const file =
+        input.files[0];
+
+
+    const allowedTypes = [
+        "image/png",
+        "image/jpeg"
+    ];
+
+
+    const extension =
+        file.name
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    if (
+        !allowedTypes.includes(
+            file.type
+        ) ||
+        !["png", "jpg", "jpeg"].includes(
+            extension
+        )
+    ) {
+
+        input.value = "";
+
+        if (selectedName) selectedName.textContent = "";
+
+        showMessage(
+            "Please select a PNG, JPG or JPEG image.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        file.size >
+        10 * 1024 * 1024
+    ) {
+
+        input.value = "";
+
+        if (selectedName) selectedName.textContent = "";
+
+        showMessage(
+            "Profile photo must be smaller than 10 MB.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if (selectedName) {
+        selectedName.textContent =
+            "Selected: " + file.name;
+    }
+
+
+    const objectUrl =
+        URL.createObjectURL(
+            file
+        );
+
+
     image.src =
-        url;
+        objectUrl;
 
 
     image.onload =
@@ -3550,19 +3934,220 @@ function previewProfilePhoto() {
             initial.style.display =
                 "none";
 
-        };
-
-
-    image.onerror =
-        function() {
-
-            image.style.display =
-                "none";
-
-            initial.style.display =
-                "block";
+            URL.revokeObjectURL(
+                objectUrl
+            );
 
         };
+
+}
+
+
+/* ============================================================
+   RESUME FILE VALIDATION
+============================================================ */
+
+function validateResumeFile() {
+
+    const input =
+        document.getElementById(
+            "editResume"
+        );
+
+
+    const selectedName =
+        document.getElementById(
+            "selectedResumeName"
+        );
+
+
+    if (
+        !input ||
+        !input.files ||
+        !input.files[0]
+    ) {
+
+        return true;
+
+    }
+
+
+    const file =
+        input.files[0];
+
+
+    const extension =
+        file.name
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    const allowedExtensions = [
+        "pdf",
+        "doc",
+        "docx"
+    ];
+
+
+    if (
+        !allowedExtensions.includes(
+            extension
+        )
+    ) {
+
+        input.value = "";
+
+        if (selectedName) selectedName.textContent = "";
+
+        showMessage(
+            "Please select a PDF, DOC or DOCX resume.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if (
+        file.size >
+        10 * 1024 * 1024
+    ) {
+
+        input.value = "";
+
+        if (selectedName) selectedName.textContent = "";
+
+        showMessage(
+            "Resume must be smaller than 10 MB.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if (selectedName) {
+        selectedName.textContent =
+            "Selected: " + file.name;
+    }
+
+
+    return true;
+
+}
+
+
+/* ============================================================
+   UPLOAD PROFILE PHOTO
+============================================================ */
+
+async function uploadProfilePhoto(
+    studentId,
+    file
+) {
+
+    const formData =
+        new FormData();
+
+
+    formData.append(
+        "file",
+        file
+    );
+
+
+    const response =
+        await fetch(
+            API_URL +
+            "/students/" +
+            encodeURIComponent(
+                studentId
+            ) +
+            "/profile-photo",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+
+    const data =
+        await response.json()
+        .catch(
+            () => ({})
+        );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            data.message ||
+            "Profile photo upload failed."
+        );
+
+    }
+
+
+    return data;
+
+}
+
+
+/* ============================================================
+   UPLOAD RESUME
+============================================================ */
+
+async function uploadResume(
+    studentId,
+    file
+) {
+
+    const formData =
+        new FormData();
+
+
+    formData.append(
+        "file",
+        file
+    );
+
+
+    const response =
+        await fetch(
+            API_URL +
+            "/students/" +
+            encodeURIComponent(
+                studentId
+            ) +
+            "/resume",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+
+    const data =
+        await response.json()
+        .catch(
+            () => ({})
+        );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            data.message ||
+            "Resume upload failed."
+        );
+
+    }
+
+
+    return data;
 
 }
 
@@ -3610,44 +4195,88 @@ async function saveProfile(event) {
 
     const fullName =
         document
-            .getElementById("editFullName")
+            .getElementById(
+                "editFullName"
+            )
             .value
             .trim();
 
 
     const email =
         document
-            .getElementById("editEmail")
+            .getElementById(
+                "editEmail"
+            )
             .value
             .trim();
 
 
     const username =
         document
-            .getElementById("editUsername")
+            .getElementById(
+                "editUsername"
+            )
             .value
             .trim();
 
 
     const mobile =
         document
-            .getElementById("editMobile")
+            .getElementById(
+                "editMobile"
+            )
             .value
             .trim();
 
 
     const cgpaValue =
         document
-            .getElementById("editCgpa")
+            .getElementById(
+                "editCgpa"
+            )
             .value
             .trim();
+
+
+    /*
+       File inputs
+    */
+
+    const photoInput =
+        document.getElementById(
+            "editProfilePhoto"
+        );
+
+
+    const resumeInput =
+        document.getElementById(
+            "editResume"
+        );
+
+
+    const photoFile =
+        photoInput &&
+        photoInput.files.length > 0
+            ? photoInput.files[0]
+            : null;
+
+
+    const resumeFile =
+        resumeInput &&
+        resumeInput.files.length > 0
+            ? resumeInput.files[0]
+            : null;
 
 
     /*
        Validation
     */
 
-    if (!fullName || !email || !username) {
+    if (
+        !fullName ||
+        !email ||
+        !username
+    ) {
 
         showMessage(
             "Full name, email and username are required.",
@@ -3661,7 +4290,9 @@ async function saveProfile(event) {
 
     if (
         mobile &&
-        !/^[0-9]{10}$/.test(mobile)
+        !/^[0-9]{10}$/.test(
+            mobile
+        )
     ) {
 
         showMessage(
@@ -3699,12 +4330,81 @@ async function saveProfile(event) {
 
 
     /*
+       Validate selected photo
+    */
+
+    if (photoFile) {
+
+        const extension =
+            photoFile.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+        if (
+            ![
+                "png",
+                "jpg",
+                "jpeg"
+            ].includes(
+                extension
+            )
+        ) {
+
+            showMessage(
+                "Profile photo must be PNG, JPG or JPEG.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            photoFile.size >
+            10 * 1024 * 1024
+        ) {
+
+            showMessage(
+                "Profile photo must be smaller than 10 MB.",
+                "error"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /*
+       Validate selected resume
+    */
+
+    if (resumeFile) {
+
+        if (
+            !validateResumeFile()
+        ) {
+
+            return;
+
+        }
+
+    }
+
+
+    /*
        Skills
     */
 
     const skillsInput =
         document
-            .getElementById("editSkills")
+            .getElementById(
+                "editSkills"
+            )
             .value
             .trim();
 
@@ -3717,149 +4417,253 @@ async function saveProfile(event) {
         skills =
             skillsInput
                 .split(",")
-                .map(function(skill) {
+                .map(
+                    function(skill) {
 
-                    return skill.trim();
+                        return skill.trim();
 
-                })
-                .filter(Boolean);
+                    }
+                )
+                .filter(
+                    Boolean
+                );
 
     }
 
 
-    /*
-       Build request
-    */
-
-    const payload = {
-
-        studentId:
-            currentStudent.studentId,
-
-        fullName:
-            fullName,
-
-        email:
-            email,
-
-        username:
-            username,
-
-        mobile:
-            mobile || null,
-
-        gender:
-            document
-                .getElementById("editGender")
-                .value || null,
-
-        dob:
-            document
-                .getElementById("editDob")
-                .value || null,
-
-        address:
-            document
-                .getElementById("editAddress")
-                .value
-                .trim() || null,
-
-        city:
-            document
-                .getElementById("editCity")
-                .value
-                .trim() || null,
-
-        state:
-            document
-                .getElementById("editState")
-                .value
-                .trim() || null,
-
-        department:
-            document
-                .getElementById("editDepartment")
-                .value
-                .trim() || null,
-
-        course:
-            document
-                .getElementById("editCourse")
-                .value
-                .trim() || null,
-
-        academicYear:
-            document
-                .getElementById("editAcademicYear")
-                .value
-                .trim() || null,
-
-        admissionYear:
-            document
-                .getElementById("editAdmissionYear")
-                .value
-                .trim() || null,
-
-        graduationYear:
-            document
-                .getElementById("editGraduationYear")
-                .value
-                .trim() || null,
-
-        tenthPercentage:
-            document
-                .getElementById("editTenth")
-                .value || null,
-
-        twelfthPercentage:
-            document
-                .getElementById("editTwelfth")
-                .value || null,
-
-        cgpa:
-            cgpaValue || null,
-
-        skills:
-            skills,
-
-        resumeUrl:
-            document
-                .getElementById("editResumeUrl")
-                .value
-                .trim() || null,
-
-        profilePhoto:
-            document
-                .getElementById("editProfilePhoto")
-                .value
-                .trim() || null,
+    try {
 
         /*
-           Preserve placement data.
+           Disable save button while saving.
         */
 
-        placementStatus:
-            currentStudent.placementStatus ||
-            "Not Placed",
-
-        placedCompany:
-            currentStudent.placedCompany ||
-            null,
-
-        packageOffered:
-            currentStudent.packageOffered ||
-            null
-
-    };
+        const saveButton =
+            document.querySelector(
+                "#editProfileForm .save-btn"
+            );
 
 
-    try {
+        if (saveButton) {
+
+            saveButton.disabled =
+                true;
+
+            saveButton.textContent =
+                "Saving...";
+
+        }
+
+
+        /*
+           Upload profile photo first.
+        */
+
+        if (photoFile) {
+
+            showMessage(
+                "Uploading profile photo...",
+                "success"
+            );
+
+
+            await uploadProfilePhoto(
+                studentId,
+                photoFile
+            );
+
+        }
+
+
+        /*
+           Upload resume.
+        */
+
+        if (resumeFile) {
+
+            showMessage(
+                "Uploading resume...",
+                "success"
+            );
+
+
+            await uploadResume(
+                studentId,
+                resumeFile
+            );
+
+        }
+
+
+        /*
+           Build profile update payload.
+           Do not send profilePhoto/resumeUrl here.
+           Backend keeps the uploaded paths.
+        */
+
+        const payload = {
+
+            studentId:
+                currentStudent.studentId,
+
+            fullName:
+                fullName,
+
+            email:
+                email,
+
+            username:
+                username,
+
+            mobile:
+                mobile || null,
+
+            gender:
+                document
+                    .getElementById(
+                        "editGender"
+                    )
+                    .value ||
+                null,
+
+            dob:
+                document
+                    .getElementById(
+                        "editDob"
+                    )
+                    .value ||
+                null,
+
+            address:
+                document
+                    .getElementById(
+                        "editAddress"
+                    )
+                    .value
+                    .trim() ||
+                null,
+
+            city:
+                document
+                    .getElementById(
+                        "editCity"
+                    )
+                    .value
+                    .trim() ||
+                null,
+
+            state:
+                document
+                    .getElementById(
+                        "editState"
+                    )
+                    .value
+                    .trim() ||
+                null,
+
+            department:
+                document
+                    .getElementById(
+                        "editDepartment"
+                    )
+                    .value
+                    .trim() ||
+                null,
+
+            course:
+                document
+                    .getElementById(
+                        "editCourse"
+                    )
+                    .value
+                    .trim() ||
+                null,
+
+            academicYear:
+                document
+                    .getElementById(
+                        "editAcademicYear"
+                    )
+                    .value
+                    .trim() ||
+                null,
+
+            admissionYear:
+                document
+                    .getElementById(
+                        "editAdmissionYear"
+                    )
+                    .value
+                    .trim() ||
+                null,
+
+            graduationYear:
+                document
+                    .getElementById(
+                        "editGraduationYear"
+                    )
+                    .value
+                    .trim() ||
+                null,
+
+            tenthPercentage:
+                document
+                    .getElementById(
+                        "editTenth"
+                    )
+                    .value ||
+                null,
+
+            twelfthPercentage:
+                document
+                    .getElementById(
+                        "editTwelfth"
+                    )
+                    .value ||
+                null,
+
+            cgpa:
+                cgpaValue ||
+                null,
+
+            skills:
+                skills,
+
+            /*
+               Preserve placement data.
+            */
+
+            placementStatus:
+                currentStudent.placementStatus ||
+                "Not Placed",
+
+            placedCompany:
+                currentStudent.placedCompany ||
+                null,
+
+            packageOffered:
+                currentStudent.packageOffered ||
+                null
+
+        };
+
+
+        /*
+           Update normal profile fields.
+        */
+
+        showMessage(
+            "Updating profile...",
+            "success"
+        );
+
 
         const response =
             await fetch(
                 API_URL +
                 "/students/" +
-                encodeURIComponent(studentId),
+                encodeURIComponent(
+                    studentId
+                ),
                 {
                     method: "PUT",
 
@@ -3869,14 +4673,19 @@ async function saveProfile(event) {
                     },
 
                     body:
-                        JSON.stringify(payload)
+                        JSON.stringify(
+                            payload
+                        )
 
                 }
             );
 
 
         const data =
-            await response.json();
+            await response.json()
+            .catch(
+                () => ({})
+            );
 
 
         if (!response.ok) {
@@ -3890,31 +4699,35 @@ async function saveProfile(event) {
 
 
         /*
-           Backend returns:
-           {
-              status: success,
-              student: updatedStudent
-           }
+           Reload latest student data
+           from backend.
         */
 
-        if (data.student) {
+        const studentResponse =
+            await fetch(
+                API_URL +
+                "/students/" +
+                encodeURIComponent(
+                    studentId
+                )
+            );
 
-            currentStudent =
-                data.student;
 
-        } else {
+        if (!studentResponse.ok) {
 
-            /*
-               Fallback: reload from API
-            */
-
-            await loadStudent();
+            throw new Error(
+                "Profile updated, but latest student data could not be loaded."
+            );
 
         }
 
 
+        currentStudent =
+            await studentResponse.json();
+
+
         /*
-           Update page
+           Update page.
         */
 
         displayStudent(
@@ -3923,12 +4736,32 @@ async function saveProfile(event) {
 
 
         /*
-           Update localStorage studentUser
+           Update localStorage.
         */
 
         updateStoredUser(
             currentStudent
         );
+
+
+        /*
+           Clear selected files.
+        */
+
+        if (photoInput) {
+            photoInput.value = "";
+        }
+
+
+        if (resumeInput) {
+            resumeInput.value = "";
+        }
+
+
+        setText("selectedPhotoName", "");
+
+
+        setText("selectedResumeName", "");
 
 
         showMessage(
@@ -3938,23 +4771,26 @@ async function saveProfile(event) {
 
 
         /*
-           Go to profile
+           Go to My Profile.
         */
 
-        setTimeout(function() {
+        setTimeout(
+            function() {
 
-            const profileButton =
-                document.querySelector(
-                    ".menu button:nth-child(2)"
+                const profileButton =
+                    document.querySelector(
+                        ".menu li:nth-child(2) button"
+                    );
+
+
+                showSection(
+                    "profile",
+                    profileButton
                 );
 
-
-            showSection(
-                "profile",
-                profileButton
-            );
-
-        }, 500);
+            },
+            700
+        );
 
 
     } catch (error) {
@@ -3970,6 +4806,28 @@ async function saveProfile(event) {
             "Unable to update profile.",
             "error"
         );
+
+    } finally {
+
+        /*
+           Enable save button again.
+        */
+
+        const saveButton =
+            document.querySelector(
+                "#editProfileForm .save-btn"
+            );
+
+
+        if (saveButton) {
+
+            saveButton.disabled =
+                false;
+
+            saveButton.textContent =
+                "💾 Save Changes";
+
+        }
 
     }
 
@@ -4001,17 +4859,22 @@ function updateStoredUser(student) {
             user.id =
                 student.id;
 
+
             user.studentId =
                 student.studentId;
+
 
             user.fullName =
                 student.fullName;
 
+
             user.email =
                 student.email;
 
+
             user.username =
                 student.username;
+
 
             user.role =
                 "student";
@@ -4019,13 +4882,17 @@ function updateStoredUser(student) {
 
             localStorage.setItem(
                 "studentUser",
-                JSON.stringify(user)
+                JSON.stringify(
+                    user
+                )
             );
 
 
             localStorage.setItem(
                 "user",
-                JSON.stringify(user)
+                JSON.stringify(
+                    user
+                )
             );
 
 
@@ -4052,18 +4919,19 @@ function showSection(
     button
 ) {
 
-
     document
         .querySelectorAll(
             ".content-section"
         )
-        .forEach(function(section) {
+        .forEach(
+            function(section) {
 
-            section.classList.remove(
-                "active"
-            );
+                section.classList.remove(
+                    "active"
+                );
 
-        });
+            }
+        );
 
 
     const target =
@@ -4085,13 +4953,15 @@ function showSection(
         .querySelectorAll(
             ".menu button"
         )
-        .forEach(function(btn) {
+        .forEach(
+            function(btn) {
 
-            btn.classList.remove(
-                "active"
-            );
+                btn.classList.remove(
+                    "active"
+                );
 
-        });
+            }
+        );
 
 
     if (button) {
@@ -4103,19 +4973,159 @@ function showSection(
     }
 
 
-    /*
-       If edit profile opened,
-       refresh its fields.
-    */
-
     if (
-        sectionId === "editProfile"
+        sectionId ===
+        "editProfile"
     ) {
 
         loadEditForm();
 
     }
 
+}
+
+
+async function loadPlacementDrives() {
+
+    const list = document.getElementById("studentDrivesList");
+
+    if (!list) {
+        return;
+    }
+
+    list.innerHTML = "<p>Loading placement drives...</p>";
+
+    try {
+        const response = await fetch(API_URL + "/placement-drives");
+        const data = await response.json().catch(function() {
+            return [];
+        });
+
+        if (!response.ok) {
+            throw new Error(data.message || "Unable to load placement drives");
+        }
+
+        const drives = Array.isArray(data)
+            ? data
+            : (data.drives || []);
+
+        if (!drives.length) {
+            list.innerHTML = "<p>No placement drives are available right now.</p>";
+            return;
+        }
+
+        list.innerHTML = drives.map(function(drive) {
+            const driveId = Number(drive.id);
+            return `
+                <article class="drive-item">
+                    <h3>${escapeHtml(drive.jobTitle || "Placement Opportunity")}</h3>
+                    <p>${escapeHtml(drive.jobDescription || "No job description available.")}</p>
+                    <div class="drive-meta">
+                        <span class="drive-status">${escapeHtml(drive.status || "Open")}</span>
+                        <span>📅 ${escapeHtml(formatDate(drive.driveDate))}</span>
+                        <span>💰 ${escapeHtml(drive.packageOffered || "-")}</span>
+                        <span>💼 ${escapeHtml(drive.jobType || "-")}</span>
+                    </div>
+                    <p><strong>Company:</strong> ${escapeHtml(drive.companyName || "-")}</p>
+                    <p><strong>Location:</strong> ${escapeHtml(drive.location || "-")}</p>
+                    <p><strong>Eligibility:</strong> ${escapeHtml(drive.eligibility || "-")}</p>
+                    <p><strong>Deadline:</strong> ${escapeHtml(formatDate(drive.applicationDeadline))}</p>
+                    <button
+                        class="drive-apply-btn"
+                        onclick="applyForDrive(${driveId}, this)">
+                        Apply
+                    </button>
+                </article>
+            `;
+        }).join("");
+
+    } catch (error) {
+        list.innerHTML = `<p>${escapeHtml(error.message || "Unable to load placement drives.")}</p>`;
+    }
+
+}
+
+
+async function applyForDrive(driveId, button) {
+
+    const studentId = currentStudent && currentStudent.id;
+
+    if (!studentId) {
+        showMessage("Please login as a student first.", "error");
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Applying...";
+
+    try {
+        const response = await fetch(API_URL + "/applications", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                studentId: studentId,
+                driveId: driveId
+            })
+        });
+
+        const data = await response.json().catch(function() {
+            return {};
+        });
+
+        if (!response.ok) {
+            throw new Error(data.message || "Unable to submit application.");
+        }
+
+        button.textContent = "Applied";
+        button.disabled = true;
+        showMessage(data.message || "Application submitted successfully.");
+
+    } catch (error) {
+        button.disabled = false;
+        button.textContent = "Apply";
+        showMessage(error.message || "Unable to submit application.", "error");
+    }
+
+}
+
+
+/* ============================================================
+   JOB PORTAL HOME SEARCH
+============================================================ */
+
+function searchHomeOpportunities() {
+    const job = (document.getElementById("homeJobSearch")?.value || "").trim().toLowerCase();
+    const location = (document.getElementById("homeLocationSearch")?.value || "").trim().toLowerCase();
+
+    if (!job && !location) {
+        showSection("companies");
+        loadPlacementDrives();
+        return;
+    }
+
+    showSection("companies");
+    loadPlacementDrives().then(function() {
+        const items = document.querySelectorAll("#studentDrivesList .drive-item");
+        let visible = 0;
+
+        items.forEach(function(item) {
+            const text = item.textContent.toLowerCase();
+            const matchesJob = !job || text.includes(job);
+            const matchesLocation = !location || text.includes(location);
+            const show = matchesJob && matchesLocation;
+            item.style.display = show ? "block" : "none";
+            if (show) visible++;
+        });
+
+        if (!visible) {
+            const list = document.getElementById("studentDrivesList");
+            if (list) {
+                list.insertAdjacentHTML("afterbegin", '<p id="homeSearchEmpty">No matching opportunities found.</p>');
+            }
+        }
+    });
 }
 
 
@@ -4139,7 +5149,6 @@ function logout() {
         "user"
     );
 
-
     window.location.href =
         "login.html";
 
@@ -4150,6 +5159,19 @@ function logout() {
    ESCAPE HTML ATTRIBUTE
 ============================================================ */
 
+function escapeHtml(value) {
+
+    const element = document.createElement("div");
+
+    element.textContent =
+        value == null
+            ? ""
+            : String(value);
+
+    return element.innerHTML;
+
+}
+
 function escapeAttribute(value) {
 
     if (!value) {
@@ -4158,12 +5180,48 @@ function escapeAttribute(value) {
 
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/"/g, "&quot;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        );
 
 }
+
+
+/* ============================================================
+   FILE INPUT EVENTS
+============================================================ */
+
+document
+    .getElementById(
+        "editProfilePhoto"
+    )
+    .addEventListener(
+        "change",
+        previewProfilePhotoFile
+    );
+
+
+document
+    .getElementById(
+        "editResume"
+    )
+    .addEventListener(
+        "change",
+        validateResumeFile
+    );
 
 
 /* ============================================================

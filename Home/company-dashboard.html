@@ -1,0 +1,4187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Company Dashboard | VIVEKANAND COLLEGE PLACEMENT CELL</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#222;
+}
+
+.navbar{
+    height:70px;
+    background:#0b1f3a;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#ffb703;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logout-btn{
+    border:none;
+    background:#ffb703;
+    color:#111;
+    padding:10px 22px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:white;
+    color:#0b1f3a;
+}
+
+.dashboard{
+    display:flex;
+    min-height:calc(100vh - 70px);
+}
+
+.sidebar{
+    width:255px;
+    background:#102b4c;
+    color:white;
+    padding:30px 15px;
+    flex-shrink:0;
+}
+
+.company-mini-profile{
+    text-align:center;
+    padding-bottom:25px;
+    margin-bottom:20px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.company-logo,
+.large-company-logo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    font-weight:bold;
+}
+
+.company-logo{
+    width:82px;
+    height:82px;
+    margin:0 auto 12px;
+    border-radius:50%;
+    background:#ffb703;
+    color:#0b1f3a;
+    font-size:30px;
+}
+
+.company-logo img,
+.large-company-logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:none;
+}
+
+.company-mini-profile h3{
+    font-size:17px;
+    margin-bottom:5px;
+}
+
+.company-mini-profile p{
+    color:#b9c8d9;
+    font-size:12px;
+    word-break:break-word;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    margin-bottom:8px;
+}
+
+.menu button{
+    width:100%;
+    padding:13px 15px;
+    border:none;
+    background:transparent;
+    color:#dbe5f2;
+    text-align:left;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+}
+
+.menu button:hover,
+.menu button.active{
+    background:#ffb703;
+    color:#111;
+    font-weight:bold;
+}
+
+.main-content{
+    flex:1;
+    padding:35px 5%;
+    overflow:hidden;
+}
+
+.content-section{
+    display:none;
+}
+
+.content-section.active{
+    display:block;
+}
+
+.section-title{
+    color:#0b1f3a;
+    margin-bottom:20px;
+    font-size:25px;
+}
+
+.section-subtitle{
+    color:#777;
+    margin-top:-12px;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.welcome{
+    background:linear-gradient(135deg,#1455a0,#0b1f3a);
+    color:white;
+    padding:32px;
+    border-radius:18px;
+    margin-bottom:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.welcome h1{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.welcome h1 span{
+    color:#ffb703;
+}
+
+.welcome p{
+    color:#dbe5f2;
+    line-height:1.6;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.stat-card{
+    background:white;
+    padding:24px;
+    border-radius:15px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-4px);
+}
+
+.stat-icon{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.stat-card h3{
+    color:#0b1f3a;
+    font-size:26px;
+    margin-bottom:5px;
+}
+
+.stat-card p{
+    color:#777;
+    font-size:13px;
+}
+
+.card{
+    background:white;
+    padding:28px;
+    border-radius:15px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+    margin-bottom:25px;
+}
+
+.profile-header{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    padding-bottom:25px;
+    margin-bottom:25px;
+    border-bottom:1px solid #eee;
+}
+
+.large-company-logo{
+    width:105px;
+    height:105px;
+    border-radius:15px;
+    background:#102b4c;
+    color:#ffb703;
+    font-size:38px;
+    flex-shrink:0;
+}
+
+.profile-header h3{
+    color:#0b1f3a;
+    font-size:24px;
+    margin-bottom:7px;
+}
+
+.profile-header p{
+    color:#777;
+    font-size:14px;
+}
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.profile-item{
+    background:#f7f9fc;
+    padding:16px;
+    border-radius:9px;
+}
+
+.profile-item label{
+    display:block;
+    color:#777;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.profile-item strong{
+    color:#0b1f3a;
+    font-size:14px;
+    word-break:break-word;
+}
+
+.primary-btn{
+    border:none;
+    background:#ffb703;
+    color:#111;
+    padding:12px 22px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    background:#0b1f3a;
+    color:white;
+}
+
+.secondary-btn{
+    border:1px solid #1455a0;
+    background:white;
+    color:#1455a0;
+    padding:10px 18px;
+    border-radius:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.secondary-btn:hover{
+    background:#1455a0;
+    color:white;
+}
+
+.danger-btn{
+    border:none;
+    background:#dc3545;
+    color:white;
+    padding:9px 15px;
+    border-radius:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    display:block;
+    color:#26374d;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:12px 13px;
+    border:1px solid #d5dce5;
+    border-radius:8px;
+    background:#f9fafc;
+    outline:none;
+    font-size:14px;
+}
+
+.form-group textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#1455a0;
+    background:white;
+    box-shadow:0 0 0 3px rgba(20,85,160,.1);
+}
+
+.form-actions{
+    margin-top:25px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.top-action{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.drive-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.drive-card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+}
+
+.drive-card h3{
+    color:#0b1f3a;
+    margin-bottom:10px;
+    font-size:21px;
+}
+
+.drive-card p{
+    color:#666;
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:7px;
+}
+
+.drive-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:15px 0;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:20px;
+    background:#eef4fb;
+    color:#1455a0;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.badge.active{
+    background:#e8f7ed;
+    color:#16723b;
+}
+
+.badge.closed{
+    background:#ffe8e8;
+    color:#c62828;
+}
+
+.drive-actions{
+    display:flex;
+    gap:8px;
+    margin-top:18px;
+    flex-wrap:wrap;
+}
+
+.applicants-table-wrap{
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+    overflow:auto;
+}
+
+.applicants-table{
+    width:100%;
+    min-width:1250px;
+    border-collapse:collapse;
+}
+
+.applicants-table th,
+.applicants-table td{
+    padding:12px 14px;
+    border-bottom:1px solid #e7ebf1;
+    text-align:left;
+    vertical-align:top;
+    font-size:13px;
+}
+
+.applicants-table th{
+    background:#0b1f3a;
+    color:white;
+    white-space:nowrap;
+}
+
+.applicants-table td strong{
+    color:#0b1f3a;
+}
+
+.applicant-status{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:14px;
+    background:#fff3cd;
+    color:#856404;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.placement-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.placement-box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+    text-align:center;
+}
+
+.placement-box .number{
+    font-size:32px;
+    font-weight:bold;
+    color:#0b1f3a;
+    margin-bottom:7px;
+}
+
+.placement-box p{
+    color:#777;
+    font-size:13px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:5000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-content{
+    width:100%;
+    max-width:700px;
+    max-height:90vh;
+    overflow-y:auto;
+    background:white;
+    border-radius:18px;
+    padding:30px;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.modal-header h2{
+    color:#0b1f3a;
+}
+
+.close-btn{
+    border:none;
+    background:transparent;
+    font-size:25px;
+    cursor:pointer;
+    color:#777;
+}
+
+.empty-state{
+    background:white;
+    padding:45px 25px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+}
+
+.empty-state .icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.empty-state h3{
+    color:#0b1f3a;
+    margin-bottom:8px;
+}
+
+.empty-state p{
+    color:#777;
+    font-size:14px;
+}
+
+.message{
+    display:none;
+    padding:12px 15px;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-size:13px;
+    text-align:center;
+}
+
+.message.success{
+    display:block;
+    background:#e8f7ed;
+    color:#16723b;
+    border:1px solid #a9dfbc;
+}
+
+.message.error{
+    display:block;
+    background:#ffe8e8;
+    color:#c62828;
+    border:1px solid #f5b5b5;
+}
+
+.loading{
+    padding:30px;
+    text-align:center;
+    color:#777;
+}
+
+@media(max-width:1100px){
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .placement-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:850px){
+
+    .dashboard{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+
+    .menu{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:8px;
+    }
+
+    .menu li{
+        margin:0;
+    }
+
+    .profile-grid,
+    .form-grid,
+    .drive-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:0 4%;
+    }
+
+    .logo{
+        font-size:13px;
+    }
+
+    .main-content{
+        padding:20px 4%;
+    }
+
+    .stats-grid,
+    .placement-grid{
+        grid-template-columns:1fr;
+    }
+
+    .menu{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .welcome h1{
+        font-size:23px;
+    }
+
+    .welcome{
+        padding:25px;
+    }
+
+    .profile-header{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .top-action{
+        align-items:flex-start;
+        gap:15px;
+        flex-direction:column;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        VIVEKANAND
+        <span>COLLEGE PLACEMENT CELL</span>
+    </div>
+
+    <div class="nav-right">
+
+        <button class="logout-btn" onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="dashboard">
+
+
+<aside class="sidebar">
+
+    <div class="company-mini-profile">
+
+        <div class="company-logo">
+
+            <img id="sideLogoImage" alt="Company Logo">
+
+            <span id="sideLogoInitial">C</span>
+
+        </div>
+
+        <h3 id="sideCompanyName">
+            Company
+        </h3>
+
+        <p id="sideCompanyEmail">
+            company@email.com
+        </p>
+
+    </div>
+
+
+    <ul class="menu">
+
+        <li>
+            <button class="active"
+                    onclick="showSection('dashboard',this)">
+                📊 Dashboard
+            </button>
+        </li>
+
+        <li>
+            <button onclick="showSection('profile',this)">
+                🏢 Company Profile
+            </button>
+        </li>
+
+        <li>
+            <button onclick="showSection('editProfile',this)">
+                ✏️ Edit Profile
+            </button>
+        </li>
+
+        <li>
+            <button onclick="showSection('drives',this)">
+                📢 Placement Drives
+            </button>
+        </li>
+
+        <li>
+            <button onclick="showSection('applicants',this)">
+                👨‍🎓 Applicants
+            </button>
+        </li>
+
+        <li>
+            <button onclick="showSection('placementStatus',this)">
+                💼 Placement Status
+            </button>
+        </li>
+
+    </ul>
+
+</aside>
+
+
+<main class="main-content">
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section id="dashboard" class="content-section active">
+
+    <div class="welcome">
+
+        <h1>
+            Welcome,
+            <span id="welcomeCompanyName">Company</span>
+            🏢
+        </h1>
+
+        <p>
+            Manage your company profile, placement drives,
+            student applications and hiring activities
+            from one place.
+        </p>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📢
+            </div>
+
+            <h3 id="totalDrives">
+                0
+            </h3>
+
+            <p>
+                Placement Drives
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                👨‍🎓
+            </div>
+
+            <h3 id="totalApplicants">
+                0
+            </h3>
+
+            <p>
+                Total Applicants
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⭐
+            </div>
+
+            <h3 id="shortlistedCount">
+                0
+            </h3>
+
+            <p>
+                Shortlisted Students
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                💼
+            </div>
+
+            <h3 id="selectedCount">
+                0
+            </h3>
+
+            <p>
+                Students Selected
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <h2 class="section-title">
+        Your Placement Drives
+    </h2>
+
+
+    <div id="dashboardDrives">
+
+        <div class="loading">
+            Loading placement drives...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     COMPANY PROFILE
+===================================================== -->
+
+<section id="profile" class="content-section">
+
+    <h2 class="section-title">
+        Company Profile
+    </h2>
+
+    <p class="section-subtitle">
+        View your registered company information.
+    </p>
+
+
+    <div class="card">
+
+        <div class="profile-header">
+
+            <div class="large-company-logo">
+
+                <img id="largeLogoImage"
+                     alt="Company Logo">
+
+                <span id="largeLogoInitial">
+                    C
+                </span>
+
+            </div>
+
+            <div>
+
+                <h3 id="profileCompanyName">
+                    Company
+                </h3>
+
+                <p id="profileIndustry">
+                    Industry
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-grid">
+
+            <div class="profile-item">
+
+                <label>
+                    Company ID
+                </label>
+
+                <strong id="profileCompanyId">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <label>
+                    Company Name
+                </label>
+
+                <strong id="profileName">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <label>
+                    Email
+                </label>
+
+                <strong id="profileEmail">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <label>
+                    Username
+                </label>
+
+                <strong id="profileUsername">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <label>
+                    Phone
+                </label>
+
+                <strong id="profilePhone">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <label>
+                    Industry
+                </label>
+
+                <strong id="profileIndustryDetails">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <label>
+                    Website
+                </label>
+
+                <strong id="profileWebsite">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <label>
+                    Location
+                </label>
+
+                <strong id="profileLocation">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item"
+                 style="grid-column:1/-1;">
+
+                <label>
+                    Company Description
+                </label>
+
+                <strong id="profileDescription">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <button
+                class="primary-btn"
+                onclick="openEditProfile()">
+
+                ✏️ Edit Company Profile
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EDIT COMPANY PROFILE
+===================================================== -->
+
+<section id="editProfile" class="content-section">
+
+    <h2 class="section-title">
+        Edit Company Profile
+    </h2>
+
+    <p class="section-subtitle">
+        Update your company information.
+    </p>
+
+
+    <div class="card">
+
+        <div id="profileMessage"
+             class="message">
+        </div>
+
+
+        <form id="companyProfileForm"
+              onsubmit="saveCompanyProfile(event)">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Company Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editCompanyName"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Industry
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editIndustry">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="editEmail"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editUsername"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Phone
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editPhone">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Website
+                    </label>
+
+                    <input
+                        type="url"
+                        id="editWebsite"
+                        placeholder="https://example.com">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Company Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editLocation">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Company Description
+                    </label>
+
+                    <textarea
+                        id="editDescription"></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    💾 Save Changes
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="showSectionById('profile')">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PLACEMENT DRIVES
+===================================================== -->
+
+<section id="drives"
+         class="content-section">
+
+
+    <div class="top-action">
+
+        <div>
+
+            <h2 class="section-title">
+                Placement Drives
+            </h2>
+
+            <p class="section-subtitle">
+                Manage your campus recruitment drives.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="openDriveModal()">
+
+            + Post New Drive
+
+        </button>
+
+    </div>
+
+
+    <div id="drivesContainer"
+         class="drive-grid">
+
+        <div class="loading">
+            Loading placement drives...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     APPLICANTS
+===================================================== -->
+
+<section id="applicants"
+         class="content-section">
+
+
+    <h2 class="section-title">
+        Student Applicants
+    </h2>
+
+
+    <p class="section-subtitle">
+        Review students who applied to your placement opportunities.
+    </p>
+
+
+    <div id="applicantsContainer">
+
+        Loading student applications...
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PLACEMENT STATUS
+===================================================== -->
+
+<section id="placementStatus"
+         class="content-section">
+
+
+    <h2 class="section-title">
+        Placement Status
+    </h2>
+
+
+    <p class="section-subtitle">
+        View the placement and hiring status of students through your recruitment drives.
+    </p>
+
+
+    <div class="placement-grid">
+
+
+        <div class="placement-box">
+
+            <div class="number"
+                 id="placementApplicants">
+
+                0
+
+            </div>
+
+            <p>
+                Total Applicants
+            </p>
+
+        </div>
+
+
+        <div class="placement-box">
+
+            <div class="number"
+                 id="placementShortlisted">
+
+                0
+
+            </div>
+
+            <p>
+                Shortlisted
+            </p>
+
+        </div>
+
+
+        <div class="placement-box">
+
+            <div class="number"
+                 id="placementSelected">
+
+                0
+
+            </div>
+
+            <p>
+                Selected
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <br>
+
+
+    <div class="card">
+
+        <h3 style="color:#0b1f3a;margin-bottom:15px;">
+
+            Selected Students
+
+        </h3>
+
+
+        <div id="selectedStudents">
+
+            <div class="empty-state">
+
+                <div class="icon">
+                    💼
+                </div>
+
+                <h3>
+                    No students selected yet
+                </h3>
+
+                <p>
+                    Selected students will appear here
+                    once applicant APIs are available.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     PLACEMENT DRIVE MODAL
+===================================================== -->
+
+<div class="modal"
+     id="driveModal">
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <h2>
+                Post Placement Drive
+            </h2>
+
+
+            <button
+                class="close-btn"
+                onclick="closeDriveModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div id="driveMessage"
+             class="message">
+        </div>
+
+
+        <form id="driveForm"
+              onsubmit="postDrive(event)">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Job / Position
+                    </label>
+
+                    <input
+                        type="text"
+                        id="drivePosition"
+                        placeholder="Software Developer"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Job Type
+                    </label>
+
+                    <select id="driveType">
+
+                        <option value="Full Time">
+                            Full Time
+                        </option>
+
+                        <option value="Internship">
+                            Internship
+                        </option>
+
+                        <option value="Internship + Full Time">
+                            Internship + Full Time
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Drive Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="driveDate"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Application Deadline
+                    </label>
+
+                    <input
+                        type="date"
+                        id="driveDeadline"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Minimum CGPA
+                    </label>
+
+                    <input
+                        type="number"
+                        id="driveCgpa"
+                        min="0"
+                        max="10"
+                        step="0.01"
+                        placeholder="7.00">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Package Offered
+                    </label>
+
+                    <input
+                        type="text"
+                        id="drivePackage"
+                        placeholder="6 LPA">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driveLocation"
+                        placeholder="Pune / Mumbai / Remote">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driveSkills"
+                        placeholder="Java, SQL, React">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Eligibility
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driveEligibility"
+                        placeholder="BCA / BSc / BTech, CGPA 7+">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Job Description
+                    </label>
+
+                    <textarea
+                        id="driveDescription"
+                        placeholder="Enter job description and requirements..."
+                        required></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-actions">
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="driveSubmitButton">
+
+                    📢 Post Drive
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeDriveModal()">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+const API_URL =
+    "http://localhost:5000/api";
+
+
+let companyUser = null;
+
+let companyData = null;
+
+let drives = [];
+
+let editingDriveId = null;
+
+
+/* =====================================================
+   LOAD LOGGED-IN COMPANY
+===================================================== */
+
+function loadCompanyUser(){
+
+    const possibleKeys = [
+        "companyUser",
+        "user"
+    ];
+
+
+    for(const key of possibleKeys){
+
+        const saved =
+            localStorage.getItem(key);
+
+
+        if(!saved){
+
+            continue;
+
+        }
+
+
+        try{
+
+            const parsed =
+                JSON.parse(saved);
+
+
+            if(
+                parsed &&
+                (
+                    parsed.role === "company" ||
+                    parsed.companyId ||
+                    parsed.company_id ||
+                    parsed.companyName
+                )
+            ){
+
+                companyUser =
+                    parsed;
+
+                break;
+
+            }
+
+        }
+        catch(error){
+
+            console.error(
+                "LocalStorage parse error:",
+                error
+            );
+
+        }
+
+    }
+
+
+    if(!companyUser){
+
+        const companyId =
+            localStorage.getItem(
+                "companyId"
+            );
+
+
+        if(companyId){
+
+            companyUser = {
+
+                id:companyId,
+
+                companyId:companyId,
+
+                company_id:companyId,
+
+                role:"company"
+
+            };
+
+        }
+
+    }
+
+
+    if(!companyUser){
+
+        alert(
+            "Company login information not found. Please login again."
+        );
+
+
+        window.location.href =
+            "login.html";
+
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   COMPANY ID
+===================================================== */
+
+function getCompanyId(){
+
+    return (
+        companyUser.company_id ||
+        companyUser.companyId ||
+        companyUser.id ||
+        ""
+    );
+
+}
+
+
+/* =====================================================
+   DISPLAY COMPANY BASIC DATA
+===================================================== */
+
+function displayCompanyBasicData(){
+
+    const name =
+        companyUser.companyName ||
+        companyUser.name ||
+        "Company";
+
+
+    const email =
+        companyUser.email ||
+        "company@email.com";
+
+
+    document.getElementById(
+        "sideCompanyName"
+    ).textContent =
+        name;
+
+
+    document.getElementById(
+        "sideCompanyEmail"
+    ).textContent =
+        email;
+
+
+    document.getElementById(
+        "welcomeCompanyName"
+    ).textContent =
+        name;
+
+
+    const initial =
+        name.charAt(0)
+            .toUpperCase();
+
+
+    document.getElementById(
+        "sideLogoInitial"
+    ).textContent =
+        initial;
+
+
+    document.getElementById(
+        "largeLogoInitial"
+    ).textContent =
+        initial;
+
+}
+
+
+/* =====================================================
+   LOAD COMPANY PROFILE
+===================================================== */
+
+async function loadCompanyProfile(){
+
+    const companyId =
+        getCompanyId();
+
+
+    if(!companyId){
+
+        displayCompanyProfile(
+            companyUser
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/companies/${encodeURIComponent(companyId)}`
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to load company profile"
+            );
+
+        }
+
+
+        companyData =
+            data.company ||
+            data;
+
+
+        displayCompanyProfile(
+            companyData
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Company profile error:",
+            error
+        );
+
+
+        companyData =
+            companyUser;
+
+
+        displayCompanyProfile(
+            companyData
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   DISPLAY COMPANY PROFILE
+===================================================== */
+
+function displayCompanyProfile(company){
+
+    if(!company){
+
+        return;
+
+    }
+
+
+    const name =
+        company.companyName ||
+        company.name ||
+        "Company";
+
+
+    const email =
+        company.email ||
+        "";
+
+
+    document.getElementById(
+        "profileCompanyId"
+    ).textContent =
+        company.id ||
+        company.companyId ||
+        company.company_id ||
+        "-";
+
+
+    document.getElementById(
+        "profileCompanyName"
+    ).textContent =
+        name;
+
+
+    document.getElementById(
+        "profileName"
+    ).textContent =
+        name;
+
+
+    document.getElementById(
+        "profileEmail"
+    ).textContent =
+        email ||
+        "-";
+
+
+    document.getElementById(
+        "profileUsername"
+    ).textContent =
+        company.username ||
+        "-";
+
+
+    document.getElementById(
+        "profilePhone"
+    ).textContent =
+        company.phone ||
+        "-";
+
+
+    document.getElementById(
+        "profileIndustry"
+    ).textContent =
+        company.industry ||
+        "Industry";
+
+
+    document.getElementById(
+        "profileIndustryDetails"
+    ).textContent =
+        company.industry ||
+        "-";
+
+
+    document.getElementById(
+        "profileWebsite"
+    ).textContent =
+        company.website ||
+        "-";
+
+
+    document.getElementById(
+        "profileLocation"
+    ).textContent =
+        company.location ||
+        "-";
+
+
+    document.getElementById(
+        "profileDescription"
+    ).textContent =
+        company.description ||
+        "Company description not available.";
+
+
+    document.getElementById(
+        "editCompanyName"
+    ).value =
+        name === "Company"
+            ? ""
+            : name;
+
+
+    document.getElementById(
+        "editIndustry"
+    ).value =
+        company.industry ||
+        "";
+
+
+    document.getElementById(
+        "editEmail"
+    ).value =
+        email;
+
+
+    document.getElementById(
+        "editUsername"
+    ).value =
+        company.username ||
+        "";
+
+
+    document.getElementById(
+        "editPhone"
+    ).value =
+        company.phone ||
+        "";
+
+
+    document.getElementById(
+        "editWebsite"
+    ).value =
+        company.website ||
+        "";
+
+
+    document.getElementById(
+        "editLocation"
+    ).value =
+        company.location ||
+        "";
+
+
+    document.getElementById(
+        "editDescription"
+    ).value =
+        company.description ||
+        "";
+
+}
+
+
+/* =====================================================
+   SAVE COMPANY PROFILE
+===================================================== */
+
+async function saveCompanyProfile(event){
+
+    event.preventDefault();
+
+
+    const message =
+        document.getElementById(
+            "profileMessage"
+        );
+
+
+    const companyId =
+        getCompanyId();
+
+
+    if(!companyId){
+
+        showMessage(
+            message,
+            "Company ID not found. Please login again.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const updatedCompany = {
+
+        companyName:
+            document.getElementById(
+                "editCompanyName"
+            ).value.trim(),
+
+        email:
+            document.getElementById(
+                "editEmail"
+            ).value.trim(),
+
+        username:
+            document.getElementById(
+                "editUsername"
+            ).value.trim(),
+
+        phone:
+            document.getElementById(
+                "editPhone"
+            ).value.trim(),
+
+        website:
+            document.getElementById(
+                "editWebsite"
+            ).value.trim(),
+
+        industry:
+            document.getElementById(
+                "editIndustry"
+            ).value.trim(),
+
+        location:
+            document.getElementById(
+                "editLocation"
+            ).value.trim(),
+
+        description:
+            document.getElementById(
+                "editDescription"
+            ).value.trim()
+
+    };
+
+
+    if(!updatedCompany.companyName){
+
+        showMessage(
+            message,
+            "Company name is required.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/companies/${encodeURIComponent(companyId)}`,
+                {
+
+                    method:"PUT",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            updatedCompany
+                        )
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Profile update failed"
+            );
+
+        }
+
+
+        companyData =
+            data.company ||
+            data;
+
+
+        companyUser = {
+
+            ...companyUser,
+
+            ...companyData
+
+        };
+
+
+        localStorage.setItem(
+            "companyUser",
+            JSON.stringify(
+                companyUser
+            )
+        );
+
+
+        displayCompanyBasicData();
+
+        displayCompanyProfile(
+            companyData
+        );
+
+
+        showMessage(
+            message,
+            "Company profile updated successfully.",
+            "success"
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Profile update error:",
+            error
+        );
+
+
+        showMessage(
+            message,
+            error.message ||
+            "Unable to update company profile.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD PLACEMENT DRIVES
+===================================================== */
+
+async function loadDrives(){
+
+    const companyId =
+        getCompanyId();
+
+
+    if(!companyId){
+
+        drives = [];
+
+        renderDrives();
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/placement-drives/company/${encodeURIComponent(companyId)}`
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to load drives"
+            );
+
+        }
+
+
+        drives =
+            Array.isArray(data)
+                ? data
+                : (
+                    data.drives ||
+                    []
+                );
+
+
+        renderDrives();
+
+    }
+    catch(error){
+
+        console.error(
+            "Load drives error:",
+            error
+        );
+
+
+        drives = [];
+
+
+        const container =
+            document.getElementById(
+                "drivesContainer"
+            );
+
+
+        const dashboardContainer =
+            document.getElementById(
+                "dashboardDrives"
+            );
+
+
+        container.innerHTML = `
+
+            <div class="empty-state"
+                 style="grid-column:1/-1;">
+
+                <div class="icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Unable to load placement drives
+                </h3>
+
+                <p>
+                    ${escapeHtml(
+                        error.message
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+
+        dashboardContainer.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Unable to load placement drives
+                </h3>
+
+                <p>
+                    ${escapeHtml(
+                        error.message
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER PLACEMENT DRIVES
+===================================================== */
+
+function renderDrives(){
+
+    const totalDrives =
+        document.getElementById(
+            "totalDrives"
+        );
+
+
+    if(totalDrives){
+
+        totalDrives.textContent =
+            drives.length;
+
+    }
+
+
+    const container =
+        document.getElementById(
+            "drivesContainer"
+        );
+
+
+    const dashboardContainer =
+        document.getElementById(
+            "dashboardDrives"
+        );
+
+
+    if(!drives.length){
+
+        container.innerHTML = `
+
+            <div class="empty-state"
+                 style="grid-column:1/-1;">
+
+                <div class="icon">
+                    📢
+                </div>
+
+                <h3>
+                    No placement drives
+                </h3>
+
+                <p>
+                    Click "Post New Drive" to create your first drive.
+                </p>
+
+            </div>
+
+        `;
+
+
+        dashboardContainer.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="icon">
+                    📅
+                </div>
+
+                <h3>
+                    No placement drives yet
+                </h3>
+
+                <p>
+                    Your placement drives will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        drives
+            .map(createDriveCard)
+            .join("");
+
+
+    dashboardContainer.innerHTML =
+        drives
+            .slice(0,3)
+            .map(createDriveCard)
+            .join("");
+
+}
+
+
+/* =====================================================
+   CREATE DRIVE CARD
+   DATABASE COLUMN NAMES ARE USED DIRECTLY
+===================================================== */
+
+function createDriveCard(drive){
+
+    const driveId =
+        drive.drive_id;
+
+
+    const jobTitle =
+        drive.jobTitle ||
+        "Placement Opportunity";
+
+
+    const description =
+        drive.description ||
+        "No job description available.";
+
+
+    const driveDate =
+        drive.drive_Date;
+
+
+    const packageValue =
+        drive.package_offered;
+
+
+    const jobType =
+        drive.jobType ||
+        "-";
+
+
+    const location =
+        drive.location ||
+        "-";
+
+
+    const eligibility =
+        drive.eligibility ||
+        "-";
+
+
+    const deadline =
+        drive.application_deadline;
+
+
+    const minimumCgpa =
+        drive.minimum_cgpa;
+
+
+    const skills =
+        drive.skills ||
+        "-";
+
+
+    const packageDisplay =
+        packageValue !== null &&
+        packageValue !== undefined &&
+        packageValue !== ""
+            ? `${packageValue} LPA`
+            : "Not specified";
+
+
+    return `
+
+        <div class="drive-card">
+
+
+            <h3>
+                ${escapeHtml(
+                    jobTitle
+                )}
+            </h3>
+
+
+            <p>
+                ${escapeHtml(
+                    description
+                )}
+            </p>
+
+
+            <div class="drive-meta">
+
+                <span class="badge active">
+                    Open
+                </span>
+
+
+                <span class="badge">
+
+                    📅
+                    ${formatDate(
+                        driveDate
+                    )}
+
+                </span>
+
+
+                <span class="badge">
+
+                    💰
+                    ${escapeHtml(
+                        packageDisplay
+                    )}
+
+                </span>
+
+
+                <span class="badge">
+
+                    💼
+                    ${escapeHtml(
+                        jobType
+                    )}
+
+                </span>
+
+            </div>
+
+
+            <p>
+
+                <strong>
+                    Location:
+                </strong>
+
+                ${escapeHtml(
+                    location
+                )}
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Eligibility:
+                </strong>
+
+                ${escapeHtml(
+                    eligibility
+                )}
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Application Deadline:
+                </strong>
+
+                ${formatDate(
+                    deadline
+                )}
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Minimum CGPA:
+                </strong>
+
+                ${
+                    minimumCgpa !== null &&
+                    minimumCgpa !== undefined &&
+                    minimumCgpa !== ""
+                        ? escapeHtml(
+                            minimumCgpa
+                        )
+                        : "-"
+                }
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Skills:
+                </strong>
+
+                ${escapeHtml(
+                    skills
+                )}
+
+            </p>
+
+
+            <div class="drive-actions">
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="editDrive(${Number(driveId)})">
+
+                    ✏️ Edit
+
+                </button>
+
+
+                <button
+                    class="danger-btn"
+                    onclick="deleteDrive(${Number(driveId)})">
+
+                    🗑️ Delete
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   POST PLACEMENT DRIVE
+   DATABASE COLUMN NAMES ARE USED DIRECTLY
+===================================================== */
+
+async function postDrive(event){
+
+    event.preventDefault();
+
+
+    if(editingDriveId){
+
+        await updateDrive();
+
+        return;
+
+    }
+
+
+    const message =
+        document.getElementById(
+            "driveMessage"
+        );
+
+
+    const companyId =
+        getCompanyId();
+
+
+    if(!companyId){
+
+        showMessage(
+            message,
+            "Company ID not found. Please login again.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const packageText =
+        document.getElementById(
+            "drivePackage"
+        ).value.trim();
+
+
+    let packageValue = null;
+
+
+    if(packageText){
+
+        packageValue =
+            parseFloat(
+                packageText
+                    .replace(
+                        /[^0-9.]/g,
+                        ""
+                    )
+            );
+
+
+        if(Number.isNaN(
+            packageValue
+        )){
+
+            packageValue = null;
+
+        }
+
+    }
+
+
+    const cgpaText =
+        document.getElementById(
+            "driveCgpa"
+        ).value;
+
+
+    const drive = {
+
+        company_id:
+            Number(companyId),
+
+        jobTitle:
+            document.getElementById(
+                "drivePosition"
+            ).value.trim(),
+
+        eligibility:
+            document.getElementById(
+                "driveEligibility"
+            ).value.trim(),
+
+        jobType:
+            document.getElementById(
+                "driveType"
+            ).value,
+
+        drive_Date:
+            document.getElementById(
+                "driveDate"
+            ).value,
+
+        package_offered:
+            packageValue,
+
+        application_deadline:
+            document.getElementById(
+                "driveDeadline"
+            ).value,
+
+        minimum_cgpa:
+            cgpaText
+                ? Number(cgpaText)
+                : null,
+
+        location:
+            document.getElementById(
+                "driveLocation"
+            ).value.trim(),
+
+        skills:
+            document.getElementById(
+                "driveSkills"
+            ).value.trim(),
+
+        description:
+            document.getElementById(
+                "driveDescription"
+            ).value.trim()
+
+    };
+
+
+    if(!drive.jobTitle){
+
+        showMessage(
+            message,
+            "Job / Position is required.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/placement-drives`,
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            drive
+                        )
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to create placement drive"
+            );
+
+        }
+
+
+        showMessage(
+            message,
+            "Placement drive created successfully.",
+            "success"
+        );
+
+
+        /*
+           Reload directly from MySQL.
+        */
+
+        await loadDrives();
+
+
+        setTimeout(
+            function(){
+
+                closeDriveModal();
+
+            },
+            700
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Create drive error:",
+            error
+        );
+
+
+        showMessage(
+            message,
+            error.message ||
+            "Unable to create placement drive.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   EDIT PLACEMENT DRIVE
+===================================================== */
+
+function editDrive(id){
+
+    const drive =
+        drives.find(
+            function(item){
+
+                return Number(
+                    item.drive_id
+                ) === Number(id);
+
+            }
+        );
+
+
+    if(!drive){
+
+        alert(
+            "Placement drive not found."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "drivePosition"
+    ).value =
+        drive.jobTitle ||
+        "";
+
+
+    document.getElementById(
+        "driveType"
+    ).value =
+        drive.jobType ||
+        "Full Time";
+
+
+    document.getElementById(
+        "driveDate"
+    ).value =
+        normalizeDate(
+            drive.drive_Date
+        );
+
+
+    document.getElementById(
+        "driveDeadline"
+    ).value =
+        normalizeDate(
+            drive.application_deadline
+        );
+
+
+    document.getElementById(
+        "driveCgpa"
+    ).value =
+        drive.minimum_cgpa ??
+        "";
+
+
+    document.getElementById(
+        "drivePackage"
+    ).value =
+        drive.package_offered ??
+        "";
+
+
+    document.getElementById(
+        "driveLocation"
+    ).value =
+        drive.location ||
+        "";
+
+
+    document.getElementById(
+        "driveSkills"
+    ).value =
+        drive.skills ||
+        "";
+
+
+    document.getElementById(
+        "driveEligibility"
+    ).value =
+        drive.eligibility ||
+        "";
+
+
+    document.getElementById(
+        "driveDescription"
+    ).value =
+        drive.description ||
+        "";
+
+
+    editingDriveId =
+        id;
+
+
+    document.querySelector(
+        "#driveModal .modal-header h2"
+    ).textContent =
+        "Edit Placement Drive";
+
+
+    document.getElementById(
+        "driveSubmitButton"
+    ).textContent =
+        "💾 Update Drive";
+
+
+    openDriveModal();
+
+}
+
+
+/* =====================================================
+   UPDATE PLACEMENT DRIVE
+===================================================== */
+
+async function updateDrive(){
+
+    if(!editingDriveId){
+
+        return;
+
+    }
+
+
+    const message =
+        document.getElementById(
+            "driveMessage"
+        );
+
+
+    const companyId =
+        getCompanyId();
+
+
+    if(!companyId){
+
+        showMessage(
+            message,
+            "Company ID not found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const packageText =
+        document.getElementById(
+            "drivePackage"
+        ).value.trim();
+
+
+    let packageValue = null;
+
+
+    if(packageText){
+
+        packageValue =
+            parseFloat(
+                packageText
+                    .replace(
+                        /[^0-9.]/g,
+                        ""
+                    )
+            );
+
+
+        if(Number.isNaN(
+            packageValue
+        )){
+
+            packageValue = null;
+
+        }
+
+    }
+
+
+    const cgpaText =
+        document.getElementById(
+            "driveCgpa"
+        ).value;
+
+
+    const drive = {
+
+        company_id:
+            Number(companyId),
+
+        jobTitle:
+            document.getElementById(
+                "drivePosition"
+            ).value.trim(),
+
+        eligibility:
+            document.getElementById(
+                "driveEligibility"
+            ).value.trim(),
+
+        jobType:
+            document.getElementById(
+                "driveType"
+            ).value,
+
+        drive_Date:
+            document.getElementById(
+                "driveDate"
+            ).value,
+
+        package_offered:
+            packageValue,
+
+        application_deadline:
+            document.getElementById(
+                "driveDeadline"
+            ).value,
+
+        minimum_cgpa:
+            cgpaText
+                ? Number(cgpaText)
+                : null,
+
+        location:
+            document.getElementById(
+                "driveLocation"
+            ).value.trim(),
+
+        skills:
+            document.getElementById(
+                "driveSkills"
+            ).value.trim(),
+
+        description:
+            document.getElementById(
+                "driveDescription"
+            ).value.trim()
+
+    };
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/placement-drives/${encodeURIComponent(editingDriveId)}`,
+                {
+
+                    method:"PUT",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            drive
+                        )
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to update placement drive"
+            );
+
+        }
+
+
+        await loadDrives();
+
+
+        closeDriveModal();
+
+
+        alert(
+            "Placement drive updated successfully."
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Update drive error:",
+            error
+        );
+
+
+        showMessage(
+            message,
+            error.message ||
+            "Unable to update placement drive.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   DELETE PLACEMENT DRIVE
+===================================================== */
+
+async function deleteDrive(id){
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this placement drive?"
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/placement-drives/${encodeURIComponent(id)}`,
+                {
+                    method:"DELETE"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to delete placement drive"
+            );
+
+        }
+
+
+        await loadDrives();
+
+
+        alert(
+            "Placement drive deleted successfully."
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Delete drive error:",
+            error
+        );
+
+
+        alert(
+            error.message ||
+            "Unable to delete placement drive."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   OPEN DRIVE MODAL
+===================================================== */
+
+function openDriveModal(){
+
+    document.getElementById(
+        "driveModal"
+    ).classList.add(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE DRIVE MODAL
+===================================================== */
+
+function closeDriveModal(){
+
+    document.getElementById(
+        "driveModal"
+    ).classList.remove(
+        "active"
+    );
+
+
+    document.getElementById(
+        "driveForm"
+    ).reset();
+
+
+    editingDriveId =
+        null;
+
+
+    document.querySelector(
+        "#driveModal .modal-header h2"
+    ).textContent =
+        "Post Placement Drive";
+
+
+    document.getElementById(
+        "driveSubmitButton"
+    ).textContent =
+        "📢 Post Drive";
+
+
+    const message =
+        document.getElementById(
+            "driveMessage"
+        );
+
+
+    message.className =
+        "message";
+
+
+    message.textContent =
+        "";
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showSection(
+    sectionId,
+    button
+){
+
+    document
+        .querySelectorAll(
+            ".content-section"
+        )
+        .forEach(
+            function(section){
+
+                section.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    const target =
+        document.getElementById(
+            sectionId
+        );
+
+
+    if(target){
+
+        target.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".menu button"
+        )
+        .forEach(
+            function(btn){
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    if(sectionId === "applicants"){
+
+        loadCompanyApplications();
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD COMPANY APPLICATIONS
+===================================================== */
+
+async function loadCompanyApplications(){
+
+    const container =
+        document.getElementById(
+            "applicantsContainer"
+        );
+
+
+    const companyId =
+        getCompanyId();
+
+
+    if(!container ||
+       !companyId){
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        "<div class='loading'>Loading student applications...</div>";
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/applications/company/${encodeURIComponent(companyId)}`
+            );
+
+
+        const data =
+            await response
+                .json()
+                .catch(
+                    function(){
+
+                        return {};
+
+                    }
+                );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to load applications"
+            );
+
+        }
+
+
+        const applications =
+            Array.isArray(data)
+                ? data
+                : (
+                    data.applications ||
+                    []
+                );
+
+
+        document.getElementById(
+            "totalApplicants"
+        ).textContent =
+            applications.length;
+
+
+        document.getElementById(
+            "placementApplicants"
+        ).textContent =
+            applications.length;
+
+
+        if(!applications.length){
+
+            container.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div class="icon">
+                        👨‍🎓
+                    </div>
+
+                    <h3>
+                        No student applications yet
+                    </h3>
+
+                    <p>
+                        Applications will appear here
+                        when students apply to your drives.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        container.innerHTML = `
+
+            <div class="applicants-table-wrap">
+
+                <table class="applicants-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Contact
+                            </th>
+
+                            <th>
+                                Academic Details
+                            </th>
+
+                            <th>
+                                Personal Details
+                            </th>
+
+                            <th>
+                                Applied Drive
+                            </th>
+
+                            <th>
+                                Application
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        ${applications.map(
+                            function(application){
+
+                                return `
+
+                                    <tr>
+
+                                        <td>
+
+                                            <strong>
+                                                ${escapeHtml(
+                                                    application.fullName ||
+                                                    "-"
+                                                )}
+                                            </strong>
+
+                                            <br>
+
+                                            Student ID:
+                                            ${escapeHtml(
+                                                application.studentCode ||
+                                                application.studentId ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            Gender:
+                                            ${escapeHtml(
+                                                application.gender ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            DOB:
+                                            ${formatDate(
+                                                application.dob
+                                            )}
+
+                                        </td>
+
+
+                                        <td>
+
+                                            ${escapeHtml(
+                                                application.email ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            ${escapeHtml(
+                                                application.mobile ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            ${escapeHtml(
+                                                application.address ||
+                                                "-"
+                                            )},
+
+                                            ${escapeHtml(
+                                                application.city ||
+                                                "-"
+                                            )},
+
+                                            ${escapeHtml(
+                                                application.state ||
+                                                "-"
+                                            )}
+
+                                        </td>
+
+
+                                        <td>
+
+                                            Department:
+                                            ${escapeHtml(
+                                                application.department ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            Course:
+                                            ${escapeHtml(
+                                                application.course ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            Academic Year:
+                                            ${escapeHtml(
+                                                application.academicYear ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            CGPA:
+                                            ${escapeHtml(
+                                                application.cgpa ??
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            Skills:
+                                            ${escapeHtml(
+                                                application.skills ||
+                                                "-"
+                                            )}
+
+                                        </td>
+
+
+                                        <td>
+
+                                            10th:
+                                            ${escapeHtml(
+                                                application.tenthPercentage ??
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            12th:
+                                            ${escapeHtml(
+                                                application.twelfthPercentage ??
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            Admission:
+                                            ${escapeHtml(
+                                                application.admissionYear ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            Graduation:
+                                            ${escapeHtml(
+                                                application.graduationYear ||
+                                                "-"
+                                            )}
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <strong>
+                                                ${escapeHtml(
+                                                    application.jobTitle ||
+                                                    "-"
+                                                )}
+                                            </strong>
+
+                                            <br>
+
+                                            ${escapeHtml(
+                                                application.jobType ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            ${escapeHtml(
+                                                application.location ||
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            Package:
+                                            ${escapeHtml(
+                                                application.packageOffered ??
+                                                "-"
+                                            )}
+
+                                            <br>
+
+                                            Deadline:
+                                            ${formatDate(
+                                                application.applicationDeadline
+                                            )}
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <span class="applicant-status">
+
+                                                ${escapeHtml(
+                                                    application.applicationStatus ||
+                                                    "Applied"
+                                                )}
+
+                                            </span>
+
+                                            <br>
+
+                                            Applied:
+                                            ${formatDate(
+                                                application.appliedAt
+                                            )}
+
+                                            <br>
+
+                                            Note:
+                                            ${escapeHtml(
+                                                application.note ||
+                                                "-"
+                                            )}
+
+                                        </td>
+
+                                    </tr>
+
+                                `;
+
+                            }
+                        ).join("")}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        `;
+
+    }
+    catch(error){
+
+        console.error(
+            "Applications error:",
+            error
+        );
+
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Unable to load applications
+                </h3>
+
+                <p>
+                    ${escapeHtml(
+                        error.message
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW SECTION BY ID
+===================================================== */
+
+function showSectionById(
+    sectionId
+){
+
+    const buttons =
+        document.querySelectorAll(
+            ".menu button"
+        );
+
+
+    let targetButton =
+        null;
+
+
+    buttons.forEach(
+        function(button){
+
+            const text =
+                button.innerText
+                    .toLowerCase();
+
+
+            if(
+                sectionId === "profile" &&
+                text.includes(
+                    "company profile"
+                )
+            ){
+
+                targetButton =
+                    button;
+
+            }
+
+
+            if(
+                sectionId === "editProfile" &&
+                text.includes(
+                    "edit profile"
+                )
+            ){
+
+                targetButton =
+                    button;
+
+            }
+
+        }
+    );
+
+
+    showSection(
+        sectionId,
+        targetButton
+    );
+
+}
+
+
+/* =====================================================
+   OPEN EDIT PROFILE
+===================================================== */
+
+function openEditProfile(){
+
+    showSectionById(
+        "editProfile"
+    );
+
+}
+
+
+/* =====================================================
+   SHOW MESSAGE
+===================================================== */
+
+function showMessage(
+    element,
+    text,
+    type
+){
+
+    element.className =
+        `message ${type}`;
+
+
+    element.textContent =
+        text;
+
+
+    element.style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   NORMALIZE DATE
+===================================================== */
+
+function normalizeDate(value){
+
+    if(!value){
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .substring(
+            0,
+            10
+        );
+
+}
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(value){
+
+    if(!value){
+
+        return "-";
+
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if(
+        Number.isNaN(
+            date.getTime()
+        )
+    ){
+
+        return escapeHtml(
+            String(value)
+        );
+
+    }
+
+
+    return escapeHtml(
+        date.toLocaleDateString(
+            "en-IN"
+        )
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    localStorage.removeItem(
+        "companyUser"
+    );
+
+
+    localStorage.removeItem(
+        "companyId"
+    );
+
+
+    localStorage.removeItem(
+        "user"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =====================================================
+   INITIALIZE DASHBOARD
+===================================================== */
+
+async function initializeDashboard(){
+
+    if(!loadCompanyUser()){
+
+        return;
+
+    }
+
+
+    displayCompanyBasicData();
+
+
+    await loadCompanyProfile();
+
+
+    await loadDrives();
+
+}
+
+
+/* =====================================================
+   START DASHBOARD
+===================================================== */
+
+initializeDashboard();
+
+</script>
+
+
+</body>
+
+</html>

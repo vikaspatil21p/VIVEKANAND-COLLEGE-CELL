@@ -4,11 +4,18 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Registration | VIVEKANAND PLACEMENT CELL</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Company Registration | VIVEKANAND PLACEMENT CELL
+    </title>
+
 
     <style>
+
+        /* ================= RESET ================= */
 
         * {
             margin: 0;
@@ -17,23 +24,30 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+
+        /* ================= BODY ================= */
+
         body {
 
             min-height: 100vh;
 
             background:
                 linear-gradient(
-                    rgba(7, 25, 48, 0.95),
-                    rgba(13, 55, 95, 0.95)
+                    rgba(7, 25, 48, 0.94),
+                    rgba(13, 55, 95, 0.94)
                 ),
-                url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80");
+                url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80");
 
             background-size: cover;
+
             background-position: center;
+
             background-attachment: fixed;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
             padding: 30px 15px;
@@ -45,7 +59,8 @@
         .registration-card {
 
             width: 100%;
-            max-width: 750px;
+
+            max-width: 950px;
 
             background: white;
 
@@ -71,6 +86,7 @@
             color: white;
         }
 
+
         .header h1 {
 
             font-size: 28px;
@@ -82,6 +98,7 @@
             letter-spacing: 1px;
         }
 
+
         .header p {
 
             color: #dbe5f2;
@@ -90,7 +107,7 @@
         }
 
 
-        /* ================= FORM ================= */
+        /* ================= FORM CONTAINER ================= */
 
         .form-container {
 
@@ -98,12 +115,15 @@
         }
 
 
+        /* ================= FORM TITLE ================= */
+
         .form-title {
 
             text-align: center;
 
             margin-bottom: 30px;
         }
+
 
         .form-title h2 {
 
@@ -114,11 +134,50 @@
             margin-bottom: 8px;
         }
 
+
         .form-title p {
 
             color: #777;
 
             font-size: 14px;
+        }
+
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+
+            display: none;
+
+            margin-bottom: 20px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+
+        .error {
+
+            background: #ffe8e8;
+
+            color: #c62828;
+
+            border: 1px solid #f5b5b5;
+        }
+
+
+        .success {
+
+            background: #e8f7ed;
+
+            color: #16723b;
+
+            border: 1px solid #a9dfbc;
         }
 
 
@@ -148,6 +207,8 @@
         }
 
 
+        /* ================= LABEL ================= */
+
         label {
 
             font-size: 14px;
@@ -166,8 +227,11 @@
         }
 
 
+        /* ================= INPUT ================= */
+
         input,
-        select {
+        select,
+        textarea {
 
             width: 100%;
 
@@ -188,7 +252,8 @@
 
 
         input:focus,
-        select:focus {
+        select:focus,
+        textarea:focus {
 
             border-color: #1455a0;
 
@@ -196,6 +261,14 @@
 
             box-shadow:
                 0 0 0 3px rgba(20, 85, 160, 0.10);
+        }
+
+
+        textarea {
+
+            min-height: 100px;
+
+            resize: vertical;
         }
 
 
@@ -235,7 +308,7 @@
         }
 
 
-        /* ================= BUTTON ================= */
+        /* ================= SUBMIT ================= */
 
         .submit-area {
 
@@ -249,7 +322,7 @@
 
             width: 100%;
 
-            max-width: 350px;
+            max-width: 380px;
 
             padding: 14px 30px;
 
@@ -311,19 +384,19 @@
         }
 
 
-        /* ================= HOME ================= */
+        /* ================= HOME LINK ================= */
 
         .home-link {
 
             text-align: center;
 
-            margin-top: 18px;
+            margin-top: 12px;
         }
 
 
         .home-link a {
 
-            color: #555;
+            color: #777;
 
             text-decoration: none;
 
@@ -336,44 +409,6 @@
             color: #1455a0;
 
             text-decoration: underline;
-        }
-
-
-        /* ================= MESSAGE ================= */
-
-        .message {
-
-            display: none;
-
-            margin-bottom: 20px;
-
-            padding: 12px;
-
-            border-radius: 8px;
-
-            text-align: center;
-
-            font-size: 14px;
-        }
-
-
-        .error {
-
-            background: #ffe8e8;
-
-            color: #c62828;
-
-            border: 1px solid #f5b5b5;
-        }
-
-
-        .success {
-
-            background: #e8f7ed;
-
-            color: #16723b;
-
-            border: 1px solid #a9dfbc;
         }
 
 
@@ -426,6 +461,8 @@
 <body>
 
 
+    <!-- ================= MAIN CARD ================= -->
+
     <div class="registration-card">
 
 
@@ -438,7 +475,7 @@
             </h1>
 
             <p>
-                Administrator Registration Portal
+                Company Registration Portal
             </p>
 
         </div>
@@ -449,14 +486,16 @@
         <div class="form-container">
 
 
+            <!-- ================= TITLE ================= -->
+
             <div class="form-title">
 
                 <h2>
-                    Admin Registration
+                    Company Registration
                 </h2>
 
                 <p>
-                    Create an administrator account to manage the placement system.
+                    Register your company to connect with talented students.
                 </p>
 
             </div>
@@ -478,49 +517,47 @@
             </div>
 
 
-            <!-- ================= ADMIN FORM ================= -->
+            <!-- ================= FORM ================= -->
 
             <form
-                id="adminRegistrationForm"
-                onsubmit="registerAdmin(event)">
+                id="companyRegistrationForm"
+                onsubmit="registerCompany(event)">
 
 
                 <div class="form-grid">
 
 
-                    <!-- ================= FULL NAME ================= -->
+                    <!-- ================= COMPANY NAME ================= -->
 
                     <div class="form-group">
 
                         <label>
-                            Full Name <span>*</span>
+                            Company Name <span>*</span>
                         </label>
 
                         <input
                             type="text"
-                            id="fullName"
-                            name="fullName"
-                            placeholder="Enter administrator full name"
-                            autocomplete="name"
+                            id="companyName"
+                            name="companyName"
+                            placeholder="Enter company name"
                             required>
 
                     </div>
 
 
-                    <!-- ================= EMAIL ================= -->
+                    <!-- ================= COMPANY EMAIL ================= -->
 
                     <div class="form-group">
 
                         <label>
-                            Email <span>*</span>
+                            Company Email <span>*</span>
                         </label>
 
                         <input
                             type="email"
-                            id="email"
-                            name="email"
-                            placeholder="admin@example.com"
-                            autocomplete="email"
+                            id="companyEmail"
+                            name="companyEmail"
+                            placeholder="company@example.com"
                             required>
 
                     </div>
@@ -542,42 +579,203 @@
                             maxlength="10"
                             pattern="[0-9]{10}"
                             inputmode="numeric"
-                            autocomplete="tel"
                             required>
 
                     </div>
 
 
-                    <!-- ================= ADMIN ROLE ================= -->
+                    <!-- ================= HR NAME ================= -->
 
                     <div class="form-group">
 
                         <label>
-                            Admin Role <span>*</span>
+                            HR / Recruiter Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="hrName"
+                            name="hrName"
+                            placeholder="Enter HR / Recruiter name"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= COMPANY TYPE ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Company Type <span>*</span>
                         </label>
 
                         <select
-                            id="role"
-                            name="role"
+                            id="companyType"
+                            name="companyType"
                             required>
 
                             <option value="">
-                                Select Admin Role
+                                Select Company Type
                             </option>
 
-                            <option value="Placement Officer">
-                                Placement Officer
+                            <option value="Private">
+                                Private
                             </option>
 
-                            <option value="Placement Coordinator">
-                                Placement Coordinator
+                            <option value="Public">
+                                Public
                             </option>
 
-                            <option value="Administrator">
-                                Administrator
+                            <option value="Startup">
+                                Startup
+                            </option>
+
+                            <option value="Government">
+                                Government
+                            </option>
+
+                            <option value="MNC">
+                                MNC
+                            </option>
+
+                            <option value="Other">
+                                Other
                             </option>
 
                         </select>
+
+                    </div>
+
+
+                    <!-- ================= INDUSTRY ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Industry <span>*</span>
+                        </label>
+
+                        <select
+                            id="industry"
+                            name="industry"
+                            required>
+
+                            <option value="">
+                                Select Industry
+                            </option>
+
+                            <option value="Information Technology">
+                                Information Technology
+                            </option>
+
+                            <option value="Software">
+                                Software
+                            </option>
+
+                            <option value="Banking & Finance">
+                                Banking & Finance
+                            </option>
+
+                            <option value="Manufacturing">
+                                Manufacturing
+                            </option>
+
+                            <option value="Automobile">
+                                Automobile
+                            </option>
+
+                            <option value="Consulting">
+                                Consulting
+                            </option>
+
+                            <option value="Healthcare">
+                                Healthcare
+                            </option>
+
+                            <option value="Education">
+                                Education
+                            </option>
+
+                            <option value="Telecommunication">
+                                Telecommunication
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ================= WEBSITE ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Company Website
+                        </label>
+
+                        <input
+                            type="url"
+                            id="website"
+                            name="website"
+                            placeholder="https://www.example.com">
+
+                    </div>
+
+
+                    <!-- ================= CITY ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            City <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Enter city"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= STATE ================= -->
+
+                    <div class="form-group">
+
+                        <label>
+                            State <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="state"
+                            name="state"
+                            placeholder="Enter state"
+                            required>
+
+                    </div>
+
+
+                    <!-- ================= ADDRESS ================= -->
+
+                    <div class="form-group full">
+
+                        <label>
+                            Company Address <span>*</span>
+                        </label>
+
+                        <textarea
+                            id="address"
+                            name="address"
+                            placeholder="Enter complete company address"
+                            required></textarea>
 
                     </div>
 
@@ -594,9 +792,8 @@
                             type="text"
                             id="username"
                             name="username"
-                            placeholder="Create admin username"
+                            placeholder="Create username"
                             minlength="4"
-                            autocomplete="username"
                             required>
 
                     </div>
@@ -618,13 +815,15 @@
                                 name="password"
                                 placeholder="Create password"
                                 minlength="6"
-                                autocomplete="new-password"
                                 required>
 
                             <button
                                 type="button"
                                 class="show-password"
-                                onclick="togglePassword('password', this)">
+                                onclick="togglePassword(
+                                    'password',
+                                    this
+                                )">
 
                                 Show
 
@@ -651,13 +850,15 @@
                                 name="confirmPassword"
                                 placeholder="Re-enter your password"
                                 minlength="6"
-                                autocomplete="new-password"
                                 required>
 
                             <button
                                 type="button"
                                 class="show-password"
-                                onclick="togglePassword('confirmPassword', this)">
+                                onclick="togglePassword(
+                                    'confirmPassword',
+                                    this
+                                )">
 
                                 Show
 
@@ -679,7 +880,7 @@
                         type="submit"
                         class="submit-btn">
 
-                        Create Admin Account
+                        Create Company Account
 
                     </button>
 
@@ -693,7 +894,7 @@
 
             <div class="login-text">
 
-                Already have an admin account?
+                Already have an account?
 
                 <a href="login.html">
                     Login Here
@@ -705,12 +906,6 @@
             <!-- ================= HOME ================= -->
 
             <div class="home-link">
-
-                <a href="registration.html">
-                    ← Back to Registration
-                </a>
-
-                <br><br>
 
                 <a href="index.html">
                     ← Back to Home
@@ -756,28 +951,28 @@
         }
 
 
-        /* ================= ADMIN REGISTRATION ================= */
+        /* ================= COMPANY REGISTRATION ================= */
 
-        function registerAdmin(event) {
+        async function registerCompany(event) {
 
             event.preventDefault();
 
 
             const form =
                 document.getElementById(
-                    "adminRegistrationForm"
+                    "companyRegistrationForm"
                 );
 
 
-            const fullName =
+            const companyName =
                 document.getElementById(
-                    "fullName"
+                    "companyName"
                 ).value.trim();
 
 
-            const email =
+            const companyEmail =
                 document.getElementById(
-                    "email"
+                    "companyEmail"
                 ).value.trim();
 
 
@@ -787,10 +982,46 @@
                 ).value.trim();
 
 
-            const role =
+            const hrName =
                 document.getElementById(
-                    "role"
+                    "hrName"
+                ).value.trim();
+
+
+            const companyType =
+                document.getElementById(
+                    "companyType"
                 ).value;
+
+
+            const industry =
+                document.getElementById(
+                    "industry"
+                ).value;
+
+
+            const website =
+                document.getElementById(
+                    "website"
+                ).value.trim();
+
+
+            const address =
+                document.getElementById(
+                    "address"
+                ).value.trim();
+
+
+            const city =
+                document.getElementById(
+                    "city"
+                ).value.trim();
+
+
+            const state =
+                document.getElementById(
+                    "state"
+                ).value.trim();
 
 
             const username =
@@ -823,14 +1054,14 @@
                 );
 
 
-            /* Hide previous messages */
+            /* ================= HIDE OLD MESSAGES ================= */
 
             errorMessage.style.display = "none";
 
             successMessage.style.display = "none";
 
 
-            /* ================= PASSWORD ================= */
+            /* ================= PASSWORD VALIDATION ================= */
 
             if (password.length < 6) {
 
@@ -840,9 +1071,10 @@
                 errorMessage.style.display = "block";
 
                 return;
-
             }
 
+
+            /* ================= CONFIRM PASSWORD ================= */
 
             if (password !== confirmPassword) {
 
@@ -852,11 +1084,10 @@
                 errorMessage.style.display = "block";
 
                 return;
-
             }
 
 
-            /* ================= MOBILE ================= */
+            /* ================= MOBILE VALIDATION ================= */
 
             if (!/^[0-9]{10}$/.test(mobile)) {
 
@@ -866,11 +1097,10 @@
                 errorMessage.style.display = "block";
 
                 return;
-
             }
 
 
-            /* ================= USERNAME ================= */
+            /* ================= USERNAME VALIDATION ================= */
 
             if (username.length < 4) {
 
@@ -880,64 +1110,82 @@
                 errorMessage.style.display = "block";
 
                 return;
-
             }
 
 
-            /* ================= ADMIN DATA ================= */
+            /* ================= COMPANY NAME ================= */
 
-            const adminData = {
+            if (companyName.length < 2) {
 
-                fullName: fullName,
+                errorMessage.innerText =
+                    "Please enter a valid company name.";
 
-                email: email,
+                errorMessage.style.display = "block";
 
-                mobile: mobile,
+                return;
+            }
 
-                role: role,
 
+            /* ================= COMPANY DATA ================= */
+
+            const companyData = {
+                companyName: companyName,
+                email: companyEmail,
+                phone: mobile,
+                website: website,
+                industry: industry || companyType,
+                location: [address, city, state]
+                    .filter(Boolean)
+                    .join(", "),
+                description: hrName
+                    ? "HR / Contact: " + hrName
+                    : "",
                 username: username,
-
                 password: password
-
             };
 
 
             console.log(
-                "Admin Registration Data:",
-                adminData
+                "Company Registration Data:",
+                companyData
             );
 
 
-            /* ================= DEMO SUCCESS ================= */
-
-            successMessage.innerText =
-                "Admin registration successful!";
-
-            successMessage.style.display = "block";
-
-
-            /*
-                BACKEND CONNECTION WILL BE ADDED HERE.
-
-                Example:
-
-                fetch(
-                    "http://localhost:5000/api/auth/admin-register",
+            try {
+                const response = await fetch(
+                    "http://localhost:5000/api/auth/company-register",
                     {
                         method: "POST",
-
                         headers: {
                             "Content-Type": "application/json"
                         },
-
-                        body: JSON.stringify(adminData)
+                        body: JSON.stringify(companyData)
                     }
                 );
-            */
 
+                const data = await response.json().catch(() => ({}));
 
-            form.reset();
+                if (!response.ok) {
+                    throw new Error(
+                        data.message || "Company registration failed."
+                    );
+                }
+
+                successMessage.innerText =
+                    data.message || "Company registration successful!";
+                successMessage.style.display = "block";
+                form.reset();
+
+                setTimeout(function() {
+                    window.location.href = "login.html";
+                }, 1000);
+
+            } catch (error) {
+                console.error("Company registration error:", error);
+                errorMessage.innerText =
+                    error.message || "Unable to register company.";
+                errorMessage.style.display = "block";
+            }
 
         }
 

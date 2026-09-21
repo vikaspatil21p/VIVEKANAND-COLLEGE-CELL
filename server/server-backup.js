@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2/promise");
 const crypto = require("crypto");
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 
 const app = express();
 
@@ -25,6 +26,68 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
+
+async function ensureStudentTableSchema() {
+    try {
+        const [columns] = await pool.query("SHOW COLUMNS FROM students");
+        const fields = new Set(columns.map((column) => column.Field));
+
+        if (!fields.has("id") && fields.has("student_id")) {
+            await pool.query(
+                "ALTER TABLE students CHANGE student_id id INT NOT NULL AUTO_INCREMENT"
+            );
+        }
+
+        const addColumns = [
+            ["studentId", "VARCHAR(50) NOT NULL DEFAULT '' AFTER id"],
+            ["gender", "VARCHAR(20) DEFAULT NULL"],
+            ["dob", "DATE DEFAULT NULL"],
+            ["address", "VARCHAR(255) DEFAULT NULL"],
+            ["city", "VARCHAR(100) DEFAULT NULL"],
+            ["state", "VARCHAR(100) DEFAULT NULL"],
+            ["academicYear", "VARCHAR(20) DEFAULT NULL"],
+            ["admissionYear", "VARCHAR(10) DEFAULT NULL"],
+            ["graduationYear", "VARCHAR(10) DEFAULT NULL"],
+            ["tenthPercentage", "DECIMAL(5,2) DEFAULT NULL"],
+            ["twelfthPercentage", "DECIMAL(5,2) DEFAULT NULL"],
+            ["cgpa", "DECIMAL(4,2) DEFAULT NULL"],
+            ["skills", "TEXT DEFAULT NULL"],
+            ["resumeUrl", "VARCHAR(500) DEFAULT NULL"],
+            ["profilePhoto", "VARCHAR(500) DEFAULT NULL"],
+            ["placementStatus", "VARCHAR(50) DEFAULT 'Not Placed'"],
+            ["placedCompany", "VARCHAR(150) DEFAULT NULL"],
+            ["packageOffered", "DECIMAL(10,2) DEFAULT NULL"],
+            ["createdAt", "TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP"],
+            ["updatedAt", "TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"]
+        ];
+
+        for (const [columnName, definition] of addColumns) {
+            if (!fields.has(columnName)) {
+                await pool.query(
+                    `ALTER TABLE students ADD COLUMN ${columnName} ${definition}`
+                );
+            }
+        }
+
+        if (!fields.has("studentId")) {
+            await pool.query(
+                "UPDATE students SET studentId = CONCAT('STU', LPAD(CAST(id AS CHAR), 3, '0')) WHERE studentId = '' OR studentId IS NULL"
+            );
+        }
+
+        const [indexes] = await pool.query("SHOW INDEX FROM students");
+        const hasStudentIdIndex = indexes.some((index) => index.Key_name === "studentId");
+        if (!hasStudentIdIndex) {
+            await pool.query("ALTER TABLE students ADD UNIQUE KEY studentId (studentId)");
+        }
+
+        console.log("✅ Student table schema verified for registration flow");
+    } catch (error) {
+        console.error("Student table schema check failed:", error.message);
+    }
+}
+
+ensureStudentTableSchema();
 
 // ===============================
 // TEST / HEALTH API

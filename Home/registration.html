@@ -44,21 +44,25 @@
         }
 
 
+        /* ================= CONTAINER ================= */
+
         .registration-container {
 
             width: 100%;
 
-            max-width: 950px;
+            max-width: 850px;
 
             text-align: center;
         }
 
 
+        /* ================= HEADER ================= */
+
         .header {
 
             color: white;
 
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
 
@@ -66,9 +70,9 @@
 
             color: #ffb703;
 
-            font-size: 32px;
+            font-size: 30px;
 
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
 
@@ -76,9 +80,11 @@
 
             color: #dbe5f2;
 
-            font-size: 16px;
+            font-size: 15px;
         }
 
+
+        /* ================= CARDS ================= */
 
         .cards {
 
@@ -87,17 +93,31 @@
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 25px;
+            gap: 20px;
+
+            align-items: stretch;
         }
 
+
+        /* ================= CARD ================= */
 
         .card {
 
             background: white;
 
-            border-radius: 20px;
+            border-radius: 18px;
 
-            padding: 40px 25px;
+            padding: 28px 18px;
+
+            min-height: 310px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: space-between;
 
             box-shadow:
                 0 20px 50px
@@ -109,8 +129,7 @@
 
         .card:hover {
 
-            transform:
-                translateY(-10px);
+            transform: translateY(-7px);
 
             box-shadow:
                 0 25px 60px
@@ -118,35 +137,69 @@
         }
 
 
+        /* ================= ICON ================= */
+
         .icon {
 
-            font-size: 60px;
+            width: 65px;
 
-            margin-bottom: 20px;
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 45px;
+
+            margin-bottom: 10px;
         }
 
+
+        /* ================= TITLE ================= */
 
         .card h2 {
 
             color: #0b1f3a;
 
-            margin-bottom: 12px;
+            font-size: 20px;
+
+            margin-bottom: 10px;
+
+            min-height: 46px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
         }
 
+
+        /* ================= DESCRIPTION ================= */
 
         .card p {
 
             color: #666;
 
-            line-height: 1.6;
+            line-height: 1.5;
 
-            font-size: 14px;
+            font-size: 13px;
 
-            min-height: 70px;
+            height: 65px;
 
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: center;
         }
 
+
+        /* ================= BUTTON ================= */
 
         .register-btn {
 
@@ -158,11 +211,15 @@
 
             color: #111;
 
-            padding: 13px 28px;
+            padding: 10px 20px;
 
             border-radius: 30px;
 
             font-weight: bold;
+
+            font-size: 13px;
+
+            white-space: nowrap;
 
             transition: 0.3s;
         }
@@ -174,16 +231,17 @@
 
             color: white;
 
-            transform:
-                translateY(-2px);
+            transform: translateY(-2px);
         }
 
+
+        /* ================= BACK BUTTON ================= */
 
         .back-btn {
 
             display: inline-block;
 
-            margin-top: 35px;
+            margin-top: 30px;
 
             color: white;
 
@@ -193,7 +251,7 @@
 
             border: 2px solid white;
 
-            padding: 11px 25px;
+            padding: 9px 22px;
 
             border-radius: 25px;
 
@@ -209,23 +267,57 @@
         }
 
 
+        /* ================= TABLET ================= */
+
         @media (max-width: 800px) {
-
-            .cards {
-
-                grid-template-columns: 1fr;
-            }
 
             .registration-container {
 
                 max-width: 500px;
             }
 
+            .cards {
+
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+
+                min-height: 280px;
+            }
+
             .header h1 {
 
                 font-size: 25px;
             }
+        }
 
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 500px) {
+
+            body {
+
+                padding: 25px 15px;
+            }
+
+            .header h1 {
+
+                font-size: 22px;
+            }
+
+            .header p {
+
+                font-size: 14px;
+            }
+
+            .card {
+
+                padding: 25px 18px;
+
+                min-height: 275px;
+            }
         }
 
     </style>
@@ -239,7 +331,7 @@
     <div class="registration-container">
 
 
-        <!-- HEADER -->
+        <!-- ================= HEADER ================= -->
 
         <div class="header">
 
@@ -254,12 +346,12 @@
         </div>
 
 
-        <!-- REGISTRATION CARDS -->
+        <!-- ================= CARDS ================= -->
 
         <div class="cards">
 
 
-            <!-- STUDENT -->
+            <!-- ================= STUDENT ================= -->
 
             <div class="card">
 
@@ -288,7 +380,7 @@
             </div>
 
 
-            <!-- ADMIN -->
+            <!-- ================= ADMIN ================= -->
 
             <div class="card">
 
@@ -317,7 +409,7 @@
             </div>
 
 
-            <!-- COMPANY -->
+            <!-- ================= COMPANY ================= -->
 
             <div class="card">
 
@@ -345,10 +437,11 @@
 
             </div>
 
+
         </div>
 
 
-        <!-- BACK -->
+        <!-- ================= BACK ================= -->
 
         <a
             href="index.html"
